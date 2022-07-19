@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【VS Code】使用 ftp-simple 連結伺服器 | CT</title><meta name="keywords" content="ftp,ftp-simple,vscode"><meta name="author" content="Chiatzu"><meta name="copyright" content="Chiatzu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本篇介紹ftp-simple 連接與使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【VS Code】使用 ftp-simple 連結伺服器">
+<meta property="og:url" content="http://alan000322.github.io/2022-06-23-vscode-ftp-simple/index.html">
+<meta property="og:site_name" content="CT">
+<meta property="og:description" content="本篇介紹ftp-simple 連接與使用">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://alan000322.github.io/2022-06-23-vscode-ftp-simple/step1.png">
+<meta property="article:published_time" content="2022-06-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-17T13:31:40.423Z">
+<meta property="article:author" content="Chiatzu">
+<meta property="article:tag" content="ftp">
+<meta property="article:tag" content="ftp-simple">
+<meta property="article:tag" content="vscode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://alan000322.github.io/2022-06-23-vscode-ftp-simple/step1.png"><link rel="shortcut icon" href="/img/CT-blue.png"><link rel="canonical" href="http://alan000322.github.io/2022-06-23-vscode-ftp-simple/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【VS Code】使用 ftp-simple 連結伺服器',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-17 21:31:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/ctzu/home"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/revelarhumor"><i class="fa-fw fa-brands fa-medium"></i><span> Medium</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2022-06-23-vscode-ftp-simple/step1.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CT</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/ctzu/home"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/revelarhumor"><i class="fa-fw fa-brands fa-medium"></i><span> Medium</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【VS Code】使用 ftp-simple 連結伺服器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2022-06-22T16:00:00.000Z" title="發表於 2022-06-23 00:00:00">2022-06-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2022-07-17T13:31:40.423Z" title="更新於 2022-07-17 21:31:40">2022-07-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/">程式學習</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【VS Code】使用 ftp-simple 連結伺服器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note default simple"><p><strong>本篇適合：</strong>需要使用Visual Studio Code 連接伺服器進行程式寫作的朋友</p>
+</div>
+
+<div class="note default simple"><p><strong>本篇重點：</strong>ftp-simple 連接與使用</p>
+</div>
+
+<p>過去因為在實驗室的經驗，所有的程式皆存放在實驗室的伺服器上，因此我們會需要用本機的電腦嘗試連接到伺服器進行寫作。<br>測試了一些 Visual Studio Code 的套件，最終還是比較喜歡 ftp-simple，因此在此介紹使用 ftp-simple 連接伺服器的方法，也可以參考<a target="_blank" rel="noopener external nofollow noreferrer" href="https://malagege.github.io/blog/2018/08/20/vscode%E5%98%97%E8%A9%A6%E4%BD%BF%E7%94%A8ftp%E5%A5%97%E4%BB%B6%E5%BF%83%E5%BE%97/">這篇</a>。</p>
+<h1 id="使用步驟"><a href="#使用步驟" class="headerlink" title="使用步驟"></a>使用步驟</h1><h2 id="步驟一：下載-ftp-simple"><a href="#步驟一：下載-ftp-simple" class="headerlink" title="步驟一：下載 ftp-simple"></a>步驟一：下載 ftp-simple</h2><p>點選畫面左列第五個方框框的 icon 進入「延伸模組」，並查詢「ftp-simple」。</p>
+<p><img src="/step1.png" alt="「延伸模組」查詢 ftp-simple"><br>「延伸模組」查詢 ftp-simple</p>
+<h2 id="步驟二：新增伺服器設定"><a href="#步驟二：新增伺服器設定" class="headerlink" title="步驟二：新增伺服器設定"></a>步驟二：新增伺服器設定</h2><h3 id="呼叫命令列"><a href="#呼叫命令列" class="headerlink" title="呼叫命令列"></a>呼叫命令列</h3><p>Windows 用戶可點選「<code>F1</code>」或「<code>Ctrl</code> + <code>Shift</code> + <code>P</code>」、Mac 用戶可點選「<code>F1</code>」或「<code>Cmd</code> + <code>Shift ⇧</code>+ <code>P</code>」、Macbook Pro（有 touch bar）可先點選「fn」，直到 touch bar 上出現功能列表，再按下「F1」，或也可以直接點選「<code>Cmd</code> + <code>Shift ⇧</code>+ <code>P</code>」<br>（相關 VS Code 快捷鍵可<a target="_blank" rel="noopener external nofollow noreferrer" href="https://ithelp.ithome.com.tw/articles/10237385">見此</a>）</p>
+<h3 id="Config-設定"><a href="#Config-設定" class="headerlink" title="Config 設定"></a>Config 設定</h3><p>點選「ftp-simple：Config」，會跳出一個 json 格式的檔案，請依序填寫相關資訊。</p>
+<p><img src="/step2.png" alt="依序填寫相關資訊"><br>依序填寫相關資訊</p>
+<p>name ：填寫要如何命名這個伺服器（可隨意設定，只要自己認得就好）<br>host：伺服器 ip<br>port：連接埠<br>type：欲使用的連接方式<br>username：登入伺服器的帳號名稱<br>password：登入伺服器的帳號之密碼<br>autosave：是否自動儲存文件至伺服器<br>confirm：儲存文件時是否再次詢問使用者是否儲存</p>
+<p>依序填寫完畢後按下儲存，如檔名出現紅字請再按一次儲存（儲存快捷鍵為(mac) Cmd + S 或 (Windows) Ctrl + S）</p>
+<p><img src="/step3.png" alt="若出現紅字，擔心沒有順利儲存的話可以再按一次儲存，但基本上不影響運作。"></p>
+<p>若出現紅字，擔心沒有順利儲存的話可以再按一次儲存，但基本上不影響運作。</p>
+<p>此外，「{…}」大括號後也可以新增更多預設伺服器。</p>
+<p><img src="/step4.png" alt="大括號後也可以新增更多預設伺服器。"></p>
+<h2 id="步驟三：開啟檔案-x2F-工作區"><a href="#步驟三：開啟檔案-x2F-工作區" class="headerlink" title="步驟三：開啟檔案 &#x2F; 工作區"></a>步驟三：開啟檔案 &#x2F; 工作區</h2><p>基本上相關設定已經完成，若要開啟檔案有幾種方式：</p>
+<ul>
+<li>開啟單一檔案編輯</li>
+<li>開啟工作區針對資料夾內所有檔案編輯</li>
+</ul>
+<h3 id="開啟單一檔案編輯"><a href="#開啟單一檔案編輯" class="headerlink" title="開啟單一檔案編輯"></a>開啟單一檔案編輯</h3><p>同樣開啟命令列（如同步驟二之教學），點選「**&gt;ftp-simple: open - Open the file directly from FTP server**」，若伺服器為 Linux 系統，路徑預設為根目錄可依序點選 home -&gt; 個人帳號，即可到達自己個人資料夾，尋找所需檔案即可。</p>
+<p><img src="/step5.png" alt="點選「&gt;ftp-simple: open - Open the file directly from FTP server」"><br>點選「&gt;ftp-simple: open - Open the file directly from FTP server」</p>
+<p><img src="/step6.png" alt="選擇伺服器"><br>選擇伺服器</p>
+<p><img src="/step7.png" alt="若成功進入伺服器，點選「home」，若並無出現此版面，很可能是沒有成功連接上伺服器。"><br>若成功進入伺服器，點選「home」，若並無出現此版面，很可能是沒有成功連接上伺服器。</p>
+<p><img src="/step8.png" alt="點選個人帳號檔案。"><br>點選個人帳號檔案。</p>
+<p><img src="/step9.png" alt="尋找指定檔案。"><br>尋找指定檔案。</p>
+<p><img src="/step10.png" alt="開啟單一檔案完成"><br>開啟單一檔案完成</p>
+<p>若毫無反應，很可能是沒有成功連接上，請確保自己填寫的連接資料沒有問題。</p>
+<h3 id="開啟工作區針對資料夾內所有檔案編輯"><a href="#開啟工作區針對資料夾內所有檔案編輯" class="headerlink" title="開啟工作區針對資料夾內所有檔案編輯"></a>開啟工作區針對資料夾內所有檔案編輯</h3><p>同樣開啟命令列（如同步驟二之教學），點選「**&gt;ftp-simple: remote directory open to workspace**」，若伺服器為 Linux 系統，路徑預設為根目錄可依序點選 home -&gt; 個人帳號，即可到達自己個人資料夾，尋找所需檔案即可。</p>
+<p><img src="/step11.png" alt="點選「點選「&gt;ftp-simple: remote directory open to workspace」"><br>點選「點選「&gt;ftp-simple: remote directory open to workspace」」</p>
+<p>同上一個步驟，找尋想要的特定資料夾，並點選「Current Directory」即可。</p>
+<p><img src="/step12.png" alt="找尋想要的特定資料夾，並點選「Current Directory」即可。"></p>
+<p>成功即會開啟該工作區，即完成！</p>
+<p><img src="/step13.png" alt="點選「點選「&gt;ftp-simple: remote directory open to workspace」"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://alan000322.github.io">Chiatzu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="http://alan000322.github.io/2022-06-23-vscode-ftp-simple/">http://alan000322.github.io/2022-06-23-vscode-ftp-simple/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="null" target="_blank">CT</a> 許可協議。轉載請註明來自 <a href="http://alan000322.github.io" target="_blank">CT</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ftp/">ftp</a><a class="post-meta__tags" href="/tags/ftp-simple/">ftp-simple</a><a class="post-meta__tags" href="/tags/vscode/">vscode</a></div><div class="post_share"><div class="social-share" data-image="/2022-06-23-vscode-ftp-simple/step1.png" data-sites="facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022-06-23-line-bot-covid/"><img class="prev-cover" src="/2022-06-23-line-bot-covid/photo3.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">速成 LINE 聊天機器人：優化使用者體驗 讓冷冰冰的系統扮演防疫重責大任</div></div></a></div><div class="next-post pull-right"><a href="/2022-06-16-netflix-analysis-2022/"><img class="next-cover" src="/2022-06-16-netflix-analysis-2022/top.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【專題幕後】Netflix 排名資料分析過程大公開</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chiatzu</div><div class="author-info__description">CT blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/revelarhumor"><i class="fa-brands fa-medium"></i><span>Medium Page</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/alan000322" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.linkedin.com/in/chia-tzu-ho-25198a181/" rel="external nofollow noreferrer" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="/alan000322@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://medium.com/revelarhumor" rel="external nofollow noreferrer" target="_blank" title="Medium"><i class="fa-brands fa-medium"></i></a></div></div><div class="card-widget digi_news" id="digi_new"><div class="item-headline"><i class="fas fa-tv"></i><span>數位敘事</span></div><div class="item-content"><div class="aside-list"> <!-- 韓流來襲 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" title="從第一線改變現狀 那些自願投身這場戰疫的同學們"> <img src="https://i.imgur.com/VZQIqYP.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析"/> </a> <div class="content"> <a href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" class="title">韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析</a> </div> </div> <!-- 馬崗 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/ntuweb/final/index.html" title="東北角村莊的下一步？極東漁村的過去與未來"> <img src="https://i.imgur.com/fknnmah.jpg" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="東北角村莊的下一步？極東漁村的過去與未來"/> </a> <div class="content"> <a href="https://alan000322.github.io/ntuweb/final/index.html" class="title">東北角村莊的下一步？極東漁村的過去與未來</a> </div> </div></div></div></div><div class="card-widget frontend_webs" id="frontend_web"><div class="item-headline"><i class="fas fa-sitemap"></i><span>其他網頁作品</span></div><div class="item-content"><div class="aside-list"> <!-- MOOCs --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/moocs/moocs.info/" title="三分鐘了解「高中生磨課師」"> <img src="https://i.imgur.com/6fd2HTS.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="三分鐘了解「高中生磨課師」"/> </a> <div class="content"> <a href="https://alan000322.github.io/moocs/moocs.info/" class="title">三分鐘了解「高中生磨課師」</a> </div> </div> <!-- isarst --> <div class="aside-list-item"> <a class="thumbnail" target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST/" title="iSARST"> <img src="https://i.imgur.com/VmydaHh.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="iSARST"/> </a> <div class="content"> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST" class="title">iSARST</a> </div> </div> <!-- class --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/covid19_nycuqa/index.html" title="課程測試模板"> <img src="" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="課程測試模板"/> </a> <div class="content"> <a href="https://alan000322.github.io/covid19_nycuqa/index.html" class="title">NYCU生科系課程心得網站 - 測試模板</a> </div> </div> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%A9%9F"><span class="toc-text">使用步驟</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%A9%9F%E4%B8%80%EF%BC%9A%E4%B8%8B%E8%BC%89-ftp-simple"><span class="toc-text">步驟一：下載 ftp-simple</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%A9%9F%E4%BA%8C%EF%BC%9A%E6%96%B0%E5%A2%9E%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%A8%AD%E5%AE%9A"><span class="toc-text">步驟二：新增伺服器設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BC%E5%8F%AB%E5%91%BD%E4%BB%A4%E5%88%97"><span class="toc-text">呼叫命令列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Config-%E8%A8%AD%E5%AE%9A"><span class="toc-text">Config 設定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%A9%9F%E4%B8%89%EF%BC%9A%E9%96%8B%E5%95%9F%E6%AA%94%E6%A1%88-x2F-%E5%B7%A5%E4%BD%9C%E5%8D%80"><span class="toc-text">步驟三：開啟檔案 &#x2F; 工作區</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%96%8B%E5%95%9F%E5%96%AE%E4%B8%80%E6%AA%94%E6%A1%88%E7%B7%A8%E8%BC%AF"><span class="toc-text">開啟單一檔案編輯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%96%8B%E5%95%9F%E5%B7%A5%E4%BD%9C%E5%8D%80%E9%87%9D%E5%B0%8D%E8%B3%87%E6%96%99%E5%A4%BE%E5%85%A7%E6%89%80%E6%9C%89%E6%AA%94%E6%A1%88%E7%B7%A8%E8%BC%AF"><span class="toc-text">開啟工作區針對資料夾內所有檔案編輯</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Chiatzu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
