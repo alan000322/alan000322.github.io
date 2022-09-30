@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【學習筆記】快速建立漂亮的一頁式網頁—— Bootstrap 套件不可不知的 7 大技能 | CT</title><meta name="keywords" content="Bootstrap,HTML,CSS,Flex"><meta name="author" content="Chiatzu"><meta name="copyright" content="Chiatzu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="快速建立一個一頁式網站，但對 CSS 的活用仍無法很厲害的人，歡迎點進來看看 Bootstrap 5 快速入門">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【學習筆記】快速建立漂亮的一頁式網頁—— Bootstrap 套件不可不知的 7 大技能">
+<meta property="og:url" content="http://alan000322.github.io/2022-09-30-bootstrap-summary/index.html">
+<meta property="og:site_name" content="CT">
+<meta property="og:description" content="快速建立一個一頁式網站，但對 CSS 的活用仍無法很厲害的人，歡迎點進來看看 Bootstrap 5 快速入門">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://alan000322.github.io/2022-09-30-bootstrap-summary/pic-3.png">
+<meta property="article:published_time" content="2022-09-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-30T17:24:48.340Z">
+<meta property="article:author" content="Chiatzu">
+<meta property="article:tag" content="NYCU">
+<meta property="article:tag" content="NCTU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://alan000322.github.io/2022-09-30-bootstrap-summary/pic-3.png"><link rel="shortcut icon" href="/img/CT-blue.png"><link rel="canonical" href="http://alan000322.github.io/2022-09-30-bootstrap-summary/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【學習筆記】快速建立漂亮的一頁式網頁—— Bootstrap 套件不可不知的 7 大技能',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-01 01:24:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/ctzu/home"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/revelarhumor"><i class="fa-fw fa-brands fa-medium"></i><span> Medium</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./2022-09-30-bootstrap-summary/pic-3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CT</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/ctzu/home"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/revelarhumor"><i class="fa-fw fa-brands fa-medium"></i><span> Medium</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【學習筆記】快速建立漂亮的一頁式網頁—— Bootstrap 套件不可不知的 7 大技能</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2022-09-29T16:00:00.000Z" title="發表於 2022-09-30 00:00:00">2022-09-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E6%8A%80%E5%AD%B8%E7%BF%92/">科技學習</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時間:</span><span>8分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【學習筆記】快速建立漂亮的一頁式網頁—— Bootstrap 套件不可不知的 7 大技能"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">觀看數:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note default simple"><p><strong>本篇適合：</strong></p>
+<ul>
+<li>剛開始學習 HTML &#x2F; CSS ，對基本語法有了解的人</li>
+<li>想要快速建立一個一頁式網站，但對 CSS 的活用仍無法很厲害的人</li>
+</ul>
+</div>
+
+<div class="note default simple"><p><strong>本篇重點：</strong><br>七大重點寫在前頭：</p>
+<ol>
+<li>初始設定與 Bootstrap 中文版網頁使用</li>
+<li>【排版】格線系統：容器（container）與網格（grid）（超重要）</li>
+<li>【排版】列欄系統（row, col）（自己取的名字）</li>
+<li>【排版】排列系統</li>
+<li>【排版】斷點與響應式網頁</li>
+<li>【元件】卡片</li>
+<li>【通用類別】文字與顏色</li>
+</ol>
+</div>
+
+<h1 id="初始設定與-Bootstrap-中文版網頁使用"><a href="#初始設定與-Bootstrap-中文版網頁使用" class="headerlink" title="初始設定與 Bootstrap 中文版網頁使用"></a>初始設定與 Bootstrap 中文版網頁使用</h1><p>在過去在大學期間擔任助教的過程，常常有人問「Bootstrap」是什麼？一來我也不是什麼前端工程師，我一時也不太知道要給予一個怎麼樣的答案。</p>
+<p>你可以說他是一個「框架」、一個「套件」，但似乎沒辦法回答這個提問者的問題。</p>
+<p>或許換個方式想，現在我可能會回答說：它是一個由專業設計師與工程師設計好的一套「工具包」。</p>
+<p>也就是說，過去在 HTML&#x2F;CSS 的學習階段，會讓初學者很痛苦的排版、顏色、按鈕、響應式網頁（讓網頁能在電腦、手機都能完美閱讀），這個工具包都幫你包好好，只要短短「一行」就能解決問題。</p>
+<p>Bootstrap 官方有英文網頁，但是幸福的是，台灣有一個前端線上教學的公司「六角學院」早已為各個版本的 Bootstrap 進行完美翻譯，因此可以在這個網頁看到所有從頭開始的手把手教學。</p>
+<p>（先不要衝動買他們的課程，這裡不是業配xD）</p>
+<p>首先點入首頁，我們必須先把 Bootstrap 的套件包引入，有兩種方法：</p>
+<ol>
+<li>下載所有資源包：這招我覺得如果真的在進行大型專案時再用即可，否則如果還是在練習、或其實沒有要進行自定義 Bootstrap 的一些功能的話，個人覺得可以不必下載。</li>
+<li>線上引用：可以使用 CDN （<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudflare.com/zh-tw/learning/cdn/what-is-a-cdn/">什麼是 CDN</a>）的方式線上引用。直接把頁面拉到最下方的「<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.1/getting-started/introduction/#starter-template">初學者範本</a>」，把 code 直接複製下來。</li>
+</ol>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-1.png"></p>
+<p>基本環境設定好後，你就可以享用 Bootstrap 所有功能。<br>基本上，Bootstrap 就是掌握最關鍵的技法——「複製貼上」！</p>
+<p>左方欄位列出所有 Bootstrap 寫好的功能，如果不清楚誰是誰，我建議先拉到「元件」的大分類，玩玩按鈕、表單、卡片，會開始知道為什麼 Bootstrap 這麼好用，這麼受歡迎！</p>
+<p>基本上掌握一個概念：Bootstrap 的使用就是要讓使用者「減少寫 CSS」，通通以「class 類別選擇器」直接引入相關的功能。因此，在沒有很多困難、自定義的調整的前提下，若徹底使用 Bootstrap 的網頁，應該 CSS 不會很多。因此才會快速生成「漂亮」的網頁。</p>
+<p>接下來，將介紹幾個使用 Bootstrap 不可不知的六大功能。</p>
+<h1 id="格線系統"><a href="#格線系統" class="headerlink" title="格線系統"></a>格線系統</h1><p>如果願意嘗試、不怕困難的朋友，可以直接進入官方網頁看看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.1/layout/grid/">https://bootstrap5.hexschool.com/docs/5.1/layout/grid/</a></p>
+<p>首先你需要知道一個大概念：「先 container，再 row，後 col」</p>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-2.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span></span><br><span class="line">      col(1)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span></span><br><span class="line">      col(2)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span></span><br><span class="line">      col(3)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 Bootstrap 建立區塊時，需在外層先建立一個 container，而且是必須的！<br>使用 container-fluid 會延展整個視窗寬度。container 與 container-fluid 的差別是在視窗的左右是否留下一些空間。</p>
+<p class="codepen" data-height="300" data-slug-hash="wvjmNVr" data-user="alan000322" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a target="_blank" rel="noopener external nofollow noreferrer" href="https://codepen.io/alan000322/pen/wvjmNVr">
+  Untitled</a> by alan (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://codepen.io/alan000322">@alan000322</a>)
+  on <a target="_blank" rel="noopener external nofollow noreferrer" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h1 id="斷點"><a href="#斷點" class="headerlink" title="斷點"></a>斷點</h1><p>接著，可以搭配「斷點」使用。<br>所謂的「斷點」，Bootstrap 將整個版面切成12等分。<br>用寫的有點難詮釋，直接上圖：</p>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-3.png"></p>
+<p>透過 column 與數字的排列組合，可以達成特定的排版樣子，不必再拘束於 <code>float: right</code>！</p>
+<p>這樣的排版技巧其實想法不必太死，除了 container 在最外圍（框住所有內容）外，row&#x2F;col 的搭配，只要需要排版，基本上都可以直接疊加使用。</p>
+<p>例如在過去曾經經手過的<a target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST/">案例</a>中，我曾經在 card 內增加了 row&#x2F;col 系統。</p>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-4.png"></p>
+<h1 id="排列系統（flex-系統）"><a href="#排列系統（flex-系統）" class="headerlink" title="排列系統（flex 系統）"></a>排列系統（flex 系統）</h1><p>基本上排列系統與 css 的 align 機制一模一樣。</p>
+<p>學習 CSS 排版，可以參考這個：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.youtube.com/watch?v=lmBM7_OTDBQ%E3%80%82%E4%B9%9F%E6%98%AF%E5%85%AD%E8%A7%92%E7%9A%84%E6%95%99%E5%AD%B8%E6%96%87%E3%80%82">https://www.youtube.com/watch?v=lmBM7_OTDBQ。也是六角的教學文。</a></p>
+<p>此外，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://flexboxfroggy.com/">flex floggy</a> 透過遊戲帶大家了解什麼是 Flex。</p>
+<p>建議認真了解原先的 flex 系統後，那 Bootstrap 其實一模一樣，且沒特別簡化。唯一的差別是原先程式碼寫在 CSS 代碼中，Bootstrap 直接定義在類別選擇器（class）。<br>例如：<code>justify-align: center</code> 會變成<code>class=&quot;justify-align-center&quot;</code>，以此類推。</p>
+<p>記得在使用這些 align 功能時，皆是要在<code>display: flex</code>下達成，若以 Bootstrap 去定義，只要在 class 上打<code>d-flex</code>即可（<code>class=&quot;d-flex&quot;</code>）</p>
+<h1 id="斷點與響應式網頁"><a href="#斷點與響應式網頁" class="headerlink" title="斷點與響應式網頁"></a>斷點與響應式網頁</h1><p>Bootstrap 最大最大的好處，就是把「響應式網頁」簡單化。</p>
+<p>在這個 mobile-first 的時代，基本上你不再只能單純製作電腦版網頁，而是手機版、電腦版等適應各種視窗的網頁，都應該要能舒服閱讀。</p>
+<p>初學者碰到響應式網頁，需要花加倍的時間思考兩種版型應該要怎麼設計。然而，Bootstrap 提供一個捷徑，只要簡單在 class 上作標註，就可以為你設定專屬的響應式網頁樣態。</p>
+<p>這裡要介紹一個概念：「斷點」。我們先從網頁版思考，當我先把視窗最大化，然後慢慢從右邊將視窗拉窄，畫面會漸漸的變越來越窄，從電腦版頁面轉變為手機版的寬度。而「要在哪個視窗寬度切換不同的畫面模式」，這個寬度就稱之為「斷點」。</p>
+<p>這裡附上 Bootstrap 的解釋：<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.1/layout/breakpoints/#available-breakpoints">https://bootstrap5.hexschool.com/docs/5.1/layout/breakpoints/#available-breakpoints</a></p>
+<p>還是不懂的話，直接圖示說明</p>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-5.png"></p>
+<p>上圖以 md 為例，md 即 medium，當我使用 <code>col-md-6</code>即代表 column 想要以「medium」的方式進行斷點，根據 Bootstrap 手冊，medium 斷點是width: 768px。也就是說，若低於這個寬度，他會以手機版方式排列，也就是原先是「左右排」，會變成「上下排」，讓視窗不要那麼的擠。</p>
+<p>以此類推，所有的元件都可以這樣使用！</p>
+<h1 id="元件：卡片"><a href="#元件：卡片" class="headerlink" title="元件：卡片"></a>元件：卡片</h1><p>元件其實最不應該介紹xD，因為 Bootstrap 官方版面已經寫得超清楚超簡單：</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.1/components/accordion/">https://bootstrap5.hexschool.com/docs/5.1/components/accordion/</a></p>
+<p>而我最常用的就是卡片，官方範例會放很多像是產品介紹、人物介紹這類的排版樣式，我覺得不一定需要拘泥於那樣，基本上我都視為它是一個「漂亮的長方框框」（還外帶圓角），因此只要需要框框，我都拉 card 來用。</p>
+<p>例如我在實驗室的蛋白質比對搜尋網站，表單就是使用 card 排版。</p>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-6.png"></p>
+<h1 id="通用類別：文字與顏色"><a href="#通用類別：文字與顏色" class="headerlink" title="通用類別：文字與顏色"></a>通用類別：文字與顏色</h1><p>文字官方範例：<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.0/utilities/text/">https://bootstrap5.hexschool.com/docs/5.0/utilities/text/</a><br>顏色官方範例：<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.0/customize/color/">https://bootstrap5.hexschool.com/docs/5.0/customize/color/</a><br>以文字而言，我超級常用 <code>text-center</code>、<code>text-start</code>、<code>text-end</code>，Bootstrap 5 的粗體、細體、極細體也蠻好用的。</p>
+<p>以顏色而言，是 Bootstrap 比較劣勢的地方，他預設了幾個顏色，如果你並沒有太多顏色需求，可以直接用它給予的顏色，不然就是搭配 CSS 著色。</p>
+<p>根本解決問題的方式，就要閱讀 Bootstrap「自定義」章節，去用 SCSS 方式修改底層變數，歡迎進階使用者上網查詢囉。 </p>
+<h1 id="最後：版本需注意"><a href="#最後：版本需注意" class="headerlink" title="最後：版本需注意"></a>最後：版本需注意</h1><p>日前 Bootstrap 發表了第 5 版，第 5 版也是目前最通用、最穩定的版本，在閱讀相關文件（無論是中文還是英文版）時，需注意右上角的版本。第 4 版與第 5 版就有一些功能（元件）上的差別（但基本上像斷點、網格系統這兩版本都相同）。</p>
+<p>另外，不確定會不會修好這個 bug ，但我發現有時候六角翻譯的 Bootstrap 的網頁搜尋功能使用中文搜尋會失效（找不到東西），但使用英文是正常的！簡單注意一下即可。</p>
+<p><img src="/./2022-09-30-bootstrap-summary/pic-7.png"></p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>我接觸 Bootstrap 其實是先從 Bootstrap 4 開始，當時為了實驗室要重刻一個蛋白質比對搜尋網站，因此被指派負責網頁前端設計。當時與實驗室一位學長聊了以後，決定全數使用 Bootstrap 開發，幾乎三天三夜的學習與實作，在我沒閱讀任何教學的情況下，手把手教會了我（超感動），以至於後來我超愛用 Bootstrap。</p>
+<p>所以 Bootstrap 對於新手真的是救命包。但如果要養成一個完整的前端學習，當然只學 Bootstrap 會讓許多觀念無法建立好xD，因為 Bootstrap 幫你做太好xDDDD。</p>
+<p>回到 Bootstrap 本身，有時候初學者會把 HTML&#x2F;CSS 跟 Bootstrap 混用，當你要用 Bootstrap 時，其實很多功能都可以更輕鬆的完成，不必脫褲子放屁(?)（意即既然都使用 Bootstrap 了，就用到底）。</p>
+<div class="note success simple"><p>基本上你想要用 HTML&#x2F;CSS 完成的功能，九成九 Bootstrap 都有。</p>
+</div>
+
+<p>例如，在自己新聞所的學習中常常用到 100vh 的功能，為了先展開一個視窗高度的版面。你確實可以直接用<code>height: 100vh</code>沒問題，但其實 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://bootstrap5.hexschool.com/docs/5.1/utilities/sizing/#relative-to-the-viewport">Bootstrap 也早有功能可用</a>，直接在HTML的類別選擇器中打下<code>class=&quot;vh-100&quot;</code> 就完成一模一樣的功能了。</p>
+<p>希望這簡短的 summary 與經驗談，可以幫助一些朋友！</p>
+<h1 id="推薦的-Bootstrap-課程"><a href="#推薦的-Bootstrap-課程" class="headerlink" title="推薦的 Bootstrap 課程"></a>推薦的 Bootstrap 課程</h1><h2 id="免費（六角-Youtube）"><a href="#免費（六角-Youtube）" class="headerlink" title="免費（六角 Youtube）"></a>免費（六角 Youtube）</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.youtube.com/watch?v=B9EGGQr-r80&amp;list=PLYrA-SsMvTPOX9oF6ld9RGwWlo7PceI_P">https://www.youtube.com/watch?v=B9EGGQr-r80&amp;list=PLYrA-SsMvTPOX9oF6ld9RGwWlo7PceI_P</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.youtube.com/watch?v=uZRkVOeRHws">https://www.youtube.com/watch?v=uZRkVOeRHws</a></p>
+<h2 id="付費（六角）"><a href="#付費（六角）" class="headerlink" title="付費（六角）"></a>付費（六角）</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.hexschool.com/courses/bootstrap5.html">https://www.hexschool.com/courses/bootstrap5.html</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://alan000322.github.io">Chiatzu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="http://alan000322.github.io/2022-09-30-bootstrap-summary/">http://alan000322.github.io/2022-09-30-bootstrap-summary/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="null" target="_blank">CT</a> 許可協議。轉載請註明來自 <a href="http://alan000322.github.io" target="_blank">CT</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/NYCU/">NYCU</a><a class="post-meta__tags" href="/tags/NCTU/">NCTU</a></div><div class="post_share"><div class="social-share" data-image="/./2022-09-30-bootstrap-summary/pic-3.png" data-sites="facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022-08-16-English-tool/"><img class="next-cover" src="/../2022-08-16-English-tool/grammarly_plagiarism.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">英文寫作亂糟糟？七大超好用英文文章學術寫作輔助工具</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2022-07-19-Dcard-nycu/" title="變與不變的掙扎(上)——從 Dcard 論壇看陽明交大合校風風雨雨"><img class="cover" src="/2022-07-19-Dcard-nycu/dcard1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-19</div><div class="title">變與不變的掙扎(上)——從 Dcard 論壇看陽明交大合校風風雨雨</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chiatzu</div><div class="author-info__description">CT blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/revelarhumor"><i class="fa-brands fa-medium"></i><span>Medium Page</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/alan000322" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.linkedin.com/in/chia-tzu-ho-25198a181/" rel="external nofollow noreferrer" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="/alan000322@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://medium.com/revelarhumor" rel="external nofollow noreferrer" target="_blank" title="Medium"><i class="fa-brands fa-medium"></i></a></div></div><div class="card-widget digi_news" id="digi_new"><div class="item-headline"><i class="fas fa-tv"></i><span>數位敘事</span></div><div class="item-content"><div class="aside-list"> <!-- 韓流來襲 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" title="從第一線改變現狀 那些自願投身這場戰疫的同學們"> <img src="https://i.imgur.com/VZQIqYP.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析"/> </a> <div class="content"> <a href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" class="title">韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析</a> </div> </div> <!-- 馬崗 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/ntuweb/final/index.html" title="東北角村莊的下一步？極東漁村的過去與未來"> <img src="https://i.imgur.com/fknnmah.jpg" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="東北角村莊的下一步？極東漁村的過去與未來"/> </a> <div class="content"> <a href="https://alan000322.github.io/ntuweb/final/index.html" class="title">東北角村莊的下一步？極東漁村的過去與未來</a> </div> </div></div></div></div><div class="card-widget frontend_webs" id="frontend_web"><div class="item-headline"><i class="fas fa-sitemap"></i><span>其他網頁作品</span></div><div class="item-content"><div class="aside-list"> <!-- MOOCs --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/moocs/moocs.info/" title="三分鐘了解「高中生磨課師」"> <img src="https://i.imgur.com/6fd2HTS.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="三分鐘了解「高中生磨課師」"/> </a> <div class="content"> <a href="https://alan000322.github.io/moocs/moocs.info/" class="title">三分鐘了解「高中生磨課師」</a> </div> </div> <!-- isarst --> <div class="aside-list-item"> <a class="thumbnail" target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST/" title="iSARST"> <img src="https://i.imgur.com/VmydaHh.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="iSARST"/> </a> <div class="content"> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST" class="title">iSARST</a> </div> </div> <!-- class --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/covid19_nycuqa/index.html" title="課程測試模板"> <img src="" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="課程測試模板"/> </a> <div class="content"> <a href="https://alan000322.github.io/covid19_nycuqa/index.html" class="title">NYCU生科系課程心得網站 - 測試模板</a> </div> </div> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E8%A8%AD%E5%AE%9A%E8%88%87-Bootstrap-%E4%B8%AD%E6%96%87%E7%89%88%E7%B6%B2%E9%A0%81%E4%BD%BF%E7%94%A8"><span class="toc-text">初始設定與 Bootstrap 中文版網頁使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E7%B7%9A%E7%B3%BB%E7%B5%B1"><span class="toc-text">格線系統</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B7%E9%BB%9E"><span class="toc-text">斷點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%88%97%E7%B3%BB%E7%B5%B1%EF%BC%88flex-%E7%B3%BB%E7%B5%B1%EF%BC%89"><span class="toc-text">排列系統（flex 系統）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B7%E9%BB%9E%E8%88%87%E9%9F%BF%E6%87%89%E5%BC%8F%E7%B6%B2%E9%A0%81"><span class="toc-text">斷點與響應式網頁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%83%E4%BB%B6%EF%BC%9A%E5%8D%A1%E7%89%87"><span class="toc-text">元件：卡片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%A1%9E%E5%88%A5%EF%BC%9A%E6%96%87%E5%AD%97%E8%88%87%E9%A1%8F%E8%89%B2"><span class="toc-text">通用類別：文字與顏色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C%EF%BC%9A%E7%89%88%E6%9C%AC%E9%9C%80%E6%B3%A8%E6%84%8F"><span class="toc-text">最後：版本需注意</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E8%96%A6%E7%9A%84-Bootstrap-%E8%AA%B2%E7%A8%8B"><span class="toc-text">推薦的 Bootstrap 課程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B2%BB%EF%BC%88%E5%85%AD%E8%A7%92-Youtube%EF%BC%89"><span class="toc-text">免費（六角 Youtube）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%98%E8%B2%BB%EF%BC%88%E5%85%AD%E8%A7%92%EF%BC%89"><span class="toc-text">付費（六角）</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Chiatzu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
