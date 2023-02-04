@@ -3395,7 +3395,7 @@ h1.page-title + .tag-cloud-list {
 }
 @media screen and (max-width: 768px) {
   #post-info .post-title {
-    font-size: 2.1em;
+    font-size: 1.7em;
   }
 }
 #post-info .post-title .post-edit-link {
