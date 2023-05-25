@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明 | CT</title><meta name="keywords" content="AI,chatgpt,自然語言,大型語言模型"><meta name="author" content="Chiatzu"><meta name="copyright" content="Chiatzu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="這是一篇由ChatGPT自動生成的文章，並由人工進行部分微調。內容包含：ChatGPT 原理、ChatGPT 應用場域、ChatGPT 潛在風險、ChatGPT 使用方式與免費付費版比較">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明">
+<meta property="og:url" content="http://alan000322.github.io/2023-04-04-chatgpt-intro/index.html">
+<meta property="og:site_name" content="CT">
+<meta property="og:description" content="這是一篇由ChatGPT自動生成的文章，並由人工進行部分微調。內容包含：ChatGPT 原理、ChatGPT 應用場域、ChatGPT 潛在風險、ChatGPT 使用方式與免費付費版比較">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://alan000322.github.io/2023-04-04-chatgpt-intro/chatgpt.png">
+<meta property="article:published_time" content="2023-04-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-25T06:29:57.051Z">
+<meta property="article:author" content="Chiatzu">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="chatgpt">
+<meta property="article:tag" content="自然語言">
+<meta property="article:tag" content="大型語言模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://alan000322.github.io/2023-04-04-chatgpt-intro/chatgpt.png"><link rel="shortcut icon" href="/img/CT-blue.png"><link rel="canonical" href="http://alan000322.github.io/2023-04-04-chatgpt-intro/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-25 14:29:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/user/@alan000322"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./2023-04-04-chatgpt-intro/chatgpt.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CT</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/user/@alan000322"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2023-04-03T16:00:00.000Z" title="發表於 2023-04-04 00:00:00">2023-04-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/">科技應用</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時間:</span><span>5分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">觀看數:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note default simple"><p><strong>本篇重點：</strong><br>這是一篇由ChatGPT自動生成的文章，並由人工進行部分微調。<br>內容包含：</p>
+<ul>
+<li>ChatGPT 原理</li>
+<li>ChatGPT 應用場域</li>
+<li>ChatGPT 潛在風險</li>
+<li>ChatGPT 使用方式與免費付費版比較</li>
+</ul>
+</div>
+
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://chat.openai.com/chat">ChatGPT</a>是一款基於人工智慧技術的語言模型，它可以自然地進行對話，回答各種問題。</p>
+<h1 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h1><p>ChatGPT 是一款基於 GPT 技術的自然語言處理工具。那 GPT 是什麼呢？GPT 指的是 Generative Pre-trained Transformer，它是一種神經網絡模型，能夠處理自然語言的文本數據，學習文本之間的關聯，並且能夠根據這些關聯自動生成新的文本。ChatGPT 正是利用了 GPT 的能力來處理自然語言。</p>
+<p>ChatGPT 的訓練過程可以比喻成一個小學生學習讀書一樣。我們給 ChatGPT 提供大量的語料庫，就像小學生學習課本一樣，讓它閱讀這些語料，學習其中的知識和語言規則。透過這些訓練，ChatGPT 可以認識各種不同的語言結構和詞語之間的關係，進而可以對於用戶輸入的文本進行理解和分析。</p>
+<p>我們來看一下ChatGPT如何生成文字。</p>
+<p>當ChatGPT接收到一個問題時，<strong>它會分析問題中的關鍵詞，並使用它已經訓練過的神經網路來生成答案。</strong>ChatGPT生成答案的方式是通過一個迭代過程，其中神經網路會預測下一個單詞，然後根據這個單詞生成一個新的上下文，直到生成完整的答案。這個過程可以理解為是在「想像」一個有意義的對話，對話的內容與問題有關，但是答案不是提前編寫好的。</p>
+<p>簡單來說，ChatGPT是通過分析和理解問題，然後使用神經網路來「想像」一個有意義的答案。ChatGPT可以從多個不同的角度來考慮問題，因此可以提供多種可能的答案，並且可以隨著對話的進行進行調整和修正。</p>
+<p>總的來說，ChatGPT是一種非常先進的人工智能技術，它可以通過訓練大量的數據來模擬人類的思維過程，並能夠產生出有意義的對話。ChatGPT的應用範圍非常廣泛，可以應用於自然語言處理、對話生成、智能客服等多個領域。</p>
+<p>不過，ChatGPT目前訓練的文本皆為 2021年以前的資料，因此，你不太能問他像是「明天天氣如何？」這類的問題。它會回覆：「很抱歉，作為一個人工智能模型，我沒有辦法得知天氣預報，也無法向您提供當前天氣情況。建議您查詢當地的天氣預報或使用天氣預報應用程序。」</p>
+<h1 id="ChatGPT-應用場域"><a href="#ChatGPT-應用場域" class="headerlink" title="ChatGPT 應用場域"></a>ChatGPT 應用場域</h1><p>近期，ChatGPT被廣泛應用於各種場景中，如自然語言處理、智能客服、問答系統、情感分析等等。</p>
+<p>目前，ChatGPT已經可以達成各種工作項目。在教育領域，ChatGPT可以幫助學生解決學習問題、提供答案、做作業等；在商業領域，ChatGPT可以實現智能客服、自動回覆郵件、提供產品推薦等；在資料分析領域，ChatGPT可以幫助解決程式碼問題、生成程式碼等。未來，ChatGPT還有很大的潛力，它可以在更多領域中發揮作用，如智能家居、金融、法律等等。ChatGPT的出現將改變許多人的工作和生活方式，它將帶來更多的便利和效率。</p>
+<p><img src="https://images.vocus.cc/1c06db0b-1d54-4281-9742-ca748430b3c9.png" alt="ChatGPT協助處理程式問題"></p>
+<p>不過，在請ChatGPT協助你工作時，請務必給予<strong>正確、明確、詳細的指令</strong>，會讓生成出的文字效果更加精準、更符合使用者需求。</p>
+<p>例如，你想要生成一段產品文案，請不要直接說「請幫我生成100字對於XX產品的介紹」，而是更詳細簡述這個產品特徵、核心特色，這樣ChatGPT可以更精準對應你的要求。</p>
+<p><img src="https://images.vocus.cc/2538cc84-0a44-4135-ab95-459337ce314c.png"></p>
+<h1 id="ChatGPT-的潛在風險"><a href="#ChatGPT-的潛在風險" class="headerlink" title="ChatGPT 的潛在風險"></a>ChatGPT 的潛在風險</h1><p>ChatGPT作為一個能夠自動回答問題的人工智慧模型，雖然可以幫助人們解決各種問題，但也同時存在一些風險和潛在的問題。</p>
+<p>首先，ChatGPT的回答是基於其訓練過的大量數據和算法進行生成的。如果訓練數據存在偏見或錯誤，那麼ChatGPT的回答也可能會存在同樣的偏見或錯誤。例如，如果訓練數據中存在性別或種族偏見，那麼ChatGPT的回答也可能存在同樣的問題。這可能會導致使用ChatGPT的人受到不公平或不正確的對待。</p>
+<p>其次，ChatGPT的回答也可能會被用於不當用途。例如，有人可能會使用ChatGPT來創造假新聞或散布錯誤的信息。這可能會對社會造成負面影響，並且加劇假新聞和信息泛濫的問題。</p>
+<p>另外，ChatGPT也可能會被用於進行騷擾或詐騙。有些人可能會使用ChatGPT來自動生成騷擾或欺詐信息，這可能會對受害者造成傷害和損失。</p>
+<p>最後，ChatGPT也可能會對人們的隱私產生影響。當人們使用ChatGPT時，他們的對話可能會被記錄下來並用於後續的訓練。如果這些對話包含敏感信息，那麼使用ChatGPT的人的隱私可能會受到侵犯。</p>
+<p>綜上所述，ChatGPT作為一種人工智慧模型，可能會產生一些風險和潛在的問題。這些問題需要我們關注和應對，例如加強數據監管，確保訓練數據的公正和正確性，加強對假新聞和信息詐騙的打擊力度，保護使用ChatGPT的人的隱私等等。只有這樣，才能讓ChatGPT真正發揮其效力，為人類帶來更多的便利和效益。</p>
+<blockquote>
+<p>上述是由ChatGPT自動生成的文章，並由人工進行部分微調。</p>
+</blockquote>
+<h1 id="使用-ChatGPT-的三種方式"><a href="#使用-ChatGPT-的三種方式" class="headerlink" title="使用 ChatGPT 的三種方式"></a>使用 ChatGPT 的三種方式</h1><h2 id="方案一：網頁介面免費版"><a href="#方案一：網頁介面免費版" class="headerlink" title="方案一：網頁介面免費版"></a>方案一：網頁介面免費版</h2><p>網頁網址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://chat.openai.com/">https://chat.openai.com/</a></p>
+<p>點入後，請直接使用任何一個你已經擁有的Google帳戶登入，登入過後便會跳出ChatGPT頁面，就可以直接使用。 </p>
+<p>左方黑色欄位會儲存你曾經所查詢的任何歷史對話紀錄，然而近期ChatGPT使用過於頻繁，官方也曾說明有可能紀錄會無預警消失。</p>
+<h2 id="方案二：網頁介面付費版-ChatGPT-Plus"><a href="#方案二：網頁介面付費版-ChatGPT-Plus" class="headerlink" title="方案二：網頁介面付費版 - ChatGPT Plus"></a>方案二：網頁介面付費版 - ChatGPT Plus</h2><p>每月20美元即可取得「ChatGPT 付費版」，其中根據官方說法，當系統承載達高峰時，系統仍可以在付費版更正常運作，且正常期間內擁有較快的生成速度。此外，還可以優先試用新功能。</p>
+<p><img src="/./2023-04-04-chatgpt-intro/chatgpt.png"></p>
+<h2 id="方案三：ChatGPT-API"><a href="#方案三：ChatGPT-API" class="headerlink" title="方案三：ChatGPT API"></a>方案三：ChatGPT API</h2><p>如果是開發者，也可以使用OpenAI所開發的API，將ChatGPT技術直接串接在你的應用場域當中，未來有機會的話再另文撰述，可以先參考以下這些運用與教學：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/spjG0S41HV4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://alan000322.github.io">Chiatzu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="http://alan000322.github.io/2023-04-04-chatgpt-intro/">http://alan000322.github.io/2023-04-04-chatgpt-intro/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="null" target="_blank">CT</a> 許可協議。轉載請註明來自 <a href="http://alan000322.github.io" target="_blank">CT</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/chatgpt/">chatgpt</a><a class="post-meta__tags" href="/tags/%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80/">自然語言</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E5%9E%8B%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B/">大型語言模型</a></div><div class="post_share"><div class="social-share" data-image="/./2023-04-04-chatgpt-intro/chatgpt.png" data-sites="facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023-04-04-chatgpt-2/"><img class="prev-cover" src="/./2023-04-04-chatgpt-2/sqlchat_info.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【ChatGPT系列】ChatGPT如何幫助你提高工作效率？看看那些網友們開發的ChatGPT工具</div></div></a></div><div class="next-post pull-right"><a href="/2023-03-14-wbc-poola/"><img class="next-cover" src="/./2023-03-14-wbc-poola/OPS.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【數據看棒球經典賽】晚接午賽程影響甚劇？中華隊整體表現好壞？</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023-04-04-chatgpt-2/" title="【ChatGPT系列】ChatGPT如何幫助你提高工作效率？看看那些網友們開發的ChatGPT工具"><img class="cover" src="/./2023-04-04-chatgpt-2/sqlchat_info.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-04</div><div class="title">【ChatGPT系列】ChatGPT如何幫助你提高工作效率？看看那些網友們開發的ChatGPT工具</div></div></a></div><div><a href="/2023-05-12-bard-1/" title="向 ChatGPT 宣戰！5月10日 Google Bard 聊天機器人再次更新，多個亮點一次看！"><img class="cover" src="/./2023-05-12-bard-1/bard-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-12</div><div class="title">向 ChatGPT 宣戰！5月10日 Google Bard 聊天機器人再次更新，多個亮點一次看！</div></div></a></div><div><a href="/2023-05-25-bard-2/" title="【Google Bard 系列】製作簡報一大福音！Google 開放圖片回應！"><img class="cover" src="/./2023-05-25-bard-2/bard-picture.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-25</div><div class="title">【Google Bard 系列】製作簡報一大福音！Google 開放圖片回應！</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chiatzu</div><div class="author-info__description">CT blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/user/@alan000322"><i class="fa-solid fa-newspaper"></i><span>Vocus Page</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/alan000322" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.linkedin.com/in/chia-tzu-ho-25198a181/" rel="external nofollow noreferrer" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="/alan000322@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://vocus.cc/user/@alan000322" rel="external nofollow noreferrer" target="_blank" title="Vocus"><i class="fa-solid fa-newspaper"></i></a></div></div><div class="card-widget digi_news" id="digi_new"><div class="item-headline"><i class="fas fa-tv"></i><span>數位敘事</span></div><div class="item-content"><div class="aside-list"> <!-- 韓流來襲 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" title="從第一線改變現狀 那些自願投身這場戰疫的同學們"> <img src="https://i.imgur.com/VZQIqYP.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析"/> </a> <div class="content"> <a href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" class="title">韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析</a> </div> </div> <!-- 馬崗 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/ntuweb/final/index.html" title="東北角村莊的下一步？極東漁村的過去與未來"> <img src="https://i.imgur.com/fknnmah.jpg" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="東北角村莊的下一步？極東漁村的過去與未來"/> </a> <div class="content"> <a href="https://alan000322.github.io/ntuweb/final/index.html" class="title">東北角村莊的下一步？極東漁村的過去與未來</a> </div> </div></div></div></div><div class="card-widget frontend_webs" id="frontend_web"><div class="item-headline"><i class="fas fa-sitemap"></i><span>其他網頁作品</span></div><div class="item-content"><div class="aside-list"> <!-- MOOCs --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/moocs/moocs.info/" title="三分鐘了解「高中生磨課師」"> <img src="https://i.imgur.com/6fd2HTS.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="三分鐘了解「高中生磨課師」"/> </a> <div class="content"> <a href="https://alan000322.github.io/moocs/moocs.info/" class="title">三分鐘了解「高中生磨課師」</a> </div> </div> <!-- isarst --> <div class="aside-list-item"> <a class="thumbnail" target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST/" title="iSARST"> <img src="https://i.imgur.com/VmydaHh.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="iSARST"/> </a> <div class="content"> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST" class="title">iSARST</a> </div> </div> <!-- class --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/covid19_nycuqa/index.html" title="課程測試模板"> <img src="" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="課程測試模板"/> </a> <div class="content"> <a href="https://alan000322.github.io/covid19_nycuqa/index.html" class="title">NYCU生科系課程心得網站 - 測試模板</a> </div> </div> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90"><span class="toc-text">原理解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ChatGPT-%E6%87%89%E7%94%A8%E5%A0%B4%E5%9F%9F"><span class="toc-text">ChatGPT 應用場域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ChatGPT-%E7%9A%84%E6%BD%9B%E5%9C%A8%E9%A2%A8%E9%9A%AA"><span class="toc-text">ChatGPT 的潛在風險</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-ChatGPT-%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">使用 ChatGPT 的三種方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E7%B6%B2%E9%A0%81%E4%BB%8B%E9%9D%A2%E5%85%8D%E8%B2%BB%E7%89%88"><span class="toc-text">方案一：網頁介面免費版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9A%E7%B6%B2%E9%A0%81%E4%BB%8B%E9%9D%A2%E4%BB%98%E8%B2%BB%E7%89%88-ChatGPT-Plus"><span class="toc-text">方案二：網頁介面付費版 - ChatGPT Plus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%89%EF%BC%9AChatGPT-API"><span class="toc-text">方案三：ChatGPT API</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By Chiatzu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
