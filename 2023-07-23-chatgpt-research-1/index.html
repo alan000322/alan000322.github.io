@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【ChatGPT 系列】ChatGPT 不準了？AI 準確度會隨著時間變化嗎？ | CT</title><meta name="keywords" content="ChatGPT,AI,大型語言模型"><meta name="author" content="Chiatzu"><meta name="copyright" content="Chiatzu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前幾日 Twitter 社群中許多人轉傳一篇發表在 arxiv 的論文預印本（preprint），提及 ChatGPT 隨著時間可能產生了變化，甚至人們稱此篇貼文指出「GPT-4」似乎表現越來越差！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ChatGPT 系列】ChatGPT 不準了？AI 準確度會隨著時間變化嗎？">
+<meta property="og:url" content="http://alan000322.github.io/2023-07-23-chatgpt-research-1/index.html">
+<meta property="og:site_name" content="CT">
+<meta property="og:description" content="前幾日 Twitter 社群中許多人轉傳一篇發表在 arxiv 的論文預印本（preprint），提及 ChatGPT 隨著時間可能產生了變化，甚至人們稱此篇貼文指出「GPT-4」似乎表現越來越差！">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://alan000322.github.io/2023-07-23-chatgpt-research-1/chatgpt-1.png">
+<meta property="article:published_time" content="2023-07-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-21T12:54:00.501Z">
+<meta property="article:author" content="Chiatzu">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="大型語言模型">
+<meta property="article:tag" content="ChatGPT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://alan000322.github.io/2023-07-23-chatgpt-research-1/chatgpt-1.png"><link rel="shortcut icon" href="/img/CT-blue.png"><link rel="canonical" href="http://alan000322.github.io/2023-07-23-chatgpt-research-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【ChatGPT 系列】ChatGPT 不準了？AI 準確度會隨著時間變化嗎？',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-06-21 20:54:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/user/@alan000322"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./2023-07-23-chatgpt-research-1/chatgpt-1.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CT</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%B8%E6%93%9A%E5%9C%96%E8%A1%A8/"><i class="fa-fw fas fa-chart-bar"></i><span> 數據圖表</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/"><i class="fa-fw fas fa-desktop"></i><span> 科技應用</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E7%89%A9%E9%86%AB%E8%97%A5/"><i class="fa-fw fas fa-capsules"></i><span> 生物醫藥</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E7%94%9F%E6%B4%BB%E7%B4%80%E5%AF%A6/"><i class="fa-fw fas fa-hand-spock"></i><span> 生活紀實</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/user/@alan000322"><i class="fa-fw fa-solid fa-newspaper"></i><span> Vocus</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【ChatGPT 系列】ChatGPT 不準了？AI 準確度會隨著時間變化嗎？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2023-07-22T16:00:00.000Z" title="發表於 2023-07-23 00:00:00">2023-07-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E6%8A%80%E6%87%89%E7%94%A8/">科技應用</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時間:</span><span>3分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【ChatGPT 系列】ChatGPT 不準了？AI 準確度會隨著時間變化嗎？"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">觀看數:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>ChatGPT 已經問世接近一年，許多公司、學校也開始使用這項服務，無論是出自於娛樂，甚至與 ChatGPT 共同協作，加速自己原先的工作流程，ChatGPT 已經慢慢改變著人們的工作型態。而除此之外，更多樣化的大型語言模型（Large Language Model, 簡稱 LLM）也相繼發佈，皆成為了 AI 路上 ChatGPT 的競爭者。前幾日 Twitter 社群中許多人<a target="_blank" rel="noopener external nofollow noreferrer" href="https://arxiv.org/abs/2307.09009">轉傳一篇發表在 arxiv 的論文預印本</a>（preprint），提及 ChatGPT 隨著時間可能產生了變化，甚至人們稱此篇貼文指出「GPT-4」似乎表現越來越差！</p>
+<p>儘管隨即被許多人相繼駁斥，此篇研究並沒有提出任何關於 GPT-4 效能變差的結論，然而，<strong>了解大型語言模型是否因為時間而有所變化，是這份研究主要想表達的重要觀點。</strong></p>
+<blockquote>
+<p>…our findings shows that the behavior of the “same” LLM service can change substantially in a relatively short amount of time, highlighting the need for continuous monitoring of LLM quality. （大型語言模型可能在短時間內發生許多變化，因此了解它的變化相當重要。）</p>
+</blockquote>
+<p>這篇研究由史丹佛大學的資訊學院的教授James Zou、Matei Zaharia和學生Lingjiao Chen 共同完成。<a target="_blank" rel="noopener external nofollow noreferrer" href="https://arxiv.org/abs/2307.09009">研究中</a>提到，他們將任務分成四個種類：數學題、回答用詞的敏感題目、程式碼生成、視覺推理，得到相當有趣的結果。</p>
+<p><img src="/./2023-07-23-chatgpt-research-1/chatgpt-1.png" alt="作者透過四個任務檢驗不同時期的 GPT-3.5 與 GPT-4 是否「效能」有所影響。（Chen, L., Zaharia, M., &amp; Zou, J. (2023). How is ChatGPT&#39;s behavior changing over time?. arXiv preprint arXiv:2307.09009.）"></p>
+<p>以數學題為例，他們詢問 ChatGPT 一系列「某數是否為質數（prime）」的問題，並請 ChatGPT 一步一步邏輯推理出結果。他們發現，GPT-4 在三月的準確率從 97.6% 下降到六月的 2.4%，而 GPT-3.5 的準確率則從 7.4% 大幅提升至 86.8%，不過 GPT-4 的回答變得更加簡潔。</p>
+<p><img src="/./2023-07-23-chatgpt-research-1/chatgpt-2.png" alt="Chen, L., Zaharia, M., &amp; Zou, J. (2023). How is ChatGPT&#39;s behavior changing over time?. arXiv preprint arXiv:2307.09009."></p>
+<p>又如同生成程式碼，GPT-4在三月的可直接執行生成數量超過50％，但在六月只有10％。GPT-3.5的趨勢也類似。而兩個模型的回覆也顯得更加冗長。</p>
+<p><img src="/./2023-07-23-chatgpt-research-1/chatgpt-3.png" alt="Chen, L., Zaharia, M., &amp; Zou, J. (2023). How is ChatGPT&#39;s behavior changing over time?. arXiv preprint arXiv:2307.09009."></p>
+<p>然而，以這兩個為例，也<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aisnakeoil.com/p/is-gpt-4-getting-worse-over-time">馬上遭到另一派人馬反駁</a>。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aisnakeoil.com/p/is-gpt-4-getting-worse-over-time">普林斯頓大學資訊工程教授 Arvind Narayanan 撰文寫出不同想法</a>。他提到，這篇研究為了檢驗兩個模型的效能差異，是去看兩個模型所生成程式碼「是否可以執行」，然而，新模型提供更多的註解、引導，若只針對是否可執行進行評估，這些 GPT-4 所額外做的指導就可能被忽視了。</p>
+<p>另外，針對數學題，有人也提到選擇使用「某數是否為質數」作為題目相當奇怪，且他們挑選題目的正確答案皆為「是」。而如果在質數這個命題框架下，去詢問ChatGPT其他的問題組合，例如「某數是否為合數」，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.aisnakeoil.com/i/135283755/yes-no-questions-but-the-correct-answer-is-always-yes">發現得到截然不同的統計結果。</a></p>
+<p>儘管兩篇持不同觀點，但其實都表達相同的一件事情：前篇研究提到，研究結果表明，在相對短的時間內，GPT-3.5和GPT-4的行為有顯著的變化，凸顯了在應用大型語言模型的過程中，持續評估語言模型的行為有其必要性；後篇也認為這是一個相當有價值的省思。</p>
+<p>這些大型語言模型是否因為使用者使用了一陣子過後行為可能有所改變，是時候應該好好評估與研究。「穩定的 AI」才能給予人類穩定的工作效率與成果，而要如何公平的量化評估、監測這些模型的行為與效能，目前仍沒有統一的黃金準則。</p>
+<blockquote>
+<p>The pitfalls we uncovered are a reminder of how hard it is to quantitatively evaluate language models.</p>
+</blockquote>
+<blockquote>
+<p>不過，史丹佛的研究（前篇）有附上 Github 連結，也歡迎大家一同做實驗看看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lchen001/LLMDrift">https://github.com/lchen001/LLMDrift</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://alan000322.github.io">Chiatzu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="http://alan000322.github.io/2023-07-23-chatgpt-research-1/">http://alan000322.github.io/2023-07-23-chatgpt-research-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="null" target="_blank">CT</a> 許可協議。轉載請註明來自 <a href="http://alan000322.github.io" target="_blank">CT</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E5%9E%8B%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B/">大型語言模型</a><a class="post-meta__tags" href="/tags/ChatGPT/">ChatGPT</a></div><div class="post_share"><div class="social-share" data-image="/./2023-07-23-chatgpt-research-1/chatgpt-1.png" data-sites="facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023-07-21-screen-mirror/"><img class="next-cover" src="/img/back.JPG" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【必學技巧】如何設定「同步螢幕」/「延伸螢幕」投影？(內附Win/Mac解法)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023-04-04-chatgpt-2/" title="【ChatGPT系列】ChatGPT如何幫助你提高工作效率？看看那些網友們開發的ChatGPT工具"><img class="cover" src="/./2023-04-04-chatgpt-2/sqlchat_info.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-04</div><div class="title">【ChatGPT系列】ChatGPT如何幫助你提高工作效率？看看那些網友們開發的ChatGPT工具</div></div></a></div><div><a href="/2023-05-12-bard-1/" title="【Google Bard 系列】向 ChatGPT 宣戰！5月10日 Google Bard 聊天機器人再次更新，多個亮點一次看！"><img class="cover" src="/./2023-05-12-bard-1/bard-1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-12</div><div class="title">【Google Bard 系列】向 ChatGPT 宣戰！5月10日 Google Bard 聊天機器人再次更新，多個亮點一次看！</div></div></a></div><div><a href="/2023-07-13-bard-3/" title="【Google Bard 系列】最新更新：支援繁體中文、支援上傳圖片、語音朗讀回覆"><img class="cover" src="/./2023-07-13-bard-3/bard-picture.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-13</div><div class="title">【Google Bard 系列】最新更新：支援繁體中文、支援上傳圖片、語音朗讀回覆</div></div></a></div><div><a href="/2023-04-04-chatgpt-intro/" title="【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明"><img class="cover" src="/./2023-04-04-chatgpt-intro/chatgpt.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-04</div><div class="title">【ChatGPT系列】小學生也能聽懂！ChatGPT的技術、風險解析與使用說明</div></div></a></div><div><a href="/2023-05-25-bard-2/" title="【Google Bard 系列】製作簡報一大福音！Google 開放圖片回應！"><img class="cover" src="/./2023-05-25-bard-2/bard-picture.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-25</div><div class="title">【Google Bard 系列】製作簡報一大福音！Google 開放圖片回應！</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Chiatzu</div><div class="author-info__description">CT blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://vocus.cc/user/@alan000322"><i class="fa-solid fa-newspaper"></i><span>Vocus Page</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/alan000322" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.linkedin.com/in/chia-tzu-ho-25198a181/" rel="external nofollow noreferrer" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="/alan000322@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://vocus.cc/user/@alan000322" rel="external nofollow noreferrer" target="_blank" title="Vocus"><i class="fa-solid fa-newspaper"></i></a></div></div><div class="card-widget digi_news" id="digi_new"><div class="item-headline"><i class="fas fa-tv"></i><span>數位敘事</span></div><div class="item-content"><div class="aside-list"> <!-- 韓流來襲 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/cemetery_story" title="莫要獨留青塚向黃昏 南山公墓墓葬群保存困境與展望"> <img src="https://i.imgur.com/vAqppEX.jpg" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="莫要獨留青塚向黃昏 南山公墓墓葬群保存困境與展望" /> </a> <div class="content"> <a href="https://alan000322.github.io/cemetery_story" class="title">南山公墓保存困境與展望</a> </div> </div> <!-- 韓流來襲 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" title="韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析"> <img src="https://i.imgur.com/VZQIqYP.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="韓流來襲 宅經濟下台灣觀眾 Netflix 觀劇全解析" /> </a> <div class="content"> <a href="https://alan000322.github.io/KoreaDrama-TaiwanNetflixAnalysis/" class="title">Netflix 觀劇全解析</a> </div> </div> <!-- 馬崗 --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/ntuweb/final/index.html" title="東北角村莊的下一步？極東漁村的過去與未來"> <img src="https://i.imgur.com/fknnmah.jpg" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="東北角村莊的下一步？極東漁村的過去與未來" /> </a> <div class="content"> <a href="https://alan000322.github.io/ntuweb/final/index.html" class="title">馬崗的過去與未來</a> </div> </div> </div></div></div><div class="card-widget frontend_webs" id="frontend_web"><div class="item-headline"><i class="fas fa-sitemap"></i><span>其他網頁作品</span></div><div class="item-content"><div class="aside-list"> <!-- MOOCs --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/moocs/moocs.info/" title="三分鐘了解「高中生磨課師」"> <img src="https://i.imgur.com/6fd2HTS.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="三分鐘了解「高中生磨課師」"/> </a> <div class="content"> <a href="https://alan000322.github.io/moocs/moocs.info/" class="title">三分鐘了解「高中生磨課師」</a> </div> </div> <!-- isarst --> <div class="aside-list-item"> <a class="thumbnail" target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST/" title="iSARST"> <img src="https://i.imgur.com/VmydaHh.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="iSARST"/> </a> <div class="content"> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://10.life.nctu.edu.tw/iSARST" class="title">iSARST</a> </div> </div> <!-- class --> <div class="aside-list-item"> <a class="thumbnail" href="https://alan000322.github.io/covid19_nycuqa/index.html" title="課程測試模板"> <img src="https://i.imgur.com/PRGlaES.png" onerror="this.onerror=null;this.src='../../img/404.jpg'" alt="課程測試模板"/> </a> <div class="content"> <a href="https://alan000322.github.io/covid19_nycuqa/index.html" class="title">NYCU生科系課程心得網站 - 測試模板</a> </div> </div> </div></div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By Chiatzu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
