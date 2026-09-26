@@ -148,8 +148,7 @@ function render() {
       ${summary()}
       ${build(mainKeys)}
     </div>
-    ${sideKeys.length ? `<aside class="side">${build(sideKeys)}</aside>` : ''}
-    <footer class="foot">© ${new Date().getFullYear()} ${esc(t(data.profile.name))}</footer>`;
+    ${sideKeys.length ? `<aside class="side">${build(sideKeys)}</aside>` : ''}`;
 }
 
 /* ---------- motion ---------- */

@@ -147,12 +147,6 @@ export const data = {
           en: 'Contributed to digital news features, including Premier12 baseball data analysis and live election results through integration with the Central Election Commission API.',
         }
       ],
-      tags: {
-        tech: ['MCP', 'RAG', 'AI Agents', 'Elasticsearch', 'GCP'],
-        ai: ['MCP', 'RAG', 'AI Agents', 'Video AI'],
-        media: ['MCP', 'Newsroom tools', 'Video AI'],
-        startup: ['MCP', 'Newsroom tools', 'Video AI'],
-      },
     },
     {
       title: { zh: '兼任研究助理', en: 'Research Assistant' },
