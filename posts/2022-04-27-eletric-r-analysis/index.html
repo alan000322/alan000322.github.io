@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>【R語言資料分析】電力資訊視覺化，看歷年來台灣電力結構轉變 — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script>
+  <script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body>
+  <main class="canvas">
+    <article class="sheet page">
+      <nav class="crumb"><a class="crumb__back" href="../"><span data-l="zh">文章</span><span data-l="en">Writing</span></a><a class="crumb__name" href="../../">Chia Tzu Ho</a></nav>
+      <p class="lang-note" data-l="en">This article is written in Chinese.</p>
+      <header class="hero">
+        <p class="hero__kicker">2022.04.27　·　數據圖表</p>
+        <h1>【R語言資料分析】電力資訊視覺化，看歷年來台灣電力結構轉變</h1>
+        
+      </header>
+      <div class="prose">
+        
+        <div class="note">
+
+
+<p><strong>本篇適合：</strong> 對資料新聞、資料分析有興趣的人；初學R語言的人。對R語言的 dplyr、ggplot 套件有一定了解的人，若您尚未接觸過也沒關係，可以跟著以下的文章試著做做看，也可以有些心得！</p>
+</div>
+
+
+
+<div class="note">
+
+
+<p><strong>本篇重點：</strong>帶大家手把手透過R語言完成一份資料視覺化作品</p>
+</div>
+
+
+<p>紐約時報曾經於<a href="https://www.nytimes.com/interactive/2018/12/24/climate/how-electricity-generation-changed-in-your-state.html">2018年12月製作過「How Does Your State Make Electricity?」專題</a>，探討從2001–2017年美國各州電力系統結構變化。本篇目的旨在仿照紐約時報的做法，也製作一個屬於台灣的電力結構轉變資訊圖表。</p>
+<p>（若您有付費紐約時報訂閱，可以看<a href="https://www.nytimes.com/2019/03/07/learning/whats-going-on-in-this-graph-march-13-2019.html">這篇</a>，或有時候免費版也有權限可以看）</p>
+<p>該篇文章是要探討歷年來（2001年至2017年）全美國（整體）及美國各州（局部）的發電燃料來源，畫出 stacked area plot（堆疊面積圖），此外會依照比例由高至低排，因此可以看到報導圖中，若有某種發電燃料來源比例激增，該區塊變會竄升至圖表上方，反之亦然。這樣的操作確實可有助於了解每個發電燃料來源在該年度的發電占比，以及歷年來的升降幅度。</p>
+<h2>談談資料來源</h2>
+<p>本次找到的台灣的資料是從<a href="https://data.gov.tw/dataset/112650">政府開放資料下載</a>而來，有每個月的發電資料，然而因為台灣的發電有分台電本身（發電業）及自用發電設備，因此資料還需要加以處理（數值相加）。</p>
+<p>美國資料同樣<a href="https://www.eia.gov/electricity/data/browser/">也有每個月的發電資料</a>，且單位也與台灣使用的相同（1000MWh = 百萬度），但是美國因為幅員遼闊，可能以各州之發電燃料來源之資料可能較有新聞意義。</p>
+<h2>資料前處理</h2>
+<p>觀察台灣電力供需表資料（csv檔）：
+<img loading="lazy" src="csv_source1.png" alt="下方將命名這份檔案為”elec.csv”"></p>
+<p>可以發現它還算是一個蠻整齊的資料，不過為求資料讀取效率及後續視覺化需求，我們還是需要對這筆資料做一些處理。</p>
+<p>因為這個表格提供相當詳細的資訊，我們可能需要處理兩件事情：</p>
+<ol>
+<li>該表除了「發電（供給）量」，其實也有「用電需求量」的許多欄位，雖說是一個值得使用的欄位，只是這次暫時不列入討論範圍之中。有興趣的人可以試著在這次實作過後也操作看看。因此在資料前處理時我們應該要可以先去除掉這些欄位。</li>
+<li>我們須依照「發電種類」做分別，因此做一些調整，如太陽能發電有分「發電業」與「自用發電設備」，應該要將兩個欄位相加。</li>
+</ol>
+<h3>套件引入</h3>
+<pre><code class="language-r">options(stringsAsFactors = F)
+options(scipen = 999) # 取消科學記號
+library(tidyverse) # 引入tidyR相關套件，如dplyr等
+library(lubridate)
+</code></pre>
+<h3>讀取資料</h3>
+<p>透過 dplyr 套件中的 <code>read_csv()</code>，可以將該csv檔讀入環境當中，並儲存為tibble格式。</p>
+<p>base R 其實也有「<code>read.csv()</code>」的函式，會儲存為dataframe格式，但個人建議如果現在要用 tidyR 風格，就盡量全數統一風格，以 tidyR 方式操作。也提供<a href="https://r4ds.had.co.nz/wrangle-intro.html">相關介紹連結</a>給大家。</p>
+<pre><code class="language-r">raw_us &lt;- read_csv(&quot;elec.csv&quot;)
+</code></pre>
+<h3>選取欄位</h3>
+<p>使用 dplyr 中 <code>select()</code>函數，選擇欄位，並為每個欄位取英文名稱。</p>
+<pre><code class="language-r">raw &lt;- raw %&gt;%
+  select(
+    time = `日期(年/月)`,
+    total_elec      = 總發電量,
+    elec            = 總發電量_發電業,
+    pump            = 總發電量_發電業_抽蓄水力,
+    fire_all        = 總發電量_發電業_火力,
+    fire_coal       = 總發電量_發電業_火力_燃煤,
+    fire_oil        = 總發電量_發電業_火力_燃油,
+    fire_gas        = 總發電量_發電業_火力_燃氣,
+    nuclear         = 總發電量_發電業_核能,
+    green_all       = 總發電量_發電業_再生能源,
+    green_water     = 總發電量_發電業_再生能源_慣常水力,
+    green_floor     = 總發電量_發電業_再生能源_地熱,
+    green_sun       = 總發電量_發電業_再生能源_太陽光電,
+    green_wind      = 總發電量_發電業_再生能源_風力,
+    own             = 總發電量_自用發電設備,
+    own_fire_all    = 總發電量_自用發電設備_火力,
+    own_fire_coal   = 總發電量_自用發電設備_火力_燃煤,
+    own_fire_oil    = 總發電量_自用發電設備_火力_燃油,
+    own_fire_gas    = 總發電量_自用發電設備_火力_燃氣,
+    own_green_all   = 總發電量_自用發電設備_再生能源,
+    own_green_floor = 總發電量_自用發電設備_再生能源_地熱,
+    own_green_sun   = 總發電量_自用發電設備_再生能源_太陽光電,
+    own_green_wind  = 總發電量_自用發電設備_再生能源_風力,
+    own_green_bioe  = 總發電量_自用發電設備_再生能源_生質能,
+    own_green_trash = 總發電量_自用發電設備_再生能源_廢棄物
+    
+    
+  )
+</code></pre>
+<h3>重新整理表格</h3>
+<p>依照「發電種類」做分別，將「發電業」與「自用發電設備」相加，使用mutate()函數。</p>
+<p>（不過，其實也可以在上一步就做這件事，在此我們先分開做，讓各位有所了解）</p>
+<pre><code class="language-r">cleaned &lt;- raw %&gt;%
+  mutate(
+    year        = as.character(time) %&gt;% substr(1,4) %&gt;% as.integer() , 
+    month       = as.character(time) %&gt;% substr(5,6) %&gt;% as.integer()  ,
+    YMtime      = paste(as.character(year), as.character(month), sep=&quot;-&quot;),
+    coal        = fire_coal + own_fire_coal,
+    oil         = fire_oil  + own_fire_oil,
+    gas         = fire_gas  + own_fire_gas,
+    solar       = green_sun + own_green_sun,
+    wind        = green_wind + own_green_wind,
+    geothermal  = green_floor + own_green_floor,
+    water       = green_water
+  ) %&gt;% 
+  select(
+    year, month, YMtime, coal, oil, gas, pump, nuclear, solar, wind, geothermal, water
+  )
+</code></pre>
+<p>mutate 函數中，其實有做了一個「YMtime」，只是單純想示範若有意想將年份與月份資訊連結起來，可以使用這樣的方式，但並不會在後續視覺化有所影響，所以這個欄位亦可以不須製作。</p>
+<h3>繪製長表格</h3>
+<p><a href="https://daxpowerbi.com/%E9%95%B7%E8%A1%A8%E6%A0%BC-%E5%AF%AC%E8%A1%A8%E6%A0%BC-%E5%A5%BD%E7%9A%84%E8%A1%A8%E6%A0%BC%E8%AE%93%E4%BD%A0%E7%8E%A9%E8%BD%89%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%EF%BC%81/">製作長表格</a>是資料視覺化相當重要的步驟，利用<a href="https://www.twblogs.net/a/5c0d28b0bd9eee5e418322b1"><code>gather()</code>函數</a>繪製長表格，並將每個年度進行年平均，作為該年度的數據，並計算電力個發電種類發電量比例。</p>
+<pre><code class="language-r">cleaned_gather &lt;- cleaned_gather %&gt;%
+  group_by(year, `energy source`) %&gt;%
+  summarize(
+    # 製作發電資訊「年平均」：將每年十二個月發電量平均
+    `electricity production` = round( mean(`electricity production`), 1) 
+  )%&gt;%
+  mutate(
+    percentage = round(100* `electricity production` / sum(`electricity production`), 1) 
+  ) %&gt;% # 計算比例
+  ungroup() 
+</code></pre>
+<p>輸出結果：</p>
+<figure><img loading="lazy" src="result.png" alt="result"><figcaption>result</figcaption></figure>
+<h3>製作發電資訊「年平均」、計算各個發電占比</h3>
+<p>使用<code>group_by()</code>、<code>summarize()</code>和<code>mutate()</code>函數，製作發電資訊年平均，並計算各個發電占比。</p>
+<pre><code class="language-r">cleaned_gather &lt;- cleaned_gather %&gt;%
+  group_by(year, `energy source`) %&gt;%
+  summarize(
+    # 製作發電資訊「年平均」：將每年十二個月發電量平均
+    `electricity production` = round( mean(`electricity production`), 1) 
+  )%&gt;%
+  mutate(
+    percentage = round(100* `electricity production` / sum(`electricity production`), 1) 
+  ) %&gt;% # 計算比例
+  ungroup() 
+</code></pre>
+<p>此外，因為數據中有些許2022年（當年度）的資料，我們想先去除不看：</p>
+<pre><code class="language-r"># 把2022年資料去掉
+cleaned_gather &lt;- cleaned_gather %&gt;% head(nrow(cleaned_gather)-9)
+</code></pre>
+<p>結果：</p>
+<figure><img loading="lazy" src="result2.png" alt="result"><figcaption>result</figcaption></figure>
+<h2>資料視覺化 — — 進階 ggplot 操作</h2>
+<p>作圖為了模仿紐約時報，x軸將設定為年度，y軸為發電占比。</p>
+<p>顏色採用部分，紐約時報似乎有盡量採用該燃料「類似」的顏色，如Coal（煤炭）使用土灰色、水力發電使用淺藍色等，但也只是大致如此，因此我們也盡量模仿紐時，顏色也盡量特別設定。</p>
+<p>此外，為了使ggplot好看好讀，因此有許多手動設定，以下會一一介紹。</p>
+<p>但首先，我們想針對「中文字型」做一些設定。</p>
+<p>而中文字型如何操作，我也做了一個<a href="https://hackmd.io/@alan000322/SJ5Ig1Er5">簡單的小筆記</a>，有興趣也可以看看！</p>
+<pre><code class="language-r">#顯示中文字型
+library(showtext)
+showtext.auto(enable = TRUE)
+
+# 須預先上網下載字體，並成功掛載之電腦當中
+font_add(&quot;jf-openhuninn&quot;, &quot;jf-openhuninn-1.1.ttf&quot;) 
+font_add(&quot;GenJyuuGothicL-Medium&quot;, &quot;GenJyuuGothicL-Medium.ttf&quot;)
+font_add(&quot;GenJyuuGothicL-P-Bold&quot;, &quot;GenJyuuGothicL-P-Bold.ttf&quot;)
+
+th &lt;- 
+  theme(plot.title = element_text(family=&quot;GenJyuuGothicL-P-Bold&quot;), # 思源柔黑體，可免費商用
+        plot.subtitle = element_text(family=&quot;GenJyuuGothicL-Medium&quot;),
+        text = element_text(family=&quot;jf-openhuninn&quot;), # 金萱粉圓體，可免費商用
+        axis.text.y = element_text(family=&quot;jf-openhuninn&quot;),
+        axis.text.x = element_text(family=&quot;jf-openhuninn&quot;),
+        legend.text = element_text(family=&quot;jf-openhuninn&quot;),
+        )
+</code></pre>
+<p>接著就是繪圖，把圖表畫出來：</p>
+<pre><code class="language-r">### 繪製發電量比例圖 - area plot
+cleaned_gather %&gt;%
+  ggplot() +
+  aes(
+    x = year, 
+    y = percentage, 
+    fill=`energy source`,
+    #labels=&#39;a&#39;
+  ) +
+  geom_area(
+    alpha = 0.8,
+    size = 0.5,
+    color = &quot;white&quot;
+  ) +
+  labs(title = &quot;臺灣歷年電力供給資訊：電力燃料來源發電量佔比&quot;,
+         subtitle = &quot;資料來源：經濟部能源局 電力供需表&quot;,
+         x = &quot;年&quot;,
+         y = &quot;發電量佔比（%）&quot;,
+       ) +
+  scale_y_continuous( breaks = seq(0,100,5), limits = c(0, 105) ) + 
+  scale_fill_manual(
+    name=&quot;發電方式&quot;,
+    #guide = TRUE,
+    label = c(
+      &#39;coal&#39;       =  &quot;燃煤&quot;, 
+      &#39;gas&#39;        =  &quot;燃氣&quot;,
+      &#39;nuclear&#39;    =  &quot;核能&quot;,
+      &#39;oil&#39;        =  &quot;燃油&quot;,
+      &#39;pump&#39;       =  &quot;抽蓄&quot;,
+      &#39;solar&#39;      =  &quot;太陽能&quot;,
+      &#39;water&#39;      =  &quot;水力&quot;,
+      &#39;wind&#39;       =  &quot;風力&quot;,
+      &#39;geothermal&#39; =  &quot;地熱&quot;
+    ),
+    values= c(
+      &#39;coal&#39;       =  &quot;#616130&quot;, 
+      &#39;gas&#39;        =  &quot;#EA7500&quot;,
+      &#39;nuclear&#39;    =  &quot;#9F4D95&quot;,
+      &#39;oil&#39;        =  &quot;#FFC1E0&quot;,
+      &#39;pump&#39;       =  &quot;#FFED97&quot;,
+      &#39;solar&#39;      =  &quot;#FF9797&quot;,
+      &#39;water&#39;      =  &quot;#97CBFF&quot;,
+      &#39;wind&#39;       =  &quot;#95CACA&quot;,
+      &#39;geothermal&#39; =  &quot;#E0E0E0&quot;
+    ),
+  ) +
+  ### 圖表主題
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size=18),
+    plot.subtitle = element_text(size=13),
+    legend.position=&quot;right&quot;,
+    legend.background = element_rect(colour = &#39;black&#39;, fill = &#39;white&#39;, linetype=&#39;solid&#39;),
+    #legend.title = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line.x = element_line(colour = &quot;black&quot;),
+    axis.text.x = element_text(size=6),
+    axis.line.y = element_line(colour = &quot;black&quot;),
+  ) + th
+</code></pre>
+<p><code>scale_fill_manual() </code>：一一設定每個堆疊的顏色</p>
+<p><code>labs()</code>：設定圖表標題、圖表副標題、x軸文字、y軸文字</p>
+<p><code>theme_minimal()</code>：選用minimal的ggplot主題</p>
+<p><code>theme()</code>內也有很多參數，包含：圖表標題、子標題、圖表框線、圖表x,y軸文字格式等。</p>
+<p>最後「<code>+th</code>」代表將前面我們所設定的中文字型納入。</p>
+<h2>視覺化完成</h2>
+<figure><img loading="lazy" src="chart.png" alt="chart"><figcaption>chart</figcaption></figure>
+<p>上面是將「發電佔比」進行視覺化，不妨大家也可以試試看「發電量」如何視覺化，結果如下：</p>
+<figure><img loading="lazy" src="chart2.png" alt="chart2"><figcaption>chart2</figcaption></figure>
+<h2>code</h2>
+<p><a href="https://github.com/alan000322/datajour_analysis/blob/main/elec.Rmd">https://github.com/alan000322/datajour_analysis/blob/main/elec.Rmd</a></p>
+<p>資料整理後可發現，這份台灣資料提供蠻多發電類別資訊。</p>
+<p>值得一提的是，台灣從2020年至今，每年總發電量逐年攀升。</p>
+<p>另外，可以看到燃煤發電之總發電量佔比近年來逐年微幅降低，燃氣發電之總發電量佔比逐年提高（與美國同），然而台灣的核能發電近年來佔比逐年降低，太陽能發電佔比逐年提高，應與當前蔡英文政府推動之能源政策有關（燃氣50%-燃煤30%-綠能20%）。</p>
+<p>自己還是R初學者，還望各界不吝指教。</p>
+
+      </div>
+      <footer class="foot">© <span data-year>2026</span> 何家慈 Chia Tzu Ho</footer>
+    </article>
+  </main>
+</body>
+</html>

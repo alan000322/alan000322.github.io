@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>【2024 最新】「合併列印」落伍了？問對問題讓 AI 教你製作 Google 自動化收據系統！ — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="不會寫程式也能用AI自動化收據開立！掌握Google Apps Script快速提升效率！">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script>
+  <script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body>
+  <main class="canvas">
+    <article class="sheet page">
+      <nav class="crumb"><a class="crumb__back" href="../"><span data-l="zh">文章</span><span data-l="en">Writing</span></a><a class="crumb__name" href="../../">Chia Tzu Ho</a></nav>
+      <p class="lang-note" data-l="en">This article is written in Chinese.</p>
+      <header class="hero">
+        <p class="hero__kicker">2024.10.03　·　科技應用</p>
+        <h1>【2024 最新】「合併列印」落伍了？問對問題讓 AI 教你製作 Google 自動化收據系統！</h1>
+        <p class="hero__dek">不會寫程式也能用AI自動化收據開立！掌握Google Apps Script快速提升效率！</p>
+      </header>
+      <div class="prose">
+        
+        <div class="note">
+
+
+<p><strong>本篇適合：</strong></p>
+<ul>
+<li>小企業、組織，有「大量發通知」、「印收據」的需求，且需要便於管理的工具。</li>
+<li>對 生成式 AI 應用有興趣的朋友</li>
+<li>就算你不會寫程式，也有機會快速上手！</li>
+</ul>
+</div>
+
+
+
+<div class="note">
+
+
+<p><strong>本篇目標：</strong></p>
+<ol>
+<li>學習如何與AI互動解決內心真正的問題</li>
+<li>製作出一個自動化收據開立系統！</li>
+</ol>
+</div>
+
+
+<p>筆者雖然過去寫過一些小程式，但比起真正企業的工程師大概還差一大截。這幾個月來生成式 AI （Generative Artifical Intelligence，後文簡稱 GAI）的快速發展，實在令不少人跌破眼鏡。</p>
+<p>一直都知道「Google Apps Script」的存在，是一個可以允許你控制和自動化Google文件、試算表、簡報工具，但一來不知道應用場景，一來更不知道怎麼使用，要重新學習一個東西也相當需要門檻（仿間也出了不少工具書、付費課程）。</p>
+<p>現在有了 GAI，叫 AI 教你一步一步做吧！以下比較不像是教你怎麼做，而是<strong>教你怎麼請AI教你做</strong>！</p>
+<h4>初始指令</h4>
+<p>首先，我們需要定義任務。切記，這個「任務」你需要好好審慎思考。</p>
+<p>錯誤指令：「我想用 Google 做一個自動化收據系統」</p>
+<p>當然，AI 可能也會給你一個答案，但它可能並不完全符合你的想像情境。</p>
+<p>對，「想像情境」。有想像，且試圖去「描述想像」，才會有機會讓 AI 正確教你，且做出來符合使用者要求的東西。</p>
+<p>以下給你參考我的指令（很多人會稱之為「Prompt」，而這個動作叫做「Prompt Engineering」）：</p>
+<pre><code>我想使用 Google App Script  搭配google spreadsheet, google doc 做自動生成收據系統，
+現在我有一份 spreadsheet 表單和google doc 收據（名為「收據模板」，儲存在同一層中的「收據製作」資料夾內），
+
+請使用 app script 達成以下情況：
+
+1. 當 spreadsheet 中偵測到新增一筆數據的「收據製作（J欄）」呈現「未處理」，則開始準備製作收據。切記，未處理改成已處理的動作，並不會觸發收據製作。
+2. 使用我的 google doc（可以先副本一份） 將相對應的欄位填入，並將檔案轉成 PDF ， PDF 文件名稱：改成收據 + 姓名 + _ + 序號，PDF名稱與doc 副本檔案名稱一致，PDF 檔案儲存到「收據製作」資料夾裡面的「收據」資料夾
+3. 製作完成後，spreadsheet 在 K 欄對應該筆完成收據製作的資料，寫「自動程式已完成收據製作」
+
+請你一步一步教我怎麼操作，使用繁體中文回覆
+</code></pre>
+<p>同時，現在大部分的 AI 都已經支援圖片上傳，也請你上傳幾個相關的圖片，讓 AI 自己去辨識揣摩。</p>
+<figure><img loading="lazy" src="%E6%9C%AC%E6%96%87%E4%BD%BF%E7%94%A8Claude%E7%82%BA%E4%BE%8B.png" alt="本文使用Claude為例"><figcaption>本文使用Claude為例</figcaption></figure>
+<h4>Google Apps Script 使用</h4>
+<p>先寫在前面，AI 認識的「Google Apps Script」，可能是幾年前的 Google Apps Script，因此他對你的指示是有可能有所落差，不過應該會大同小異，你可以切記這點。</p>
+<p>而這邊簡單介紹一下這個工具，可以從 Google 試算表中上層選單「擴充功能 &gt; Apps Script」進入畫面。</p>
+<figure><img loading="lazy" src="%E6%88%AA%E5%9C%96%202024-10-03%2018.03.59.png" alt="Apps Script 介面"><figcaption>Apps Script 介面</figcaption></figure>
+<p>進入畫面後，就會看到輸入程式碼的區塊，此時你可以把 AI 給你的程式碼直接挑到主要區塊當中，把預設的「<code>funciton myFunction()</code>」覆蓋掉。如果你從來沒寫過程式，請勇敢做這件事，它不會被你玩壞的！儘管玩！（很重要ＸＤ）</p>
+<p>接著帶你介紹介面，左邊欄位的時鐘號誌是「觸發器（Trigger）」，當你做的自動化工具是「因為某個動作」或「到了某個時間」就要觸發，通常會使用這個工具，有時候我知道了我需要有這樣的功能，會直接在 Prompt 裡面告訴 AI 說我需要使用觸發器。</p>
+<figure><img loading="lazy" src="%E6%88%AA%E5%9C%96%202024-10-03%2018.04.10.png" alt="左邊欄位有「觸發器」和「執行項目」"><figcaption>左邊欄位有「觸發器」和「執行項目」</figcaption></figure>
+<figure><img loading="lazy" src="%E6%88%AA%E5%9C%96%202024-10-03%2018.04.31.png" alt="觸發器：如果有設定觸發器，這邊就會顯示。"><figcaption>觸發器：如果有設定觸發器，這邊就會顯示。</figcaption></figure>
+<p>（當然，AI 有時候也會自己判斷是否需要觸發器）</p>
+<p>觸發器下面是「執行項目」，也就是可以看到所有程式碼執行情況的地方。比起其他程式碼，我覺得 Apps Script 更難去針對錯誤解決問題。因此你的 Prompt 可以多加「能否幫我把程式碼做一些log讓我可以看？」</p>
+<p>這裡的 log 不是數學的對數，在程式語言中指的是日誌（logging），通常會有視窗（或檔案）記錄程式執行的過程，幫助開發者理解程式的運行狀況，診斷錯誤和問題。因此，我在 Prompt 裡增加「能否幫我把程式碼做一些log讓我可以看？」後，我就可以在「執行項目」裏看到他執行的過程，讓我更好理解發生什麼事、程式執行到哪。</p>
+<figure><img loading="lazy" src="%E6%88%AA%E5%9C%96%202024-10-03%2018.05.05.png" alt="執行項目裡，如果你有請 AI 輸出 log，則會有一些執行過後的文字放在這邊。"><figcaption>執行項目裡，如果你有請 AI 輸出 log，則會有一些執行過後的文字放在這邊。</figcaption></figure>
+<h4>調整細部工作內容、調整錯誤</h4>
+<h4>雷點 1 - 把自己當白癡，跟著 AI 一步一步做</h4>
+<p>「切記，跟著 AI 一步一步做，不要漏掉！」</p>
+<p>AI 可能出錯，但常常我自己的錯是漏掉 AI 給的步驟，因此請記得鉅細靡遺的嘗試一步一步來，不會的話，也可以反覆詢問AI。</p>
+<h4>雷點 2 - AI 可能出錯，貼錯誤訊息給他！</h4>
+<p>貼錯誤訊息，或說「無法成功，請重新思考一次」，都是一種方式，不過，如果能有錯誤訊息，會更能讓 AI 知道怎麼改善！</p>
+<h4>我的任務</h4>
+<p>最後，直接附上我的成果。</p>
+<p>首先準備好一份已經處理好的 Spreadsheet 表格，以及一份收據模板：</p>
+<figure><img loading="lazy" src="%E6%88%AA%E5%9C%96%202024-10-03%2019.29.22.png" alt="Spreadsheet"><figcaption>Spreadsheet</figcaption></figure>
+<figure><img loading="lazy" src="%E6%88%AA%E5%9C%96%202024-10-03%2019.31.03.png" alt="Doc 收據模板"><figcaption>Doc 收據模板</figcaption></figure>
+<p>在這邊，根據 Claude 最後給我的 code，設定的觸發條件是當 J 欄（收據製作）文字是「未電子開立」且 K欄沒有任何值，我就會開始進行收據製作，並也會轉成 PDF 檔存放到指定的位址！</p>
+<p>如果想要直接使用我的程式碼，你需要準備上面兩份資料，搭配我的 Prompt 就可以使用！（記得相關的資料夾也要設定喔！詳見我給 AI 的指令）</p>
+<h4>Claude 回覆與程式碼</h4>
+<ol>
+<li>設置步驟：
+a. 將上面的代碼添加到您的腳本中。
+b. 運行 createEditTrigger 函數來創建安裝的觸發器。
+c. 在腳本編輯器中，轉到 &quot;觸發器&quot; 頁面（左側邊欄時鐘圖標）。
+d. 您應該能看到一個新的觸發器被創建。</li>
+<li>授予權限：
+a. 在觸發器頁面，點擊新創建的觸發器。
+b. 在彈出的窗口中，您可能需要再次授予權限。
+c. 仔細閱讀權限請求，然後點擊 &quot;允許&quot;。</li>
+<li>測試：現在，當您在試算表中編輯 J 列時，應該會觸發 onEditTrigger 函數，而不是原來的 onEdit。這個函數應該有足夠的權限來訪問 Drive。
+錯誤處理和日誌</li>
+<li>為了更好地捕獲可能的錯誤，我們可以在 generateReceipt 函數中添加更多的錯誤處理和日誌記錄</li>
+</ol>
+<p>這些更改應該能幫助解決權限問題，並提供更詳細的錯誤信息。如果您仍然遇到問題：</p>
+<ol>
+<li>檢查觸發器是否正確創建和授權。</li>
+<li>運行 testDrivePermissions 函數（如之前提供的），確保基本的 Drive 操作正常。</li>
+<li>如果問題持續，請查看執行日誌並分享詳細的錯誤信息。</li>
+</ol>
+<p>如果您需要進一步的幫助或有任何疑問，請告訴我。我們會繼續調試直到問題解決。</p>
+<p>程式碼：</p>
+<pre><code class="language-js">//需先執行 createEditTrigger
+function createEditTrigger() {
+  var ss = SpreadsheetApp.getActive();
+  ScriptApp.newTrigger(&#39;onEditTrigger&#39;)
+      .forSpreadsheet(ss)
+      .onEdit()
+      .create();
+  Logger.log(&#39;Edit trigger created successfully&#39;);
+}
+
+
+// 全局變量，用於存儲待處理的行
+var pendingRows = [];
+
+function onEditTrigger(e) {
+  Logger.log(&#39;onEditTrigger executed&#39;);
+  var sheet = e.source.getActiveSheet();
+  var range = e.range;
+  
+  // 檢查是否有多行被編輯
+  var startRow = range.getRow();
+  var numRows = range.getNumRows();
+  
+  for (var i = 0; i &lt; numRows; i++) {
+    var currentRow = startRow + i;
+    var jCellValue = sheet.getRange(currentRow, 10).getValue().toString().trim();
+    var kCellValue = sheet.getRange(currentRow, 11).getValue();
+    
+    if (jCellValue === &quot;未電子開立&quot; &amp;&amp; kCellValue === &quot;&quot;) {
+      Logger.log(&#39;Row &#39; + currentRow + &#39; needs processing&#39;);
+      sheet.getRange(currentRow, 11).setValue(&quot;等待處理...&quot;);
+      pendingRows.push(currentRow);
+    }
+  }
+  
+  // 如果有待處理的行，開始處理
+  if (pendingRows.length &gt; 0) {
+    Logger.log(&#39;Starting to process &#39; + pendingRows.length + &#39; rows&#39;);
+    processPendingRows(sheet);
+  }
+}
+
+function processPendingRows(sheet) {
+  while (pendingRows.length &gt; 0) {
+    var row = pendingRows.shift(); // 從隊列中取出第一個行
+    Logger.log(&#39;Processing row: &#39; + row);
+    sheet.getRange(row, 11).setValue(&quot;製作中...&quot;);
+    
+    try {
+      generateReceipt(sheet, row);
+      sheet.getRange(row, 11).setValue(&quot;自動程式已完成收據製作&quot;);
+      Logger.log(&#39;Receipt generated successfully for row &#39; + row);
+    } catch (error) {
+      Logger.log(&#39;Error processing row &#39; + row + &#39;: &#39; + error.toString());
+      sheet.getRange(row, 11).setValue(&quot;錯誤: &quot; + error.toString());
+    }
+  }
+}
+
+// 輔助函數：格式化金額
+function formatAmount(amount) {
+  // 檢查 amount 是否為數字或可以轉換為數字
+  var num = parseFloat(amount);
+  if (isNaN(num)) {
+    return amount; // 如果不是有效數字，返回原始值
+  }
+  
+  // 將數字轉換為字符串，並用正則表達式添加逗號
+  return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, &quot;,&quot;);
+}
+
+// Main Functions
+function generateReceipt(sheet, row) {
+  Logger.log(&#39;Starting generateReceipt for row: &#39; + row);
+  
+  try {
+    var data = sheet.getRange(row, 1, 1, 11).getValues()[0]; // 注意：現在獲取11列數據
+    Logger.log(&#39;Retrieved data: &#39; + JSON.stringify(data));
+    
+    var [序號, 姓名, 開立日期, 證號, 項目, 用途, 總額, 地址, 電話, 收據狀態] = data;
+    
+    // 格式化日期
+    var formattedDate = Utilities.formatDate(new Date(開立日期), Session.getScriptTimeZone(), &quot;yyyy/MM/dd&quot;);
+    Logger.log(&#39;Formatted date: &#39; + formattedDate);
+
+    // 格式化金額
+    var formattedAmount = formatAmount(總額);
+    Logger.log(&#39;Formatted amount: &#39; + formattedAmount);
+
+    // 生成中文大寫金額
+    // var chineseAmount = numberToChinese(總額);
+    // Logger.log(&#39;Chinese amount: &#39; + chineseAmount);
+
+    // 開啟模板文件
+    var templateFile = DriveApp.getFilesByName(&quot;收據模板&quot;).next();
+    Logger.log(&#39;Template file found: &#39; + templateFile.getName());
+    
+    var newDoc = templateFile.makeCopy(&quot;收據_&quot; + 姓名 + &quot;_&quot; + 序號, DriveApp.getFoldersByName(&quot;收據製作&quot;).next());
+    Logger.log(&#39;New document created: &#39; + newDoc.getName());
+    
+    var doc = DocumentApp.openById(newDoc.getId());
+    var body = doc.getBody();
+    
+    // 替換文檔中的佔位符
+    Logger.log(&#39;Replacing placeholders in the document&#39;);
+    body.replaceText(&quot;{{序號}}&quot;, 序號);
+    body.replaceText(&quot;{{姓名}}&quot;, 姓名);
+    body.replaceText(&quot;{{開立日期}}&quot;, formattedDate);
+    body.replaceText(&quot;{{證號}}&quot;, 證號);
+    body.replaceText(&quot;{{項目}}&quot;, 項目);
+    body.replaceText(&quot;{{用途}}&quot;, 用途);
+    body.replaceText(&quot;{{總額}}&quot;, formattedAmount);
+    // body.replaceText(&quot;{{中文總額}}&quot;, chineseAmount); // 新增的中文大寫金額
+    body.replaceText(&quot;{{地址}}&quot;, 地址);
+    body.replaceText(&quot;{{電話}}&quot;, 電話);
+    
+    doc.saveAndClose();
+    Logger.log(&#39;Document saved and closed&#39;);
+    
+    // Convert to PDF
+    var pdf = DriveApp.getFileById(newDoc.getId()).getAs(&quot;application/pdf&quot;);
+    // Find the &quot;收據製作&quot; folder
+    var receiptFolder = DriveApp.getFoldersByName(&quot;收據製作&quot;).next();
+    
+    // Find or create the &quot;收據&quot; subfolder within &quot;收據製作&quot;
+    var pdfFolder;
+    var subFolders = receiptFolder.getFoldersByName(&quot;收據&quot;);
+    if (subFolders.hasNext()) {
+      pdfFolder = subFolders.next();
+    } else {
+      pdfFolder = receiptFolder.createFolder(&quot;收據&quot;);
+    }
+    
+    Logger.log(&#39;PDF will be saved in folder: &#39; + pdfFolder.getName());
+    
+    var pdfFile = pdfFolder.createFile(pdf);
+    pdfFile.setName(&quot;收據_&quot; + 姓名 + &quot;_&quot; + 序號 + &quot;.pdf&quot;);
+    Logger.log(&#39;PDF created: &#39; + pdfFile.getName());
+    
+    // 在成功生成 PDF 後，更新 K 欄的狀態
+    sheet.getRange(row, 11).setValue(&quot;自動程式已完成收據製作&quot;);
+    Logger.log(&#39;Receipt generated successfully, spreadsheet updated&#39;);
+    
+  } catch (error) {
+    Logger.log(&#39;Error in generateReceipt: &#39; + error.toString());
+    Logger.log(&#39;Error stack: &#39; + error.stack);
+    // 如果出錯，更新 K 欄的狀態
+    sheet.getRange(row, 11).setValue(&quot;錯誤: &quot; + error.toString());
+  }
+}
+
+// 手動測試函數
+function manualTest() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var testRow = 2; // 假設要測試第二行
+  Logger.log(&#39;Starting manual test for row: &#39; + testRow);
+  generateReceipt(sheet, testRow);
+  Logger.log(&#39;Manual test completed&#39;);
+}
+</code></pre>
+
+      </div>
+      <footer class="foot">© <span data-year>2026</span> 何家慈 Chia Tzu Ho</footer>
+    </article>
+  </main>
+</body>
+</html>

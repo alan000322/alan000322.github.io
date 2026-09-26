@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>編輯室 AI 工具 — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="中央社媒體實驗室的編輯室 AI 工具：志明編輯助手、影音 AI、斷詞與推薦系統。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script>
+  <script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body>
+  <main class="canvas">
+    <article class="sheet page">
+      <nav class="crumb"><a class="crumb__back" href="../../"><span data-l="zh">履歷</span><span data-l="en">Resume</span></a><span class="crumb__name">Chia Tzu Ho</span></nav>
+
+      <header class="hero">
+        <p class="hero__kicker"><span data-l="zh">中央社媒體實驗室　·　2024 — 2026</span><span data-l="en">CNA Media Lab · 2024 — 2026</span></p>
+        <h1><span data-l="zh">編輯室 AI 工具：做同事每天真的會打開的東西</span><span data-l="en">Newsroom AI tools people actually open every day</span></h1>
+        <p class="hero__dek">
+          <span data-l="zh">加入中央社的前兩年，我的工作是把生成式 AI 放進編輯的日常流程：下標、錯字、翻譯、配圖、逐字稿、短影音。從訪談編輯的痛點開始，做出原型、上線，再根據使用回饋調整。</span>
+          <span data-l="en">My first two years at CNA were about putting generative AI into editors’ daily work — headlines, typo checks, translation, photo matching, transcripts and short video. Each tool started from an editor’s pain point, went live as a prototype, and was tuned on real usage.</span>
+        </p>
+      </header>
+
+      <dl class="facts">
+        <div><dt><span data-l="zh">每日使用</span><span data-l="en">Daily use</span></dt><dd><span data-l="zh">全社近 300 次</span><span data-l="en">~300 across CNA</span></dd></div>
+        <div><dt><span data-l="zh">同事回饋</span><span data-l="en">Feedback</span></dt><dd><span data-l="zh">逾 90% 認為提升效率</span><span data-l="en">90%+ report higher efficiency</span></dd></div>
+        <div><dt><span data-l="zh">技術</span><span data-l="en">Stack</span></dt><dd>Python · FastAPI · Vue 3 · Chrome MV3 · GCP</dd></div>
+        <div><dt><span data-l="zh">模型</span><span data-l="en">Models</span></dt><dd>OpenAI · Claude · Gemini</dd></div>
+      </dl>
+
+      <div class="prose">
+        <h2><span data-l="zh">志明 AI 編輯助手</span><span data-l="en">Jiming, the AI editor assistant</span></h2>
+        <p data-l="zh">把社內各種 AI 功能收進一個 Chrome 擴充功能的側邊欄，編輯在發稿系統裡就能直接使用。第一版（2024.09 — 2025.09）由我一人開發，共 8 項功能：</p>
+        <p data-l="en">A Chrome side panel that gathers CNA’s AI features where editors already work — inside the publishing system. I built the first version (2024.09 — 2025.09) on my own, with eight features:</p>
+        <ul>
+          <li data-l="zh">錯字檢查、標題建議、多語翻譯（中英日印）、配圖推薦</li>
+          <li data-l="en">Typo check, headline suggestions, translation (Chinese, English, Japanese, Indonesian), photo matching</li>
+          <li data-l="zh">音稿、專題摘要與時間軸、YouTube 逐字稿、輿情整理</li>
+          <li data-l="en">Broadcast scripts, feature summaries and timelines, YouTube transcripts, social-listening digests</li>
+        </ul>
+        <p data-l="zh">後端是自建的代理伺服器（FastAPI、Google OAuth、Redis、Cloud Run），管理每位同仁與每個單位的使用額度；另做了外部媒體單位的管理後台。標題生成也做過系統性實驗，發現標題長度會收斂在 20–24 字之間。</p>
+        <p data-l="en">Behind it sits a proxy server (FastAPI, Google OAuth, Redis, Cloud Run) that manages quotas per person and per unit, plus an admin console for partner newsrooms. Systematic headline experiments showed generated titles converge on 20–24 characters.</p>
+
+        <figure>
+          <img src="jiming.jpg" alt="" loading="lazy" width="1280" height="800">
+          <figcaption><span data-l="zh">志明 AI 編輯助手：集結社內 AI 功能的側邊欄。</span><span data-l="en">Jiming: CNA’s AI features collected in one side panel.</span></figcaption>
+        </figure>
+
+        <h2><span data-l="zh">影音 AI</span><span data-l="en">Video AI</span></h2>
+        <ul class="points">
+          <li><b><span data-l="zh">志明寫 SOT</span><span data-l="en">SOT drafter</span></b><span data-l="zh">上傳影片，自動產生逐字稿，再生成電視新聞 SOT 稿；每一句都能回溯時間碼並比對引述。FastAPI、Gemini、OpenAI Agents，前端 Vue 3 + Tiptap。（2025.11 — 2026.05）</span><span data-l="en">Upload a video, get a transcript, then a TV-news SOT script where every line traces back to its timecode and quote. FastAPI, Gemini, OpenAI Agents; Vue 3 + Tiptap. (2025.11 — 2026.05)</span></li>
+          <li><b><span data-l="zh">短影音製作 plugin</span><span data-l="en">Short-video plugin</span></b><span data-l="zh">與同事合作的 Claude Code plugin，涵蓋有旁白、無旁白字卡、資訊圖表三條路線，整合 TTS 與 Whisper 字幕對齊。（2026.06 — 09）</span><span data-l="en">A Claude Code plugin built with a colleague, covering narrated, title-card and infographic formats with TTS and Whisper subtitle alignment. (2026.06 — 09)</span></li>
+          <li><b><span data-l="zh">外電自動剪輯 PoC</span><span data-l="en">Wire-footage auto-edit</span></b><span data-l="zh">9 階段流程，把外電拍帶自動剪成 80–110 秒的國際焦點短片，以 3 個個案驗證。（2026.05）</span><span data-l="en">A nine-stage pipeline that cuts wire footage into 80–110 second international explainers, validated on three cases. (2026.05)</span></li>
+        </ul>
+
+        <h2><span data-l="zh">搜尋、NLP 與推薦</span><span data-l="en">Search, NLP and recommendation</span></h2>
+        <ul class="points">
+          <li><b><span data-l="zh">配圖推薦</span><span data-l="en">Photo matching</span></b><span data-l="zh">入職第一個專案：以 GPT-4o Vision 理解照片、Elasticsearch 檢索，為新聞推薦合適的圖庫照片。（2024.07 起）</span><span data-l="en">My first project: GPT-4o Vision plus Elasticsearch to suggest archive photos for a story. (from 2024.07)</span></li>
+          <li><b><span data-l="zh">片庫影片推薦</span><span data-l="en">Video matching</span></b><span data-l="zh">萃取關鍵影格、以 SSIM 去除重複畫面，再交給模型描述內容。（2024.10 — 2025.02）</span><span data-l="en">Keyframe extraction with SSIM de-duplication before model captioning. (2024.10 — 2025.02)</span></li>
+          <li><b><span data-l="zh">斷詞與實體標註</span><span data-l="en">Segmentation &amp; NER</span></b><span data-l="zh">斷詞、關鍵字與 NER 服務，2026 年加入事件圖譜萃取。</span><span data-l="en">Word segmentation, keyword and NER services, with event-graph extraction added in 2026.</span></li>
+          <li><b>AskCNA</b><span data-l="zh">多階段 Agent 問答搜尋：先評估問題難度、拆出子主題再檢索，串流回覆，另有結合事實查核資料的模式；作為內部試行服務。（2025.09 — 2026.01）</span><span data-l="en">A multi-stage agentic search that grades question difficulty, splits sub-topics, retrieves and streams answers, with a fact-check mode; run as an internal pilot. (2025.09 — 2026.01)</span></li>
+        </ul>
+
+        <h2><span data-l="zh">我怎麼做這些工具</span><span data-l="en">How I work</span></h2>
+        <p data-l="zh">從需求訪談開始，找出編輯流程中最花時間的一步，先做出可以試用的版本，上線後再依使用紀錄與回饋決定下一步，而不是一次把功能做滿。</p>
+        <p data-l="en">I start from interviews with editors, find the slowest step in their workflow and ship something they can try; usage logs and feedback then decide what comes next, instead of building everything up front.</p>
+      </div>
+
+      <nav class="next">
+        <a href="../cna-mcp/"><small><span data-l="zh">上一個</span><span data-l="en">Previous</span></small><span><span data-l="zh">中央社 MCP Server</span><span data-l="en">CNA’s MCP Server</span></span></a>
+        <a href="../data-journalism/"><small><span data-l="zh">下一個</span><span data-l="en">Next</span></small><span><span data-l="zh">資料新聞作品</span><span data-l="en">Data journalism</span></span></a>
+      </nav>
+      <footer class="foot">© 2026 何家慈 Chia Tzu Ho</footer>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>版本總覽 — 何家慈 Chia Tzu Ho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <script>document.documentElement.dataset.lang = 'zh'; document.documentElement.dataset.track = 'tech';</script>
+  <style>
+    .var { border-top: 1px solid var(--rule); }
+    .var details { border-bottom: 1px solid var(--rule); }
+    .var summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px var(--pad);
+    }
+    .var summary::-webkit-details-marker { display: none; }
+    .var summary:hover { background: var(--tag-bg); }
+    .var summary:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+    .swatch { width: 44px; height: 44px; border: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; }
+    .swatch i { display: block; }
+    .var h2 { font-size: 18px; line-height: 1.3; }
+    .var h2 small { font: 500 12px/1 var(--mono); color: var(--muted); letter-spacing: 0.06em; margin-left: 8px; text-transform: uppercase; }
+    .var summary p { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+    .chev { font-size: 18px; transition: transform 0.35s var(--ease); }
+    details[open] .chev { transform: rotate(90deg); }
+
+    .panel { padding: 0 var(--pad) var(--pad); display: grid; gap: 14px; }
+    .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .opt {
+      font: 500 13.5px/1 var(--sans);
+      padding: 9px 12px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .opt[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 13px; }
+    .bar code { font: 12.5px var(--mono); padding: 5px 8px; border: 1px dashed var(--hair); overflow-wrap: anywhere; flex: 1 1 260px; }
+    .bar a, .bar button { font: 500 13px var(--sans); background: none; border: 0; padding: 0; color: var(--ink); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .seg { display: inline-flex; border: 1px solid var(--rule); }
+    .seg button { text-decoration: none; padding: 6px 10px; }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .stage { border: 1px solid var(--rule); background: var(--canvas); display: grid; justify-items: center; overflow: hidden; }
+    .stage iframe { display: block; width: 100%; height: 780px; border: 0; background: var(--paper); transition: width 0.45s var(--ease); }
+    .stage[data-w="phone"] iframe { width: 390px; max-width: 100%; border-inline: 1px solid var(--rule); }
+    .copied { color: var(--muted); font-size: 12.5px; }
+    @media (max-width: 760px) {
+      .stage iframe { height: 620px; }
+      .var summary { grid-template-columns: 36px 1fr auto; gap: 12px; }
+      .swatch { width: 36px; height: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <article class="sheet page">
+      <nav class="crumb"><a class="crumb__back" href="../">履歷</a><span class="crumb__name">Variants</span></nav>
+      <header class="hero">
+        <p class="hero__kicker">僅供自己使用・不公開連結</p>
+        <h1>版本總覽</h1>
+        <p class="hero__dek">點開產業類別，選擇語言與照片，直接預覽並複製投遞用的連結。</p>
+      </header>
+
+      <div class="var" id="var"></div>
+
+      <div class="prose">
+        <h2>詳細頁與文章</h2>
+        <ul class="links">
+          <li><a href="../work/cna-mcp/"><span class="links__t">中央社 MCP Server<span class="links__m">/work/cna-mcp/</span></span></a></li>
+          <li><a href="../work/newsroom-ai/"><span class="links__t">編輯室 AI 工具<span class="links__m">/work/newsroom-ai/</span></span></a></li>
+          <li><a href="../work/data-journalism/"><span class="links__t">資料新聞作品<span class="links__m">/work/data-journalism/</span></span></a></li>
+          <li><a href="../posts/"><span class="links__t">文章彙整（18 篇）<span class="links__m">/posts/</span></span></a></li>
+        </ul>
+      </div>
+      <footer class="foot">© 2026 何家慈 Chia Tzu Ho</footer>
+    </article>
+  </main>
+
+  <script>
+    const TRACKS = [
+      { key: 'ai', name: '生成式 AI 工程師／PM', en: 'Generative AI', desc: '黑白灰加黑色數據色塊，框線依序畫出、數字跳動。預設版本。', colors: ['#17181c', '#f4f4f6'] },
+      { key: 'tech', name: '科技業', en: 'Tech', desc: '黑白灰、框線重、只有淡入動畫，不放數字條。', colors: ['#2b2a28', '#fbfaf8'] },
+      { key: 'media', name: '媒體業', en: 'Media', desc: '深藍配米白報紙底，標題用襯線字，資料新聞排前面。', colors: ['#132a55', '#f8f5ee'] },
+      { key: 'startup', name: '產品／新創', en: 'Startup', desc: '深藍底、超大姓名、黃色關鍵字跑馬燈，動畫較活潑。', colors: ['#0d1a3a', '#f3b544'] },
+    ];
+    const OPTIONS = [
+      { label: '中文', q: '' },
+      { label: '中文＋學士服照', q: '&photo=formal' },
+      { label: '中文＋麥克風照', q: '&photo=talk' },
+      { label: 'English', q: '&lang=en' },
+    ];
+    const base = new URL('../', location.href);
+    const root = document.getElementById('var');
+
+    root.innerHTML = TRACKS.map((t, i) => `
+      <details name="variant" data-track="${t.key}">
+        <summary>
+          <span class="swatch" aria-hidden="true"><i style="background:${t.colors[0]}"></i><i style="background:${t.colors[1]}"></i></span>
+          <span><h2>${t.name}<small>${t.en}</small></h2><p>${t.desc}</p></span>
+          <span class="chev" aria-hidden="true">›</span>
+        </summary>
+        <div class="panel">
+          <div class="opts" role="group" aria-label="版本">
+            ${OPTIONS.map((o, j) => `<button type="button" class="opt" data-q="${o.q}" aria-pressed="${j === 0}">${o.label}</button>`).join('')}
+          </div>
+          <div class="bar">
+            <code class="url"></code>
+            <button type="button" class="copy">複製連結</button>
+            <a class="open" target="_blank" rel="noopener">開新分頁</a>
+            <span class="seg" role="group" aria-label="預覽寬度">
+              <button type="button" data-w="desktop" aria-pressed="true">桌機</button>
+              <button type="button" data-w="phone" aria-pressed="false">手機</button>
+            </span>
+            <span class="copied" aria-live="polite"></span>
+          </div>
+          <div class="stage" data-w="desktop"><iframe title="${t.name} 預覽" loading="lazy"></iframe></div>
+        </div>
+      </details>`).join('');
+
+    function select(d, btn) {
+      const q = `?track=${d.dataset.track}${btn.dataset.q}`;
+      const url = new URL(q, base).href;
+      d.querySelectorAll('.opt').forEach((b) => b.setAttribute('aria-pressed', b === btn));
+      d.querySelector('.url').textContent = url;
+      d.querySelector('.open').href = url;
+      d.querySelector('iframe').src = url;
+      d.dataset.url = url;
+    }
+
+    root.querySelectorAll('details').forEach((d) => {
+      d.addEventListener('toggle', () => {
+        if (d.open && !d.dataset.url) select(d, d.querySelector('.opt'));
+      });
+      d.querySelectorAll('.opt').forEach((b) => b.addEventListener('click', () => select(d, b)));
+      d.querySelectorAll('.seg button').forEach((b) =>
+        b.addEventListener('click', () => {
+          d.querySelectorAll('.seg button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+          d.querySelector('.stage').dataset.w = b.dataset.w;
+        })
+      );
+      d.querySelector('.copy').addEventListener('click', async () => {
+        const note = d.querySelector('.copied');
+        try {
+          await navigator.clipboard.writeText(d.dataset.url);
+          note.textContent = '已複製';
+        } catch {
+          note.textContent = '無法自動複製，請手動選取網址';
+        }
+        setTimeout(() => (note.textContent = ''), 1800);
+      });
+    });
+
+    // Open the first group by default.
+    root.querySelector('details').open = true;
+  </script>
+</body>
+</html>

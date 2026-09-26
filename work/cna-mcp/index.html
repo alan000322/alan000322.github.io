@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中央社 MCP Server — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="從零打造中央社 MCP Server：15 個新聞、圖庫、譯名與事實查核工具，上架 Claude 官方 Connector Directory。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script>
+  <script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body>
+  <main class="canvas">
+    <article class="sheet page">
+      <nav class="crumb"><a class="crumb__back" href="../../"><span data-l="zh">履歷</span><span data-l="en">Resume</span></a><span class="crumb__name">Chia Tzu Ho</span></nav>
+
+      <header class="hero">
+        <p class="hero__kicker"><span data-l="zh">中央社媒體實驗室　·　2026</span><span data-l="en">CNA Media Lab · 2026</span></p>
+        <h1><span data-l="zh">中央社 MCP Server：讓 AI 回答帶著可查證的新聞出處</span><span data-l="en">CNA’s MCP Server: AI answers that cite verifiable news</span></h1>
+        <p class="hero__dek">
+          <span data-l="zh">從原型、認證、計費到上架，一手打造中央社的 Model Context Protocol 服務。Claude、ChatGPT、Gemini、Grok 的使用者可以直接查詢中央社 1990 年以來的報導、圖庫與事實查核資料，AI 的回答也會附上原文連結。</span>
+          <span data-l="en">I built CNA’s Model Context Protocol service end to end — prototype, auth, billing and directory listing. Users of Claude, ChatGPT, Gemini and Grok can search CNA reporting since 1990, its photo archive and fact-check data, and the AI’s answers link back to the original stories.</span>
+        </p>
+      </header>
+
+      <dl class="facts">
+        <div><dt><span data-l="zh">角色</span><span data-l="en">Role</span></dt><dd><span data-l="zh">從零開發、主導</span><span data-l="en">Built from scratch, lead</span></dd></div>
+        <div><dt><span data-l="zh">期間</span><span data-l="en">Period</span></dt><dd><span data-l="zh">2026.03 — 至今</span><span data-l="en">2026.03 — Present</span></dd></div>
+        <div><dt><span data-l="zh">技術</span><span data-l="en">Stack</span></dt><dd>TypeScript · MCP SDK · OAuth 2.1 · Elasticsearch · Cloud Run</dd></div>
+        <div><dt><span data-l="zh">上線平台</span><span data-l="en">Platforms</span></dt><dd>Claude · ChatGPT · Gemini · Grok</dd></div>
+      </dl>
+
+      <div class="prose">
+        <h2><span data-l="zh">為什麼要做</span><span data-l="en">Why</span></h2>
+        <p data-l="zh">越來越多人直接問 AI 新聞，而不是點進新聞網站。AI 的答案從哪裡來、是否可信，讀者往往看不到。2025 年底，媒體實驗室在計畫書《當 AI 吞噬流量：新聞業怎突圍？》中提出用 MCP 把中央社的查證內容接進 AI 平台——讓 AI 找得到可信的來源，也讓新聞回到讀者眼前。我負責 MCP Server 與 Client 架構開發。</p>
+        <p data-l="en">More people now ask AI about the news instead of visiting news sites, and readers rarely see where the answer came from. In late 2025 the Media Lab proposed using MCP to plug CNA’s verified reporting into AI platforms, so assistants can find a trustworthy source and readers are led back to the journalism. I own the MCP server and client architecture.</p>
+
+        <figure>
+          <img src="chatgpt-menu.jpg" alt="" loading="lazy" width="1600" height="900">
+          <figcaption><span data-l="zh">在 ChatGPT 對話框輸入「@」就能叫出中央社 MCP。</span><span data-l="en">Typing “@” in ChatGPT brings up CNA’s MCP connector.</span></figcaption>
+        </figure>
+
+        <h2><span data-l="zh">15 個工具</span><span data-l="en">Fifteen tools</span></h2>
+        <ul class="points">
+          <li><b><span data-l="zh">新聞查詢</span><span data-l="en">News</span></b><span data-l="zh">關鍵字搜尋（中、英、日、印尼文）、分類最新新聞、編輯精選、單篇全文。</span><span data-l="en">Keyword search across Chinese, English, Japanese and Indonesian editions; latest by category; editors’ picks; full articles.</span></li>
+          <li><b><span data-l="zh">譯名與詞彙</span><span data-l="en">Names &amp; terms</span></b><span data-l="zh">中央社慣用外文譯名、圖庫詞彙擴展。</span><span data-l="en">CNA’s house translations of foreign names; photo-archive vocabulary expansion.</span></li>
+          <li><b><span data-l="zh">圖庫</span><span data-l="en">Photos</span></b><span data-l="zh">新聞照片搜尋，圖說也能作為事實參考。</span><span data-l="en">News photo search, with captions usable as supporting facts.</span></li>
+          <li><b><span data-l="zh">外部資料</span><span data-l="en">External data</span></b><span data-l="zh">政府公開資料、台灣事實查核中心、企業訊息平台。</span><span data-l="en">Government releases, Taiwan FactCheck Center, corporate press releases.</span></li>
+          <li><b><span data-l="zh">事實查核</span><span data-l="en">Fact-check</span></b><span data-l="zh">「指引 → 審查 → 成品」三站流程，每一站都要附上來源，使用者確認後才產出查核稿。</span><span data-l="en">A three-step guide → review → publish flow; every step carries sources, and the final write-up waits for the user’s confirmation.</span></li>
+          <li><b>MCP Apps</b><span data-l="zh">在對話中直接渲染時間軸、懶人包、知識圖譜與報紙頭版。</span><span data-l="en">Timelines, briefs, knowledge graphs and newspaper front pages rendered right inside the chat.</span></li>
+        </ul>
+
+        <figure>
+          <img src="mcp-app-timeline.jpg" alt="" loading="lazy" width="1384" height="743">
+          <figcaption><span data-l="zh">MCP Apps：在 Claude 裡用中央社資料直接生成爭議事件時間軸，每個節點都連回原文。</span><span data-l="en">MCP Apps: a timeline built from CNA reporting inside Claude, each node linking back to the source story.</span></figcaption>
+        </figure>
+
+        <h2><span data-l="zh">架構</span><span data-l="en">Architecture</span></h2>
+        <ul>
+          <li data-l="zh">TypeScript + MCP SDK，2026.03 從 Python 原型改寫，同時升級為 OAuth 2.1 / PKCE。</li>
+          <li data-l="en">TypeScript + MCP SDK, rewritten from a Python prototype in 2026.03 alongside an upgrade to OAuth 2.1 / PKCE.</li>
+          <li data-l="zh">檢索：Elasticsearch 11 個索引，搭配 Voyage rerank 重新排序。</li>
+          <li data-l="en">Retrieval over 11 Elasticsearch indices, re-ranked with Voyage.</li>
+          <li data-l="zh">認證：OAuth 2.1、CIMD／DCR 客戶端註冊，另支援 API Key（雜湊儲存）。</li>
+          <li data-l="en">Auth: OAuth 2.1 with CIMD / DCR client registration, plus hashed API keys.</li>
+          <li data-l="zh">部署在 Cloud Run 與 Cloud SQL；以規格驅動開發管理 35 份規格、70 次封存變更。</li>
+          <li data-l="en">Runs on Cloud Run and Cloud SQL; 35 specs and 70 archived changes managed through spec-driven development.</li>
+        </ul>
+
+        <h2><span data-l="zh">從工具到產品</span><span data-l="en">From tool to product</span></h2>
+        <p data-l="zh">工具能用之後，接著是讓外部單位能付費使用：串接 ask.cna 會員系統作為統一登入（IdP）、設計訂閱加 credit 的逐工具計費、金流、試用者機制與團隊方案，並把帳號資料從 Firebase 遷移到 Cloud SQL。</p>
+        <p data-l="en">Once the tools worked, the next step was letting outside organisations pay for them: single sign-on through the ask.cna member system, subscription plus per-tool credit billing, payments, trials and team plans, and a migration of account data from Firebase to Cloud SQL.</p>
+
+        <h2><span data-l="zh">時間線</span><span data-l="en">Timeline</span></h2>
+        <ul class="timeline">
+          <li><time>2025.11</time><span data-l="zh">媒體實驗室提出中央社 MCP 計畫書。</span><span data-l="en">Media Lab proposal for a CNA MCP service.</span></li>
+          <li><time>2026.03</time><span data-l="zh">原型從 Python 改寫為 TypeScript，升級 OAuth 2.1 / PKCE。</span><span data-l="en">Prototype rewritten in TypeScript; OAuth 2.1 / PKCE.</span></li>
+          <li><time>2026.04</time><span data-l="zh">正式專案與管理後台上線；支援 ChatGPT connector。</span><span data-l="en">Production repo and admin console; ChatGPT connector support.</span></li>
+          <li><time>2026.05</time><span data-l="zh">產品簡報發布，對外提供服務。</span><span data-l="en">Product deck published; service opened to external users.</span></li>
+          <li><time>2026.06</time><span data-l="zh">工具重新設計上線，導入逐工具 credit 計費。</span><span data-l="en">Redesigned tools shipped with per-tool credit billing.</span></li>
+          <li><time>2026.07 — 08</time><span data-l="zh">串接 ask.cna 統一登入、遷移 Cloud SQL、開放外部訂閱。</span><span data-l="en">ask.cna sign-in, Cloud SQL migration, external subscriptions.</span></li>
+          <li><time>2026.08</time><span data-l="zh">上架 Claude 官方 Connector Directory。</span><span data-l="en">Listed in Claude’s official Connector Directory.</span></li>
+        </ul>
+
+        <h2><span data-l="zh">延伸閱讀</span><span data-l="en">More</span></h2>
+        <ul class="links">
+          <li><a href="https://h-chiatzu.github.io/presentations/0923-cna-mcp/"><span class="links__t"><span data-l="zh">走進中央社 MCP 開發歷程</span><span data-l="en">Inside the making of CNA’s MCP (slides, Chinese)</span><span class="links__m"><span data-l="zh">A Newsroom 演講簡報・2026.09</span><span data-l="en">A Newsroom talk · 2026.09</span></span></span></a></li>
+          <li><a href="https://vocus.cc/salon/chiatzu"><span class="links__t"><span data-l="zh">以開發者角度看「中央社 MCP」</span><span data-l="en">CNA’s MCP, from the developer’s side (Chinese)</span><span class="links__m"><span data-l="zh">方格子沙龍・2026.09</span><span data-l="en">vocus column · 2026.09</span></span></span></a></li>
+        </ul>
+      </div>
+
+      <nav class="next">
+        <a href="../../"><small><span data-l="zh">返回</span><span data-l="en">Back</span></small><span><span data-l="zh">履歷</span><span data-l="en">Resume</span></span></a>
+        <a href="../newsroom-ai/"><small><span data-l="zh">下一個</span><span data-l="en">Next</span></small><span><span data-l="zh">編輯室 AI 工具</span><span data-l="en">Newsroom AI tools</span></span></a>
+      </nav>
+      <footer class="foot">© 2026 何家慈 Chia Tzu Ho</footer>
+    </article>
+  </main>
+</body>
+</html>
