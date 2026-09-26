@@ -10,20 +10,20 @@ export const data = {
 
   order: {
     ai: {
-      main: ['experience', 'projects', 'writing', 'talks', 'publications', 'education', 'awards', 'leadership'],
+      main: ['experience', 'projects', 'education', 'publications', 'awards', 'leadership'],
       side: ['skills', 'languages'],
     },
     tech: {
-      main: ['experience', 'publications', 'projects', 'journalism', 'education', 'awards', 'leadership'],
+      main: ['experience', 'education', 'publications', 'projects', 'journalism', 'awards', 'leadership'],
       side: ['skills', 'languages'],
     },
     media: {
-      main: ['experience', 'journalism', 'awards', 'writing', 'talks', 'projects', 'publications', 'education', 'leadership'],
+      main: ['experience', 'journalism', 'awards', 'writing', 'projects', 'education', 'publications', 'leadership'],
       side: ['skills', 'languages'],
     },
     startup: {
-      main: ['experience', 'projects', 'leadership', 'awards', 'talks', 'writing', 'education'],
-      side: ['skills', 'publications', 'languages'],
+      main: ['experience', 'projects', 'leadership', 'awards', 'education', 'publications'],
+      side: ['skills', 'languages'],
     },
   },
 
@@ -62,20 +62,20 @@ export const data = {
 
   summary: {
     ai: {
-      zh: '中央社媒體實驗室工程師，從零打造 **中央社 MCP Server** 並上架 Claude 官方 Connector Directory。生物資訊、新聞傳播、科技法律三個背景，讓我習慣把編輯室的真實需求拆成可以上線的 AI 產品——LLM、RAG、Agent，到認證、計費與部署都一手完成。',
-      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built **CNA’s MCP Server** from scratch and got it listed in Claude’s official Connector Directory. With a background spanning bioinformatics, journalism and tech law, I turn real newsroom needs into shipped AI products — LLMs, RAG and agents through to auth, billing and deployment.',
+      zh: '中央社媒體實驗室工程師，為中央社從零打造**台灣媒體第一個 MCP Server**。善於溝通、釐清需求，將 AI 工具融入團隊工作流程，讓 **AI 協作成為編輯室的工作習慣**。具生物資訊、新聞傳播雙碩士學位，透過跨領域溝通、研究驗證與嚴謹的開發流程，將實際需求轉化為可上線的 AI 產品。',
+      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built **Taiwan’s first media MCP server** from scratch for CNA. Through clear communication, I clarify needs and integrate AI tools into team workflows, making **AI collaboration a daily newsroom practice**. With master’s degrees in Bioinformatics and Journalism, I turn real needs into production-ready AI products through cross-disciplinary communication, research, validation and a rigorous development process.',
     },
     tech: {
-      zh: '以後端與資料工程為主的工程師。在中央社用 TypeScript、Python（FastAPI）與 Elasticsearch 建置 MCP Server、搜尋與 NLP 服務，部署於 GCP。生物資訊碩士，發表第一作者期刊論文；重視清楚的規格、安全邊界，和能長期維護的程式。',
-      en: 'Backend and data engineer. At CNA I build the MCP Server, search and NLP services with TypeScript, Python (FastAPI) and Elasticsearch on GCP. MS in Bioinformatics with a first-author journal paper. I care about clear specs, safe boundaries and code that stays maintainable.',
+      zh: '中央社媒體實驗室工程師，為中央社從零打造台灣媒體第一個 MCP Server 並上架 Claude 官方 Connector Directory。具生物資訊、新聞傳播雙碩士學位，曾發表**第一作者期刊論文**。熟悉 AI 工具、自然語言處理（NLP）與資料科學技術，運用 TypeScript、Python 與 Elasticsearch **建置後端及搜尋服務**，並部署於 GCP。',
+      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built Taiwan’s first MCP server from a news organization for CNA from scratch and got it listed in Claude’s official Connector Directory. I hold master’s degrees in Bioinformatics and Journalism and have published **a journal paper as first author**. I work with AI tools, natural language processing (NLP) and data science techniques, **building backend and search services** with TypeScript, Python and Elasticsearch and deploying them on GCP.',
     },
     media: {
-      zh: '在新聞室寫程式的人。台大新聞所、陽明交大生物資訊碩士，在中央社媒體實驗室打造編輯每天使用的 AI 工具，也讓中央社報導透過 MCP 進入 Claude、ChatGPT 等 AI 平台時，仍帶著可以查證的出處。另做資料新聞、主持 Podcast，並經營近百篇的科技專欄。',
-      en: 'A developer inside the newsroom. With an MA in Journalism (NTU) and an MS in Bioinformatics (NYCU), I build the AI tools CNA editors use every day, and made sure CNA reporting keeps verifiable sources when it reaches Claude and ChatGPT through MCP. I also do data journalism, host a podcast and write a column of nearly 100 tech articles.',
+      zh: '在新聞室寫程式的人。台大新聞所、陽明交大生物資訊碩士，在中央社媒體實驗室**打造編輯每天使用的 AI 工具**，也讓中央社報導透過 MCP 進入 Claude、ChatGPT 等 AI 平台時，仍帶著**可以查證的出處**。另做資料新聞、主持 Podcast，並經營近百篇的科技專欄。',
+      en: 'A developer inside the newsroom. With an MA in Journalism (NTU) and an MS in Bioinformatics (NYCU), I **build the AI tools CNA editors use every day**, and made sure CNA reporting **keeps verifiable sources** when it reaches Claude and ChatGPT through MCP. I also do data journalism, host a podcast and write a column of nearly 100 tech articles.',
     },
     startup: {
-      zh: '喜歡把模糊的問題做成大家每天在用的產品。在中央社從原型一路做到上線：志明編輯助手、中央社 MCP，再到訂閱與計費；在校友總會用自動化補上人力缺口；也當過學生議會議長和社團社長。',
-      en: 'I like turning fuzzy problems into products people use every day. At CNA I took ideas from prototype to production — the Jiming editor assistant, CNA’s MCP Server, then subscriptions and billing. I automated away staffing gaps for an alumni association, and led a student parliament and a social-enterprise club.',
+      zh: '喜歡把模糊的問題做成大家每天在用的產品。在中央社**從原型一路做到上線**：志明編輯助手、中央社 MCP，再到訂閱與計費；在校友總會**用自動化補上人力缺口**；也當過學生議會議長和社團社長。',
+      en: 'I like turning fuzzy problems into products people use every day. At CNA I took ideas **from prototype to production** — the Jiming editor assistant, CNA’s MCP Server, then subscriptions and billing. I **automated away staffing gaps** for an alumni association, and led a student parliament and a social-enterprise club.',
     },
   },
 
@@ -108,71 +108,50 @@ export const data = {
   experience: [
     {
       title: {
-        tech: { zh: '工程師', en: 'Software Engineer' },
+        tech: { zh: '工程師（生成式 AI）', en: 'Engineer, Generative AI' },
         ai: { zh: '工程師（生成式 AI）', en: 'Engineer, Generative AI' },
         media: { zh: '工程師（媒體實驗室）', en: 'Engineer, Media Lab' },
-        startup: { zh: '工程師（生成式 AI 產品）', en: 'Engineer, AI Products' },
+        startup: { zh: '工程師（生成式 AI）', en: 'Engineer, Generative AI' },
       },
       org: { zh: '中央通訊社　資訊暨創新中心・媒體實驗室', en: 'Central News Agency (CNA) — Media Lab' },
       period: { zh: '2024.07 — 至今', en: '2024.07 — Present' },
-      note: { zh: '2026.01 起為正職工程師（2024.07–2025.12 為特約工程師）', en: 'Full-time since 2026.01; contract engineer 2024.07–2025.12' },
+      note: { zh: '2026.01 起為編制內工程師（2024.07–2025.12 為特約工程師）', en: 'Appointed to a permanent engineering position in 2026.01; contract engineer 2024.07–2025.12' },
       rank: { default: 0 },
       bullets: [
         {
-          zh: '從零打造並主導 **中央社 MCP Server**：開放新聞、圖庫、譯名與事實查核等 15 個工具，2026.08 上架 Claude 官方 Connector Directory，並支援 ChatGPT、Gemini、Grok。',
+          zh: '主導 **中央社 MCP Server** 從零開發，建置新聞搜尋等 15 個工具；著手設計結合 Elasticsearch BM25 與 Voyage rerank 的檢索系統，並運用 Cloud Run 與 Cloud SQL 部署服務及資料庫；依據 MCP Apps 規格設計互動介面，讓 AI 回答以更直觀的視覺化方式呈現，並規劃中央社 MCP 的商業化模式。',
           href: 'work/cna-mcp/',
-          en: 'Built and led **CNA’s MCP Server** from scratch: 15 tools across news, photos, name translation and fact-checking; listed in Claude’s official Connector Directory (2026.08), with ChatGPT, Gemini and Grok support.',
+          en: 'Led the development of **CNA’s MCP Server** from scratch, building 15 tools for news search and other capabilities. Began designing a retrieval system combining Elasticsearch BM25 with Voyage rerank, using Cloud Run and Cloud SQL to deploy services and databases. Designed interactive interfaces based on the MCP Apps specification to present AI responses more clearly through visualizations, and planned a commercialization model for CNA’s MCP service.',
         },
         {
-          tracks: ['tech', 'ai'],
-          zh: 'TypeScript + MCP SDK，OAuth 2.1 / PKCE 認證；Elasticsearch 搭配 Voyage rerank 做檢索，部署於 Cloud Run、Cloud SQL，以規格驅動開發管理 35 份規格。',
-          en: 'TypeScript + MCP SDK with OAuth 2.1 / PKCE; Elasticsearch retrieval with Voyage rerank; deployed on Cloud Run and Cloud SQL, with 35 specs managed through spec-driven development.',
+          zh: '開發「**志明編輯助手**」Chrome 擴充功能，提供錯字檢查、標題建議、翻譯、配圖等 8 項功能，成為中央社目前使用最廣泛的 AI 工具，逾 90% 同事認為有助提升工作效率。',
+          href: 'work/newsroom-ai/',
+          en: 'Developed **Jiming**, a Chrome extension with 8 features including typo checking, headline suggestions, translation and photo matching. It is now CNA’s most widely used AI tool, with over 90% of colleagues reporting improved efficiency.',
         },
         {
           tracks: ['media', 'ai', 'startup'],
-          zh: '設計 MCP Apps（時間軸、懶人包、知識圖譜、報紙頭版）與三段式事實查核流程，讓 AI 的回答附上可驗證的中央社出處。',
-          href: 'work/cna-mcp/',
-          en: 'Designed MCP Apps (timeline, brief, knowledge graph, front page) and a three-step fact-check flow so AI answers carry verifiable CNA sources.',
-        },
-        {
-          tracks: ['startup', 'ai', 'tech'],
-          zh: '打通 MCP 商業化：跨系統 IdP 登入、訂閱 + credit 計費、金流串接與試用、團隊方案。',
-          en: 'Shipped MCP monetization end to end: cross-system IdP sign-in, subscription + credit billing, payments, trials and team plans.',
-        },
-        {
-          zh: '開發「**志明**」編輯室 AI 助手 Chrome 擴充功能（錯字、下標、翻譯、配圖等 8 項功能）與配額代理伺服器；全社每日近 300 次使用，逾 90% 同事認為有助提升效率。',
+          zh: '影音 AI：透過需求訪談釐清製作流程，著手開發影片轉 SOT 稿系統，以及用於中央社短影音製作的 Claude Code 外掛。',
           href: 'work/newsroom-ai/',
-          en: 'Developed **Jiming**, CNA’s newsroom AI Chrome extension (8 features incl. typo check, headlines, translation, photo matching) and its quota proxy; ~300 uses a day, with 90%+ of colleagues reporting higher efficiency.',
-        },
-        {
-          tracks: ['media', 'ai', 'startup'],
-          zh: '影音 AI：影片轉 SOT 稿系統、中央社短影音製作 Claude Code plugin、外電自動剪輯 PoC。',
-          href: 'work/newsroom-ai/',
-          en: 'Video AI: a video-to-SOT script drafter, a Claude Code plugin for CNA short-form video, and an auto-editing PoC for wire footage.',
+          en: 'Video AI: conducted requirements interviews to understand production workflows, then began developing a video-to-SOT script system and a Claude Code plugin for CNA’s short-form video production.',
         },
         {
           tracks: ['tech', 'ai', 'media'],
-          zh: '建置斷詞、關鍵字與 NER 服務，以及配圖、影片推薦系統（GPT-4o Vision + Elasticsearch）。',
+          zh: '建置中央社中文斷詞、關鍵字與 NER 服務，以及配圖、影片推薦系統（GPT-4o Vision + Elasticsearch）。',
           href: 'work/newsroom-ai/',
-          en: 'Built word-segmentation, keyword and NER services, plus photo and video recommendation (GPT-4o Vision + Elasticsearch).',
+          en: 'Built Chinese word segmentation, keyword extraction and named entity recognition (NER) services for CNA, along with photo and video recommendation systems using GPT-4o Vision and Elasticsearch.',
         },
         {
           tracks: ['media', 'tech'],
           zh: '參與數位專題：12 強棒球數據分析；選舉即時開票與中選會 API 串接。',
           href: 'work/data-journalism/',
-          en: 'Digital features: baseball data analysis for the Premier12; live election results via the Central Election Commission API.',
-        },
-        {
-          tracks: ['startup', 'ai'],
-          zh: '擔任產品推進者：訪談編輯釐清需求、拆解功能，從原型到部署一手完成。',
-          en: 'Acted as product driver: interviewed editors, broke needs into features, and carried them from prototype to deployment.',
-        },
+          en: 'Contributed to digital news features, including Premier12 baseball data analysis and live election results through integration with the Central Election Commission API.',
+        }
       ],
       tags: {
-        tech: ['TypeScript', 'Python', 'FastAPI', 'Elasticsearch', 'GCP', 'OAuth 2.1'],
-        ai: ['MCP', 'RAG', 'Agents', 'OpenAI · Claude · Gemini API', 'Elasticsearch', 'FastAPI'],
-        media: ['MCP', 'Fact-check', 'Newsroom tools', 'Video AI'],
-        startup: ['0 → 1', 'MCP', 'Billing', 'Chrome Extension'],
+        tech: ['MCP', 'RAG', 'AI Agents', 'Elasticsearch', 'GCP'],
+        ai: ['MCP', 'RAG', 'AI Agents', 'Video AI'],
+        media: ['MCP', 'Newsroom tools', 'Video AI'],
+        startup: ['MCP', 'Newsroom tools', 'Video AI'],
       },
     },
     {
@@ -181,7 +160,7 @@ export const data = {
       period: '2022.05 — 2024.09',
       note: { zh: '2023.12–2024.05 服替代役暫停', en: 'Paused 2023.12–2024.05 for alternative military service' },
       rank: { default: 10, media: 20 },
-      tracks: ['tech', 'ai', 'media'],
+      tracks: ['tech', 'media'],
       bullets: [
         { zh: '以爬蟲蒐集社群平台資料，用 Python 清理大型資料集。', en: 'Collected social media data with crawlers and cleaned large datasets in Python.' },
         { zh: '以 BERT 模型自動分類臉書貼文，供網絡分析使用。', en: 'Classified Facebook posts with BERT for network analysis.' },
@@ -192,7 +171,7 @@ export const data = {
       org: { zh: '國立臺灣大學　劉好迪老師（Adrian Rauchfleisch）', en: 'National Taiwan University — Prof. Adrian Rauchfleisch' },
       period: '2022.05 — 2023.12',
       rank: { default: 20, media: 10 },
-      tracks: ['tech', 'ai', 'media'],
+      tracks: ['tech', 'media'],
       bullets: [
         { zh: '臺灣臉書科學傳播文本分析，成果發表於 Media and Communication（2023）。', en: 'Text analysis of science communication on Facebook in Taiwan, published in Media and Communication (2023).' },
       ],
@@ -212,7 +191,7 @@ export const data = {
       org: { zh: '國立陽明交通大學　生物科技學系、外國語文學系', en: 'NYCU — Biological Science & Technology; Foreign Languages' },
       period: '2018 — 2021',
       rank: { default: 30 },
-      tracks: ['tech', 'ai', 'media'],
+      tracks: ['tech', 'media'],
       bullets: [
         { zh: '「程式設計」「生物資訊程式設計」「計算機概論」助教，帶領助教團隊協助 Python、PHP、Golang 教學。', en: 'TA for Programming, Bioinformatics Programming and Intro to Computer Science; led the TA team for Python, PHP and Go.' },
       ],
@@ -231,20 +210,27 @@ export const data = {
 
   projects: [
     {
-      title: { zh: '陽明交大校友總會　流程自動化', en: 'NYCU Alumni Association — Automation' },
-      href: 'posts/2024-10-03-claude-receipe/',
+      title: { zh: '國立陽明交通大學校友總會 副秘書長', en: 'Deputy Secretary-General, National Yang Ming Chiao Tung University Alumni Association' },
       period: { zh: '2024 — 至今', en: '2024 — Present' },
       rank: { default: 0 },
       bullets: [
-        { zh: '為新成立、人力有限的校友總會建置自動開立收據、自動寄信與 LINE 快速回覆系統。', en: 'Built automatic receipts, email and LINE quick replies for a newly founded, short-staffed alumni association.' },
-      ],
-    },
-    {
-      title: { zh: 'Podcast《難得狐途》主持', en: 'Host, “Nan De Hu Tu” Podcast' },
-      period: '2024 — 2025',
-      rank: { default: 20, media: 0, startup: 10 },
-      bullets: [
-        { zh: '陽明交大校友總會職涯訪談節目：主持、平台上架與部分剪輯。', en: 'Career-interview show for the NYCU Alumni Association: hosting, publishing and some editing.' },
+        {
+          zh: '推動行政流程自動化，建置收據開立與寄送、活動報名對帳及金流 LINE 通知工具，減少人工處理與重複作業。',
+          en: 'Automated administrative workflows with tools for receipt generation and delivery, event payment reconciliation and LINE payment notifications, reducing manual and repetitive work.',
+          href: 'posts/2024-10-03-claude-receipe/',
+        },
+        {
+          zh: '參與建置電子會員證與會員管理系統，整合會員資料、繳費狀態、活動簽到與紀錄查詢，支援校友服務及會務運作。',
+          en: 'Contributed to digital membership cards and a member management system integrating member records, payment status, event check-in and attendance history to support alumni services and association operations.',
+        },
+        {
+          zh: '開發結合 LINE、GPT 與 Google Sheets 的行事曆助手，將活動訊息轉為結構化資料，簡化活動資訊彙整流程。',
+          en: 'Developed a calendar assistant integrating LINE, GPT and Google Sheets to turn event messages into structured records and streamline event information collection.',
+        },
+        {
+          zh: '主持校友總會職涯訪談 Podcast《難得狐途》（2024–2025），負責節目主持、平台上架與部分剪輯。',
+          en: 'Hosted “Nan De Hu Tu,” the association’s career-interview podcast (2024–2025), and handled publishing and some audio editing.',
+        },
       ],
     },
     {
@@ -255,15 +241,6 @@ export const data = {
       rank: { default: 10 },
       bullets: [
         { zh: '與學校衛保組合作，建置疫調關懷系統、LINE 照護聊天機器人與一對一關懷流程。', en: 'Worked with the campus health office to build a case-care system, a LINE chatbot and one-to-one follow-up.' },
-      ],
-    },
-    {
-      title: { zh: '裁判書查詢 Chrome 擴充功能', en: 'Court-Ruling Lookup Chrome Extension' },
-      period: '2022',
-      rank: { default: 30 },
-      tracks: ['tech', 'ai'],
-      bullets: [
-        { zh: '結合法律背景，製作查詢裁判書與聊天機器人的 Chrome 擴充功能。', en: 'Combined a legal background with code to build Chrome extensions for court-ruling lookup and chat.' },
       ],
     },
   ],
@@ -360,6 +337,7 @@ export const data = {
   awards: [
     {
       title: { zh: '第七屆全球華文永續報導獎　學生組融媒體類優等獎', en: 'Merit Award, Student Multimedia — 7th Global Chinese Sustainability Journalism Awards' },
+      tracks: ['media'],
       meta: { zh: 'TVBS 信望愛永續基金會｜《莫要獨留青塚向黃昏》', en: 'TVBS Foundation · “Nanshan Cemetery” interactive story' },
       period: '2023',
       href: 'https://news.tvbs.com.tw/life/2273681',
@@ -379,39 +357,23 @@ export const data = {
   skills: [
     {
       group: { zh: 'AI 與 LLM', en: 'AI & LLM' },
-      items: {
-        ai: ['MCP', 'RAG', 'Agents', 'OpenAI Agents SDK', 'Claude Agent SDK', 'Google ADK', 'Prompt Engineering', 'Multimodal', 'LLM Evaluation'],
-        tech: ['LLM APIs', 'RAG', 'MCP', 'BERT', 'NER'],
-        media: ['MCP', 'RAG', 'LLM 內容分析', 'Fact-check workflows'],
-        startup: ['MCP', 'RAG', 'Agents', 'AI coding'],
-      },
-    },
-    {
-      group: { zh: '後端與資料', en: 'Backend & Data' },
-      items: {
-        default: ['Python', 'FastAPI', 'TypeScript', 'Elasticsearch', 'MySQL', 'Redis'],
-        media: ['Python', 'R', 'FastAPI', 'Elasticsearch', { zh: '爬蟲', en: 'Web scraping' }],
-      },
-    },
-    {
-      group: { zh: '雲端與部署', en: 'Cloud & Ops' },
       tracks: ['tech', 'ai'],
-      items: { default: ['GCP', 'Cloud Run', 'Cloud SQL', 'Cloud Functions', 'Firebase', 'Docker', 'Linux'] },
+      items: { default: ['MCP', 'RAG', 'AI Agents', 'OpenAI Agents SDK', 'Prompt Engineering', 'Multimodal'] },
     },
     {
-      group: { zh: '前端', en: 'Frontend' },
-      tracks: ['tech', 'ai', 'startup'],
-      items: { default: ['React', 'Vue 3', 'JavaScript', 'Chrome Extension', 'HTML / CSS'] },
+      group: { zh: '前後端與資料庫', en: 'Frontend, Backend & Databases' },
+      tracks: ['tech', 'ai'],
+      items: { default: ['Python', 'HTML / CSS', 'Vue 3', 'JavaScript', 'Chrome Extension', 'Elasticsearch', 'Firebase', 'MySQL'] },
+    },
+    {
+      group: { zh: '雲端部署', en: 'Cloud Deployment' },
+      tracks: ['tech', 'ai'],
+      items: { default: ['GCP', 'AWS', 'Docker', 'Linux'] },
     },
     {
       group: { zh: '資料新聞與製作', en: 'Journalism & Production' },
       tracks: ['media', 'startup'],
       items: { default: ['R', 'Flourish', { zh: '採訪寫作', en: 'Reporting' }, { zh: 'Podcast 主持', en: 'Podcast hosting' }, 'InDesign'] },
-    },
-    {
-      group: { zh: '產品', en: 'Product' },
-      tracks: ['startup', 'ai'],
-      items: { default: [{ zh: '需求訪談', en: 'User interviews' }, { zh: '功能拆解', en: 'Scoping' }, { zh: '原型到上線', en: 'Prototype → production' }, { zh: '訂閱與計費', en: 'Subscriptions & billing' }] },
     },
   ],
 

@@ -70,22 +70,6 @@ function summary() {
   return `<section class="sec sec--summary" data-reveal><p class="lead">${md(tv(data.summary))}</p></section>`;
 }
 
-function stats() {
-  const s = tv(data.stats);
-  if (!s || !s.length) return '';
-  const cells = s
-    .map((x) => {
-      const v = t(x.value);
-      const m = v.match(/^(\D*)(\d[\d,.]*)(.*)$/);
-      const num = m
-        ? `${esc(m[1])}<span class="count" data-to="${m[2].replace(/,/g, '')}">${esc(m[2])}</span>${esc(m[3])}`
-        : esc(v);
-      return `<li><b class="stat__v">${num}</b><span class="stat__l">${esc(t(x.label))}</span></li>`;
-    })
-    .join('');
-  return `<section class="stats" data-reveal aria-label="${esc(L('highlights'))}"><ul>${cells}</ul></section>`;
-}
-
 function entries(items) {
   return list(items)
     .map((e) => {
@@ -162,7 +146,6 @@ function render() {
     ${marquee()}
     <div class="main">
       ${summary()}
-      ${stats()}
       ${build(mainKeys)}
     </div>
     ${sideKeys.length ? `<aside class="side">${build(sideKeys)}</aside>` : ''}
@@ -171,23 +154,9 @@ function render() {
 
 /* ---------- motion ---------- */
 
-function countUp(el) {
-  const to = parseFloat(el.dataset.to);
-  const decimals = (el.dataset.to.split('.')[1] || '').length;
-  const dur = 1100;
-  const start = performance.now();
-  const step = (now) => {
-    const p = Math.min(1, (now - start) / dur);
-    const eased = 1 - Math.pow(1 - p, 4);
-    el.textContent = (to * eased).toFixed(decimals);
-    if (p < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-
 function animate() {
   const nodes = document.querySelectorAll('[data-reveal]');
-  if (reduceMotion || !('IntersectionObserver' in window)) {
+  if (reduceMotion || matchMedia('(max-width: 760px), (pointer: coarse)').matches || !('IntersectionObserver' in window)) {
     nodes.forEach((n) => n.classList.add('is-in'));
     return;
   }
@@ -200,7 +169,6 @@ function animate() {
         const n = en.target;
         n.style.setProperty('--d', `${Math.min(i++, 8) * 70}ms`);
         n.classList.add('is-in');
-        if (track !== 'tech') n.querySelectorAll('.count').forEach(countUp);
         io.unobserve(n);
       });
     },

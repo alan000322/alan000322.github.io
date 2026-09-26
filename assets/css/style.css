@@ -81,7 +81,7 @@ body {
   margin: 0;
   background: var(--canvas);
   color: var(--ink);
-  font: 400 15px/1.62 var(--sans);
+  font: 400 15px/1.75 var(--sans);
   font-feature-settings: "palt" 0;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -94,6 +94,14 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 ul { padding: 0; list-style: none; }
 img { display: block; max-width: 100%; }
 strong { font-weight: 600; color: var(--ink); }
+.sheet strong {
+  background: linear-gradient(transparent 42%, oklch(0.91 0.13 95 / 0.5) 42%, oklch(0.91 0.13 95 / 0.5) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+html[data-track="startup"] .sheet strong {
+  background: linear-gradient(transparent 42%, oklch(0.83 0.14 78 / 0.28) 42%, oklch(0.83 0.14 78 / 0.28) 92%, transparent 92%);
+}
 
 .canvas { padding: var(--gutter) var(--gutter) calc(var(--gutter) * 1.4); }
 .noscript { padding: 24px; }
@@ -210,8 +218,8 @@ html[data-track="media"] .sec__h { font-size: 17px; letter-spacing: 0.03em; }
 }
 
 .sec--summary { padding-top: calc(var(--pad) * 1.05); padding-bottom: calc(var(--pad) * 1.05); }
-.lead { font-size: 16px; line-height: 1.75; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
-html[lang="en"] .lead { font-size: 16.5px; line-height: 1.6; }
+.lead { font-size: 16px; line-height: 1.85; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+html[lang="en"] .lead { font-size: 16.5px; line-height: 1.75; }
 html[data-track="media"] .lead { font-family: var(--head); font-size: 17px; }
 
 /* Side sections are denser. */
@@ -260,12 +268,12 @@ html[data-track="media"] .entry__head h3 { font-family: var(--head); font-size: 
 .more { text-decoration: none; font-weight: 500; margin-left: 2px; color: var(--muted); display: inline-block; transition: transform 0.25s var(--ease), color 0.2s; }
 .more:hover { color: var(--ink); transform: translate(2px, -2px); }
 
-.bullets { margin-top: 8px; display: grid; gap: 4px; font-size: 14px; color: var(--ink-2); }
+.bullets { margin-top: 8px; display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }
 .bullets li { position: relative; padding-left: 16px; text-wrap: pretty; }
 .bullets li::before {
   content: "";
   position: absolute;
-  left: 2px; top: 0.72em;
+  left: 2px; top: 0.78em;
   width: 5px; height: 5px;
   background: var(--ink);
 }
@@ -425,7 +433,7 @@ html[data-track="startup"] .sec__h {
 }
 html[data-track="startup"] .side .sec__h { font-size: 20px; }
 html[data-track="startup"] .sec__h::after { height: 1px; }
-html[data-track="startup"] .lead { font-size: clamp(18px, 1.9vw, 22px); line-height: 1.6; color: var(--ink); }
+html[data-track="startup"] .lead { font-size: clamp(18px, 1.9vw, 22px); line-height: 1.75; color: var(--ink); }
 html[data-track="startup"] .stats { border-color: var(--rule); }
 html[data-track="startup"] .stats li { border-color: var(--rule); }
 html[data-track="startup"] .stat__v { font: 400 clamp(40px, 5vw, 64px)/1 "Anton", var(--sans); color: var(--accent); letter-spacing: 0; }
@@ -577,4 +585,26 @@ html[data-track="startup"].motion .id.is-in .id__photo::before { transform: none
   html[data-track="startup"] .id__role { background: none; padding: 0; }
   html[data-track="startup"] .main, html[data-track="startup"] .side { border: 0; }
   a { text-decoration: none; }
+}
+
+/* justfont: explicit classes also let the service discover dynamic text. */
+html body .jf-lanyanghei-bold {
+  font-family: "jf-lanyanghei", var(--sans) !important;
+  font-weight: 700 !important;
+}
+html body .jf-lanyanghei-extraheavy {
+  font-family: "jf-lanyanghei", var(--sans) !important;
+  font-weight: 920 !important;
+}
+
+/* Keep reading immediate on phones, including after a viewport resize. */
+@media (max-width: 760px), (pointer: coarse) {
+  html.motion [data-reveal],
+  html.motion .id h1 > span,
+  html.motion .id__photo::before,
+  html.motion .sec__h::after {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

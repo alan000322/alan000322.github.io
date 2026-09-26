@@ -15,7 +15,7 @@ document.querySelectorAll('a[href^="http"]').forEach((a) => {
 });
 
 const nodes = document.querySelectorAll('.hero, .facts, .prose > *');
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+if (!matchMedia('(prefers-reduced-motion: reduce), (max-width: 760px), (pointer: coarse)').matches && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('motion');
   nodes.forEach((n) => n.setAttribute('data-reveal', ''));
   let i = 0;
