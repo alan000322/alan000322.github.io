@@ -854,6 +854,7 @@ html[data-pdf="true"] .print-pdf { position: static; padding: 13px 18px; }
   }
   html { color-scheme: light; background: #fff; }
   body { font-size: 10pt; background: #fff; }
+  .sheet strong { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .sheet { border: 0; outline: 0; min-height: 0; max-width: none; }
   .marquee, .more, .foot, .print-pdf { display: none !important; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }

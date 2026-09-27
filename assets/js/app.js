@@ -98,7 +98,7 @@ function entries(items) {
       const tags = e.tags ? `<p class="entry__tags">${tv(e.tags).map((x) => `<span>${esc(x)}</span>`).join('')}</p>` : '';
       return `<article class="entry">
         <div class="entry__head">
-          <h3>${esc(t(tv(e.title)))}${extLink(e.href)}</h3>
+          <h3>${md(tv(e.title))}${extLink(e.href)}</h3>
           ${period(e.period, e.periodNote)}
           ${e.org ? `<p class="entry__org">${esc(t(tv(e.org)))}</p>` : ''}
         </div>

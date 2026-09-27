@@ -70,19 +70,19 @@ export const data = {
   summary: {
     ai: {
       zh: '中央社媒體實驗室工程師，為中央社從零打造**台灣媒體第一個 MCP Server**。善於溝通、釐清需求，將 AI 工具融入團隊工作流程，讓 **AI 協作成為編輯室的工作習慣**。具生物資訊、新聞傳播雙碩士學位，透過跨領域溝通、研究驗證與嚴謹的開發流程，將實際需求轉化為可上線的 AI 產品。',
-      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built **Taiwan’s first media MCP server** from scratch for CNA. Through clear communication, I clarify needs and integrate AI tools into team workflows, making **AI collaboration a daily newsroom practice**. With master’s degrees in Bioinformatics and Journalism, I turn real needs into production‑ready AI products through cross‑disciplinary communication, research, validation and a rigorous development process.',
+      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built **CNA’s MCP Server**, first MCP server for Taiwan media. I clarify needs and integrate AI tools into team workflows, making **AI native culture into daily office practice**. With master’s degrees in Bioinformatics and Journalism, I turn real needs into production‑ready products through cross‑disciplinary communication, research, validation and a rigorous development process.',
       pdf: {
-        zh: '中央社媒體實驗室工程師，從零打造**台灣媒體第一個 MCP Server**，並將 AI 工具導入編輯流程。具生物資訊、新聞傳播雙碩士學位，擅長將跨領域需求轉化為可上線的 AI 產品。',
-        en: 'Engineer at CNA Media Lab. Built **Taiwan’s first media MCP server** from scratch and integrated AI tools into newsroom workflows. With master’s degrees in Bioinformatics and Journalism, I turn cross-disciplinary needs into production-ready AI products.',
+        zh: '中央社媒體實驗室工程師，打造**台灣媒體第一個 MCP Server**，並將 AI 工具導入編輯流程。具生物資訊、新聞傳播雙碩士學位，擅長將跨領域需求轉化為可上線的 AI 產品。',
+        en: 'Engineer at CNA Media Lab. Built **Taiwan’s first media MCP server** and integrated AI tools into newsroom workflows. With master’s degrees in Bioinformatics and Journalism, I turn cross-disciplinary needs into production-ready AI products.',
       },
     },
     tech: {
       zh: '中央社媒體實驗室工程師，為中央社從零打造台灣媒體第一個 MCP Server 並上架 Claude 官方 Connector Directory。具生物資訊、新聞傳播雙碩士學位，曾發表**第一作者期刊論文**。熟悉 AI 工具、自然語言處理（NLP）與資料科學技術，運用 TypeScript、Python 與 Elasticsearch **建置後端及搜尋服務**，並部署於 GCP。',
-      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built Taiwan’s first MCP server from a news organization for CNA from scratch and got it listed in Claude’s official Connector Directory. I hold master’s degrees in Bioinformatics and Journalism and have published **a journal paper as first author**. I work with AI tools, natural language processing (NLP) and data science techniques, **building backend and search services** with TypeScript, Python and Elasticsearch and deploying them on GCP.',
+      en: 'Engineer at the Taiwan Central News Agency (CNA) Media Lab. I built Taiwan’s first MCP server for CNA and got it listed in Claude’s official Connector Directory. I hold master’s degrees in Bioinformatics and Journalism and have published **a journal paper as first author**. I work with AI tools, natural language processing (NLP) and data science techniques and deploying them on GCP.',
     },
     media: {
-      zh: '在新聞室寫程式的人。台大新聞所、陽明交大生物資訊碩士，在中央社媒體實驗室**打造編輯每天使用的 AI 工具**，也讓中央社報導透過 MCP 進入 Claude、ChatGPT 等 AI 平台時，仍帶著**可以查證的出處**。另做資料新聞、主持 Podcast，並經營近百篇的科技專欄。',
-      en: 'A developer inside the newsroom. With an MA in Journalism (NTU) and an MS in Bioinformatics (NYCU), I **build the AI tools CNA editors use every day**, and made sure CNA reporting **keeps verifiable sources** when it reaches Claude and ChatGPT through MCP. I also do data journalism, host a podcast and write a column of nearly 100 tech articles.',
+      zh: '在新聞室寫程式的人。台大新聞所、陽明交大生物資訊碩士，在中央社媒體實驗室**打造編輯每天使用的 AI 工具**。此外，也著手寫過多篇資料新聞、主持 Podcast，對於科學與科技產業傳播、資料新聞、政治傳播領域有興趣。',
+      en: 'A developer working in the newsroom. I hold master’s degrees in Journalism from NTU and Bioinformatics from NYCU, and at the CNA Media Lab, I **build AI tools that editors use every day**. I have also produced several data journalism projects and hosted a podcast. My interests span science communication, communication in the technology sector, data journalism and political communication.',
     },
     startup: {
       zh: '喜歡把模糊的問題做成大家每天在用的產品。在中央社**從原型一路做到上線**：志明編輯助手、中央社 MCP，再到訂閱與計費；在校友總會**用自動化補上人力缺口**；也當過學生議會議長和社團社長。',
@@ -210,7 +210,7 @@ export const data = {
     },
     {
       title: { zh: '研究助理・教學助教', en: 'Research & Teaching Assistant' },
-      org: { zh: '國立陽明交通大學、國立臺灣大學', en: 'NYCU & National Taiwan University' },
+      org: { zh: '國立陽明交通大學、國立臺灣大學', en: 'NYCU & NTU' },
       period: '2018 — 2024',
       rank: { default: 20 },
       tracks: ['startup'],
@@ -221,7 +221,7 @@ export const data = {
     {
       title: { zh: '教學助教', en: 'Teaching Assistant' },
       pdf: false,
-      org: { zh: '國立陽明交通大學　生物科技學系、外國語文學系', en: 'NYCU — Biological Science & Technology; Foreign Languages' },
+      org: { zh: '國立陽明交通大學　生物科技學系、外國語文學系', en: 'National Yang Ming Chiao Tung University — Biological Science & Technology; Foreign Languages' },
       period: '2018 — 2021',
       rank: { default: 30 },
       tracks: ['tech', 'ai', 'media'],
@@ -357,18 +357,18 @@ export const data = {
 
   education: [
     {
-      title: { zh: '新聞研究所　碩士', en: 'M.A. in Journalism' },
+      title: { zh: '新聞研究所　**碩士**', en: '**M.A.** in Journalism' },
       org: { zh: '國立臺灣大學', en: 'National Taiwan University' },
       period: '2021.09 — 2026.08',
       rank: { default: 0 },
       note: { zh: '論文：醫師亦是網紅？以大型語言模型輔助之台灣醫師 Facebook 貼文內容分析', en: 'Thesis: Doctors as influencers? An LLM-assisted content analysis of Taiwanese physicians’ Facebook posts' },
     },
     {
-      title: { zh: '生物資訊及系統生物研究所　碩士', en: 'M.S. in Bioinformatics and Systems Biology' },
+      title: { zh: '生物資訊及系統生物研究所　**碩士**', en: '**M.S.** in Bioinformatics and Systems Biology' },
       org: { zh: '國立陽明交通大學', en: 'National Yang Ming Chiao Tung University' },
       period: '2021.09 — 2022.10',
       rank: { default: 10 },
-      note: { zh: '論文：以大數據分析估計蛋白質二級結構預測上限', en: 'Thesis: Estimating the limits of protein secondary structure prediction by big-data analysis' },
+      note: { zh: '論文：蛋白質二級結構預測準確度極限探討', en: 'Thesis: Estimating the Limits of Protein Secondary Structure Prediction by Big Data Analysis' },
     },
     {
       title: { zh: '生物科技學系　學士', en: 'B.S. in Biological Science and Technology' },
