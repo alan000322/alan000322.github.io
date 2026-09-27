@@ -5,6 +5,10 @@ const q = new URLSearchParams(location.search);
 const lang = root.dataset.lang;
 const track = root.dataset.track;
 const pdfMode = root.dataset.pdf === 'true';
+const resumeParams = new URLSearchParams(location.search);
+resumeParams.delete('pdf');
+const resumeQuery = resumeParams.toString();
+const resumeUrl = `alan000322.github.io/${resumeQuery ? `?${resumeQuery}` : ''}`;
 
 // No photo by default. Chinese can opt in with ?photo=formal|talk; English never shows one.
 const photoParam = q.get('photo');
@@ -40,19 +44,20 @@ const byRank = (a, b) => (a.rank?.[track] ?? a.rank?.default ?? 50) - (b.rank?.[
 const list = (xs) => (xs || []).filter(inTrack).sort(byRank);
 
 const L = (key) => t(data.labels[key]);
-const period = (p) => (p ? `<span class="period">${esc(t(p))}</span>` : '');
+const period = (p, note) => (p ? `<span class="period"><span>${esc(t(p))}</span>${note ? `<small class="period__note">${esc(t(note))}</small>` : ''}</span>` : '');
 const contactIcon = (name) => ({
   email: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6"/></svg>',
   linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 9.2v8.6M6.2 6.2v.1M10.2 17.8v-8.6m0 3.7c.7-2.3 6.8-3.3 6.8 1.9v3"/></svg>',
   writing: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM7 8h4v4H7zM14 8h3M14 11h3M7 15h10"/></svg>',
   scholar: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5zM6.5 11v5c3.7 2.7 7.3 2.7 11 0v-5M21 9v6"/></svg>',
 }[name] || '');
+const externalLinkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 13v5H6V6h5"/></svg>';
 // Internal pages keep the current ?lang / ?track; external ones open in a new tab.
 const extLink = (href) => {
   if (!href) return '';
   const external = /^https?:/.test(href);
   const url = external ? href : href + location.search;
-  return ` <a class="more" href="${esc(url)}"${external ? ' target="_blank" rel="noopener"' : ''} aria-label="${esc(L('more'))}">${external ? '↗' : '→'}</a>`;
+  return ` <a class="more" href="${esc(url)}"${external ? ' target="_blank" rel="noopener"' : ''} aria-label="${esc(L('more'))}">${externalLinkIcon}</a>`;
 };
 
 const section = (key, body, cls = '') =>
@@ -88,13 +93,13 @@ function summary() {
 function entries(items) {
   return list(items)
     .map((e) => {
-      const bullets = list(e.bullets).map((b) => `<li>${md(b)}${extLink(b.href)}</li>`).join('');
+      const bullets = list(e.bullets).map((b) => `<li>${md(b)}${extLink(b.href)}${(b.hrefs || []).map((link) => extLink(link.href)).join('')}</li>`).join('');
       const note = e.note ? `<p class="entry__note">${md(tv(e.note))}</p>` : '';
       const tags = e.tags ? `<p class="entry__tags">${tv(e.tags).map((x) => `<span>${esc(x)}</span>`).join('')}</p>` : '';
       return `<article class="entry">
         <div class="entry__head">
           <h3>${esc(t(tv(e.title)))}${extLink(e.href)}</h3>
-          ${period(e.period)}
+          ${period(e.period, e.periodNote)}
           ${e.org ? `<p class="entry__org">${esc(t(tv(e.org)))}</p>` : ''}
         </div>
         ${note}
@@ -164,11 +169,84 @@ function render() {
       ${summary()}
       ${build(mainKeys)}
     </div>
-    ${sideKeys.length ? `<aside class="side">${build(sideKeys)}</aside>` : ''}`;
+    ${sideKeys.length ? `<aside class="side">${build(sideKeys)}</aside>` : ''}
+    ${pdfMode ? `<footer class="pdf-footer">${lang === 'zh' ? '完整履歷請見' : 'Full résumé:'} ${esc(resumeUrl)}</footer>` : ''}`;
 
-  if (pdfMode) {
-    document.querySelector('.canvas').insertAdjacentHTML('afterbegin', `<button class="print-pdf" type="button">${lang === 'zh' ? '下載／列印 PDF' : 'Download / Print PDF'}</button>`);
-    document.querySelector('.print-pdf').addEventListener('click', () => print());
+  const label = lang === 'zh' ? '下載／列印 PDF' : 'Download / Print PDF';
+  document.querySelector('.canvas').insertAdjacentHTML('afterbegin', `<button class="print-pdf" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v5H7zM7 16h10v5H7zM5 8h14a2 2 0 0 1 2 2v7h-4v-1H7v1H3v-7a2 2 0 0 1 2-2zM17 11h1"/></svg><span>${label}</span></button>`);
+  document.querySelector('.print-pdf').addEventListener('click', (event) => pdfMode ? printCurrentPdf(event.currentTarget) : printPdf(event.currentTarget));
+}
+
+async function waitForPdf(doc) {
+  const images = [...doc.images].filter((img) => !img.complete).map((img) => new Promise((resolve) => {
+    img.addEventListener('load', resolve, { once: true });
+    img.addEventListener('error', resolve, { once: true });
+  }));
+  await Promise.all(images);
+  if (doc.fonts?.ready) await doc.fonts.ready;
+
+  if (!doc.documentElement.matches('.jf-active, .jf-inactive')) {
+    await new Promise((resolve) => {
+      const observer = new MutationObserver(() => {
+        if (!doc.documentElement.matches('.jf-active, .jf-inactive')) return;
+        observer.disconnect();
+        resolve();
+      });
+      observer.observe(doc.documentElement, { attributes: true, attributeFilter: ['class'] });
+      setTimeout(() => { observer.disconnect(); resolve(); }, 3500);
+    });
+  }
+  if (doc.fonts?.ready) await doc.fonts.ready;
+}
+
+function printPdf(button) {
+  button.disabled = true;
+  button.querySelector('span').textContent = lang === 'zh' ? '準備 PDF…' : 'Preparing PDF…';
+
+  const url = new URL(location.href);
+  url.searchParams.set('pdf', '1');
+  const frame = document.createElement('iframe');
+  frame.className = 'pdf-frame';
+  frame.title = lang === 'zh' ? 'PDF 列印版本' : 'Printable PDF résumé';
+  frame.setAttribute('aria-hidden', 'true');
+
+  const restore = () => {
+    frame.remove();
+    button.disabled = false;
+    button.querySelector('span').textContent = lang === 'zh' ? '下載／列印 PDF' : 'Download / Print PDF';
+    button.focus({ preventScroll: true });
+  };
+
+  frame.addEventListener('load', async () => {
+    try {
+      await waitForPdf(frame.contentDocument);
+      frame.contentWindow.addEventListener('afterprint', restore, { once: true });
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
+    } catch (error) {
+      restore();
+      location.href = url;
+    }
+  }, { once: true });
+
+  frame.src = url;
+  document.body.appendChild(frame);
+}
+
+async function printCurrentPdf(button) {
+  button.disabled = true;
+  button.querySelector('span').textContent = lang === 'zh' ? '準備 PDF…' : 'Preparing PDF…';
+  const restore = () => {
+    button.disabled = false;
+    button.querySelector('span').textContent = lang === 'zh' ? '下載／列印 PDF' : 'Download / Print PDF';
+  };
+  try {
+    await waitForPdf(document);
+    addEventListener('afterprint', restore, { once: true });
+    print();
+  } catch (error) {
+    restore();
+    print();
   }
 }
 

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>志明 SOT 寫稿 — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="志明 SOT 寫稿：分析新聞影片與逐字稿，協助電視新聞編輯產生可回溯來源的 SOT 初稿。">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css"><link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script><script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body><main class="canvas"><article class="sheet page">
+  <nav class="crumb"><a class="crumb__back" href="../../"><span data-l="zh">履歷</span><span data-l="en">Resume</span></a><span class="crumb__name">Chia Tzu Ho</span></nav>
+  <header class="hero">
+    <h1><span data-l="zh">志明 SOT 寫稿：從新聞影片到可編輯的電視稿</span><span data-l="en">Jiming SOT Writer: from news footage to an editable TV script</span></h1>
+    <p class="hero__dek"><span data-l="zh">上傳新聞影片、補上 storyline 與 shotlist，系統便會分析語音與畫面，產生具時間碼與原文依據的 SOT 初稿。它協助新進編輯理解稿件結構，也為資深編輯提供可以修改的起點。</span><span data-l="en">Editors upload news footage and add a storyline and shotlist. The system analyses speech and visuals, then drafts a SOT script with timecodes and source text. It helps new editors learn the structure and gives experienced editors a practical starting point.</span></p>
+  </header>
+  <div class="prose case-study">
+    <section class="case-section"><h2><span data-l="zh">為誰解決什麼問題</span><span data-l="en">The newsroom problem</span></h2><div class="case-section__body">
+      <p data-l="zh">這套工具原先為處理外電拍帶的編輯設計。新進編輯需要時間熟悉 VOD、OS、SUPER、SB 等稿件結構，也要在長影片中找出可用畫面與引述；資深編輯雖然熟悉流程，仍要反覆對照影片、逐字稿與時間碼。後續測試也發現，編輯會把它用在國內新聞帶子，顯示核心需求不只來自外電，而是「更快理解素材並開始寫稿」。</p>
+      <p data-l="en">The product was first designed for editors handling international wire footage. New editors need time to learn VOD, OS, SUPER and SB conventions while finding usable visuals and quotes in long videos. Experienced editors know the form but still move repeatedly between footage, transcripts and timecodes. Later, editors also used it for domestic footage, revealing the broader need: understand the material faster and get a solid draft underway.</p>
+    </div></section>
+
+    <figure class="wide"><img src="new-draft.png" alt="" loading="lazy" width="2858" height="1554"><figcaption><span data-l="zh">建立新草稿：每段影片可以分別上傳素材，並補充 shotlist 與 storyline。</span><span data-l="en">Creating a draft: editors upload each clip and add its shotlist and storyline.</span></figcaption></figure>
+
+    <section class="case-section"><h2><span data-l="zh">工作流程</span><span data-l="en">Workflow</span></h2><div class="case-section__body">
+      <ol class="timeline">
+        <li><time>01</time><span data-l="zh">影片直接上傳至 GCS，避免大型檔案繞經應用程式伺服器。</span><span data-l="en">Footage uploads directly to GCS so large files do not pass through the application server.</span></li>
+        <li><time>02</time><span data-l="zh">Gemini 分析語音、畫面與素材脈絡，建立逐字稿和可引用片段。</span><span data-l="en">Gemini analyses speech, visuals and context to create a transcript and usable excerpts.</span></li>
+        <li><time>03</time><span data-l="zh">寫稿代理依新聞結構組合 VOD、OS、SUPER 與 SB，保留引述及時間碼。</span><span data-l="en">A writing agent assembles VOD, OS, SUPER and SB sections while preserving quotes and timecodes.</span></li>
+        <li><time>04</time><span data-l="zh">編輯在同一畫面播放影片、核對依據並修改稿件，完成後儲存至 Firebase。</span><span data-l="en">Editors play the video, inspect evidence and revise the script in one workspace, then save it through Firebase.</span></li>
+      </ol>
+    </div></section>
+
+    <figure class="wide"><img src="editor.png" alt="" loading="lazy" width="2866" height="1558"><figcaption><span data-l="zh">左側保留影片與原始素材，右側是可直接修改的 SOT 稿，時間碼與引用依據始終可見。</span><span data-l="en">Footage and source material remain on the left; the editable SOT draft sits on the right with timecodes and evidence kept in view.</span></figcaption></figure>
+
+    <section class="case-section"><h2><span data-l="zh">設計原則</span><span data-l="en">Design principles</span></h2><div class="case-section__body">
+      <ul class="points">
+        <li><b><span data-l="zh">初稿，不是定稿</span><span data-l="en">A draft, not the final word</span></b><span data-l="zh">AI 先整理素材與結構，新聞判斷、取捨與最後文字仍由編輯掌握。</span><span data-l="en">AI organises the material and structure; editors retain judgement, selection and final wording.</span></li>
+        <li><b><span data-l="zh">每句可回溯</span><span data-l="en">Every line is traceable</span></b><span data-l="zh">原文、時間碼與畫面並列，降低引述錯誤，也讓修改有明確依據。</span><span data-l="en">Source text, timecodes and footage sit together, reducing quotation errors and grounding revisions.</span></li>
+        <li><b><span data-l="zh">降低上手門檻</span><span data-l="en">Lower the learning curve</span></b><span data-l="zh">把資深編輯熟悉的稿件結構放進產品流程，讓新進同事從可修改的例子學習。</span><span data-l="en">The product encodes the script structure experienced editors know, helping newcomers learn from an editable example.</span></li>
+      </ul>
+    </div></section>
+
+    <section class="case-section"><h2><span data-l="zh">技術實作</span><span data-l="en">Technical implementation</span></h2><div class="case-section__body">
+      <p data-l="zh">前端使用 Vue 3 與 Tiptap 編輯器；FastAPI 提供處理流程與 SSE 進度串流；GCS 保存影片素材並以 signed URL 直傳；Gemini 進行影片與逐字稿分析，Firebase 管理登入、草稿與使用紀錄。</p>
+      <p data-l="en">The frontend uses Vue 3 and Tiptap. FastAPI orchestrates processing and streams progress over SSE. GCS stores footage through signed direct uploads, Gemini analyses video and transcripts, and Firebase manages authentication, drafts and usage history.</p>
+    </div></section>
+  </div>
+  <nav class="next"><a href="../../"><small><span data-l="zh">返回</span><span data-l="en">Back</span></small><span><span data-l="zh">履歷</span><span data-l="en">Resume</span></span></a></nav>
+</article></main></body></html>

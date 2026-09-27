@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>志明短影音工作流 — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="以 Discord、Claude Code Plugin 與 HyperFrames 製作中央社短影音，透過三個確認點保留編輯決策。">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css"><link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script><script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body><main class="canvas"><article class="sheet page">
+  <nav class="crumb"><a class="crumb__back" href="../../"><span data-l="zh">履歷</span><span data-l="en">Resume</span></a><span class="crumb__name">Chia Tzu Ho</span></nav>
+  <header class="hero">
+    <h1><span data-l="zh">志明短影音：讓 AI 加速製作，也保留編輯的選擇</span><span data-l="en">Jiming Shorts: faster AI production with editors still in control</span></h1>
+    <p class="hero__dek"><span data-l="zh">編輯從熟悉的 Discord 提交需求，實際製作則由 Claude Code Plugin 執行：搜尋中央社素材、安排敘事、產生旁白與字幕，再以 HyperFrames 將網頁場景轉成直式影片。流程在三個關鍵時刻停下來，等待使用者決定方向。</span><span data-l="en">Editors submit a brief through familiar Discord. A Claude Code plugin runs the production work: searching CNA material, structuring the story, generating narration and subtitles, then rendering web-based scenes into vertical video with HyperFrames. At three key moments, the workflow pauses for the editor’s decision.</span></p>
+  </header>
+  <div class="prose case-study">
+    <section class="case-section"><h2><span data-l="zh">入口與製作引擎</span><span data-l="en">Interface and production engine</span></h2><div class="case-section__body">
+      <p data-l="zh">Discord 是同事提出題目、提供素材與接收結果的窗口，降低學習新系統的成本；真正負責製作的是 Claude Code 裡的 <code>cna-news-shorts</code> plugin。它依題目選擇有旁白、無旁白字卡或資訊圖表等路線，呼叫中央社新聞與圖片搜尋，再組合文案、聲音、字幕與畫面。</p>
+      <p data-l="en">Discord is the familiar front door for submitting topics and material and receiving results. The production engine is the <code>cna-news-shorts</code> plugin in Claude Code. It selects a narrated, title-card or infographic route, searches CNA news and images, then assembles copy, audio, subtitles and visuals.</p>
+    </div></section>
+
+    <section class="case-section"><h2><span data-l="zh">為什麼不全部自動化</span><span data-l="en">Why it is not fully automated</span></h2><div class="case-section__body">
+      <p data-l="zh">需求訪談讓我確認：編輯要的不是按下按鈕後才看到成品，而是能在成本最低的時候修正方向。題目角度、引述安排與畫面裁切都帶有新聞判斷；如果系統一路做到輸出才讓人檢查，重做的成本更高，也削弱編輯的控制感。因此流程設計了三個確認點，AI 每走完一個階段就停下來等待回覆。</p>
+      <p data-l="en">User interviews made one need clear: editors do not want a black box that reveals the finished video only at the end. The angle, quote placement and crop all require editorial judgement. Reviewing those choices only after rendering makes revision expensive and weakens control. The workflow therefore has three checkpoints, and the AI waits after each stage for a decision.</p>
+      <ol class="timeline">
+        <li><time>CP1</time><span data-l="zh"><strong>方向確認：</strong>核對事實與素材，決定切角、有無旁白、標誌及版權限制。</span><span data-l="en"><strong>Direction:</strong> verify facts and material; decide the angle, narration, logos and rights constraints.</span></li>
+        <li><time>CP2</time><span data-l="zh"><strong>敘事確認：</strong>檢視旁白或字卡文字、故事順序與 SOT 放置位置。</span><span data-l="en"><strong>Narrative:</strong> review narration or title-card copy, story order and SOT placement.</span></li>
+        <li><time>CP3</time><span data-l="zh"><strong>視覺確認：</strong>在互動 storyboard 中調整裁切、文字、時長、版面與安全區，確認後才輸出影片。</span><span data-l="en"><strong>Visuals:</strong> adjust crop, text, duration, layout and safe areas in an interactive storyboard before rendering.</span></li>
+      </ol>
+    </div></section>
+
+    <figure class="scroll-shot wide"><img src="storyboard.png" alt="" loading="lazy" width="1000" height="6000"><figcaption><span data-l="zh">CP3 的互動 storyboard：使用者可以逐幕確認構圖、文字與節奏，再進入影片輸出。</span><span data-l="en">The CP3 interactive storyboard lets editors review each scene’s composition, copy and pacing before video output.</span></figcaption></figure>
+
+    <section class="case-section"><h2><span data-l="zh">技術與產出</span><span data-l="en">Technology and output</span></h2><div class="case-section__body">
+      <ul class="points">
+        <li><b>HyperFrames</b><span data-l="zh">以 HTML／CSS 建立 9:16 場景與動畫，再轉成 MP4；版面可程式化，也能在 storyboard 階段直接預覽。</span><span data-l="en">Builds animated 9:16 scenes in HTML and CSS, then renders them to MP4, keeping layouts programmable and previewable in the storyboard.</span></li>
+        <li><b><span data-l="zh">旁白與字幕</span><span data-l="en">Narration and subtitles</span></b><span data-l="zh">串接中央社語音服務產生旁白，再以 Whisper 進行字級時間對齊，建立字幕 timeline。</span><span data-l="en">Uses CNA’s speech service for narration and Whisper for word-level alignment to create the subtitle timeline.</span></li>
+        <li><b><span data-l="zh">可回溯的專案</span><span data-l="en">Reproducible projects</span></b><span data-l="zh">每支影片保留腳本、資料與場景程式，素材與成品可重新產生，也方便後續交接修改。</span><span data-l="en">Each video retains scripts, data and scene code so assets and outputs can be regenerated and handed off for later changes.</span></li>
+      </ul>
+    </div></section>
+
+    <figure class="portrait-result"><img src="final-preview.png" alt="" loading="lazy" width="1080" height="1920"><figcaption><span data-l="zh">輸出的中央社直式新聞短影音畫面。</span><span data-l="en">A rendered vertical CNA news video.</span></figcaption></figure>
+  </div>
+  <nav class="next"><a href="../../"><small><span data-l="zh">返回</span><span data-l="en">Back</span></small><span><span data-l="zh">履歷</span><span data-l="en">Resume</span></span></a></nav>
+</article></main></body></html>

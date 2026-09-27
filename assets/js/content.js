@@ -70,7 +70,7 @@ export const data = {
   summary: {
     ai: {
       zh: '中央社媒體實驗室工程師，為中央社從零打造**台灣媒體第一個 MCP Server**。善於溝通、釐清需求，將 AI 工具融入團隊工作流程，讓 **AI 協作成為編輯室的工作習慣**。具生物資訊、新聞傳播雙碩士學位，透過跨領域溝通、研究驗證與嚴謹的開發流程，將實際需求轉化為可上線的 AI 產品。',
-      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built **Taiwan’s first media MCP server** from scratch for CNA. Through clear communication, I clarify needs and integrate AI tools into team workflows, making **AI collaboration a daily newsroom practice**. With master’s degrees in Bioinformatics and Journalism, I turn real needs into production-ready AI products through cross-disciplinary communication, research, validation and a rigorous development process.',
+      en: 'Engineer at the Central News Agency (CNA) Media Lab. I built **Taiwan’s first media MCP server** from scratch for CNA. Through clear communication, I clarify needs and integrate AI tools into team workflows, making **AI collaboration a daily newsroom practice**. With master’s degrees in Bioinformatics and Journalism, I turn real needs into production‑ready AI products through cross‑disciplinary communication, research, validation and a rigorous development process.',
       pdf: {
         zh: '中央社媒體實驗室工程師，從零打造**台灣媒體第一個 MCP Server**，並將 AI 工具導入編輯流程。具生物資訊、新聞傳播雙碩士學位，擅長將跨領域需求轉化為可上線的 AI 產品。',
         en: 'Engineer at CNA Media Lab. Built **Taiwan’s first media MCP server** from scratch and integrated AI tools into newsroom workflows. With master’s degrees in Bioinformatics and Journalism, I turn cross-disciplinary needs into production-ready AI products.',
@@ -140,7 +140,7 @@ export const data = {
         },
         {
           zh: '開發「**志明編輯助手**」Chrome 擴充功能，提供錯字檢查、標題建議、翻譯、配圖等 8 項功能，成為中央社目前使用最廣泛的 AI 工具，逾 90% 同事認為有助提升工作效率。',
-          href: 'work/newsroom-ai/',
+          href: 'work/jiming-editor/',
           en: 'Developed **Jiming**, a Chrome extension with 8 features including typo checking, headline suggestions, translation and photo matching. It is now CNA’s most widely used AI tool, with over 90% of colleagues reporting improved efficiency.',
           pdf: {
             zh: '開發 **志明編輯助手** Chrome 擴充功能，整合錯字、標題、翻譯與配圖等 8 項功能；逾 90% 同事認為能提升效率。',
@@ -149,19 +149,26 @@ export const data = {
         },
         {
           tracks: ['media', 'ai', 'startup'],
-          zh: '影音 AI：透過需求訪談釐清製作流程，著手開發影片轉 SOT 稿系統，以及用於中央社短影音製作的 Claude Code 外掛。',
-          href: 'work/newsroom-ai/',
-          en: 'Video AI: conducted requirements interviews to understand production workflows, then began developing a video-to-SOT script system and a Claude Code plugin for CNA’s short-form video production.',
+          zh: '開發「**志明 SOT 寫稿**」，運用 Gemini 分析影片並產生可回溯時間碼的電視新聞稿，協助新進編輯快速上手，也提供資深編輯寫稿靈感。',
+          href: 'work/jiming-sot/',
+          en: 'Developed **Jiming SOT Writer**, using Gemini to analyse footage and draft TV news scripts with traceable timecodes, helping new editors get started while giving experienced editors a useful first draft.',
           pdfTracks: ['ai', 'media', 'startup'],
           pdf: {
-            zh: '透過需求訪談開發影片轉 SOT 稿系統，以及中央社短影音製作的 Claude Code 外掛。',
-            en: 'Developed a video-to-SOT system and a Claude Code plugin for CNA short-form video based on requirements interviews.',
+            zh: '開發影片轉 SOT 稿系統，以 Gemini 分析影片並產生可回溯時間碼的新聞稿。',
+            en: 'Developed a video-to-SOT system that uses Gemini to analyse footage and produce scripts with traceable timecodes.',
           },
+        },
+        {
+          tracks: ['media', 'ai', 'startup'],
+          zh: '與編輯訪談後設計中央社短影音工作流：以 Discord 作為使用入口、Claude Code Plugin 執行製作，透過三個確認點保留編輯對敘事與畫面的控制。',
+          href: 'work/jiming-shorts/',
+          en: 'Designed CNA’s short-form video workflow through editor interviews: Discord is the entry point, a Claude Code plugin handles production, and three checkpoints preserve editorial control over the story and visuals.',
+          pdf: false,
         },
         {
           tracks: ['tech', 'ai', 'media'],
           zh: '建置中央社中文斷詞、關鍵字與 NER 服務，以及配圖、影片推薦系統（GPT-4o Vision + Elasticsearch）。',
-          href: 'work/newsroom-ai/',
+          href: 'work/nlp-media/',
           en: 'Built Chinese word segmentation, keyword extraction and named entity recognition (NER) services for CNA, along with photo and video recommendation systems using GPT-4o Vision and Elasticsearch.',
           pdf: {
             zh: '建置中文斷詞、關鍵字、NER 與影音推薦服務（GPT-4o Vision + Elasticsearch）。',
@@ -181,7 +188,7 @@ export const data = {
       title: { zh: '兼任研究助理', en: 'Research Assistant' },
       org: { zh: '國立陽明交通大學　賴至慧老師', en: 'National Yang Ming Chiao Tung University — Prof. Chih-Hui Lai' },
       period: '2022.05 — 2024.09',
-      note: { zh: '2023.12–2024.05 服替代役暫停', en: 'Paused 2023.12–2024.05 for alternative military service' },
+      periodNote: { zh: '2023.12–2024.05 服替代役暫停', en: 'Paused 2023.12–2024.05 for alternative service' },
       rank: { default: 10, media: 20 },
       tracks: ['tech', 'ai', 'media'],
       pdfTracks: ['tech', 'ai'],
@@ -217,7 +224,7 @@ export const data = {
       org: { zh: '國立陽明交通大學　生物科技學系、外國語文學系', en: 'NYCU — Biological Science & Technology; Foreign Languages' },
       period: '2018 — 2021',
       rank: { default: 30 },
-      tracks: ['tech', 'media'],
+      tracks: ['tech', 'ai', 'media'],
       bullets: [
         { zh: '「程式設計」「生物資訊程式設計」「計算機概論」助教，帶領助教團隊協助 Python、PHP、Golang 教學。', en: 'TA for Programming, Bioinformatics Programming and Intro to Computer Science; led the TA team for Python, PHP and Go.' },
       ],
@@ -244,7 +251,10 @@ export const data = {
         {
           zh: '開發收據寄送、活動對帳、金流通知與 AI 行事曆等自動化工具，整合 LINE、GPT 和 Google Sheets，減少重複行政作業。',
           en: 'Developed automated tools for receipt delivery, event payment reconciliation, payment notifications and AI-assisted scheduling, integrating LINE, GPT and Google Sheets to reduce repetitive administrative work.',
-          href: 'posts/2024-10-03-claude-receipe/',
+          hrefs: [
+            { href: 'https://vocus.cc/article/6831c58efd8978000116e690' },
+            { href: 'https://vocus.cc/article/66fe5dfbfd89780001feb92b' },
+          ],
           pdf: {
             zh: '整合 LINE、GPT 與 Google Sheets，開發收據、對帳、金流通知及 AI 行事曆工具，減少重複行政作業。',
             en: 'Integrated LINE, GPT and Google Sheets to automate receipts, reconciliation, payment notifications and scheduling.',
@@ -258,6 +268,7 @@ export const data = {
         {
           zh: '主持校友總會職涯訪談 Podcast《難得狐途》（2024–2025），負責節目主持、平台上架與部分剪輯。',
           en: 'Hosted “Nan De Hu Tu,” the association’s career-interview podcast (2024–2025), and handled publishing and some audio editing.',
+          href: 'https://player.soundon.fm/p/e60d7221-d752-495e-b388-98d13842498f',
           pdfTracks: ['media', 'startup'],
         },
       ],
@@ -265,7 +276,7 @@ export const data = {
     {
       title: { zh: 'LINE 防疫照護聊天機器人', en: 'LINE COVID-Care Chatbot' },
       pdf: false,
-      href: 'posts/2022-06-23-line-bot-covid/',
+      href: 'https://www.cna.com.tw/news/ahel/202205100290.aspx',
       org: { zh: '陽明交大防疫志工團隊', en: 'NYCU COVID volunteer team' },
       period: '2022',
       rank: { default: 10 },
@@ -294,7 +305,7 @@ export const data = {
     {
       title: { zh: 'Rauchfleisch, A., Kao, J. J., Tseng, T. H., **Ho, C. T.**, & Li, L. Y. Maximizing Science Outreach on Facebook. Media and Communication, 11(1).', en: 'Rauchfleisch, A., Kao, J. J., Tseng, T. H., **Ho, C. T.**, & Li, L. Y. Maximizing Science Outreach on Facebook. Media and Communication, 11(1).' },
       period: '2023',
-      href: 'https://scholar.google.com.tw/citations?user=suylzjkAAAAJ',
+      href: 'https://www.ssoar.info/ssoar/handle/document/88156',
     },
   ],
 

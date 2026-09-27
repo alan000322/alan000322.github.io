@@ -14,6 +14,12 @@ document.querySelectorAll('a[href^="http"]').forEach((a) => {
   a.rel = 'noopener';
 });
 
+const externalLinkIcon = '<span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M18 13v5H6V6h5"/></svg></span>';
+document.querySelectorAll('.links a').forEach((a) => a.insertAdjacentHTML('beforeend', externalLinkIcon));
+
+const backIcon = '<span class="back-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="back-icon__shaft" d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></span>';
+document.querySelectorAll('.crumb__back').forEach((a) => a.insertAdjacentHTML('afterbegin', backIcon));
+
 const nodes = document.querySelectorAll('.hero, .facts, .prose > *');
 if (!matchMedia('(prefers-reduced-motion: reduce), (max-width: 760px), (pointer: coarse)').matches && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('motion');

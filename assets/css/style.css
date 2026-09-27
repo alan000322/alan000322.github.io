@@ -198,6 +198,22 @@ html[data-layout="single"] .id__contact {
 html[data-layout="single"] .id__main { font-size: clamp(38px, 6vw, 60px); }
 html[data-layout="single"] .id__intro .lead { max-width: none; }
 
+@media (min-width: 900px) {
+  html[lang="en"][data-layout="single"] .id {
+    grid-template-columns: minmax(340px, 0.85fr) minmax(0, 1.15fr);
+  }
+  html[lang="en"][data-layout="single"] .id__main {
+    font-size: clamp(42px, 5.6vw, 56px);
+    white-space: nowrap;
+  }
+  html[lang="en"][data-layout="single"] .id__intro .lead {
+    line-height: 1.68;
+  }
+  html[lang="en"][data-layout="single"] .id__intro strong {
+    white-space: nowrap;
+  }
+}
+
 @media (min-width: 761px) {
   html[data-layout="single"] .id__contact li {
     position: relative;
@@ -325,14 +341,32 @@ html[data-track="media"] .stat__v { font-family: var(--head); font-weight: 600; 
 html[data-track="media"] .entry__head h3 { font-family: var(--head); font-size: 16.5px; }
 .entry__org { grid-column: 1 / -1; color: var(--ink-2); font-size: 14px; }
 .period {
+  display: grid;
+  justify-items: end;
   font: 400 12.5px/1.4 var(--mono);
   color: var(--muted);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+.period__note { margin-top: 2px; font: inherit; font-size: 10.5px; color: var(--muted); }
 .entry__note { margin-top: 6px; font-size: 13px; color: var(--muted); }
-.more { text-decoration: none; font-weight: 500; margin-left: 2px; color: var(--muted); display: inline-block; transition: transform 0.25s var(--ease), color 0.2s; }
-.more:hover { color: var(--ink); transform: translate(2px, -2px); }
+.more {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: -0.28em;
+  border-radius: 50%;
+  background: #18191c;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), background-color 0.2s;
+}
+.more svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; stroke-linejoin: miter; transition: transform 0.3s var(--ease); }
+.more:hover { color: #fff; background: #050506; transform: translate(2px, -2px) scale(1.06); box-shadow: -2px 3px 0 color-mix(in oklch, var(--ink) 18%, transparent); }
+.more:hover svg { transform: translate(0.7px, -0.7px); }
 
 .bullets { margin-top: 8px; display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }
 .bullets li { position: relative; padding-left: 16px; text-wrap: pretty; }
@@ -511,7 +545,7 @@ html[data-track="startup"] .entry:hover { transform: translateX(6px); }
 html[data-track="startup"] .entry:hover h3 { color: var(--accent); }
 html[data-track="startup"] .entry__head h3 { font-size: 17px; }
 html[data-track="startup"] .foot { border-top: 0; padding-inline: 0; }
-html[data-track="startup"] .more:hover { color: var(--accent); }
+html[data-track="startup"] .more:hover { color: #fff; }
 
 /* ============================================================
    Motion
@@ -608,6 +642,7 @@ html[data-track="startup"].motion .id.is-in .id__photo::before { transform: none
 
   .entry__head { grid-template-columns: 1fr; }
   .entry__head .period { grid-row: 1; margin-bottom: 2px; }
+  .entry__head .period { justify-items: start; }
   .rows li { grid-template-columns: 1fr; }
   .rows .period { grid-column: 1; grid-row: auto; margin-top: 2px; }
   .row__m { grid-row: auto; }
@@ -645,10 +680,12 @@ html[data-pdf="true"] {
   --gutter: 20px;
 }
 html[data-pdf="true"] body { font-size: 10.5px; line-height: 1.42; }
-html[data-pdf="true"] .canvas { position: relative; }
+html[data-pdf="true"] .canvas { position: relative; min-height: 100vh; display: grid; place-items: center; }
+@media screen {
+  html[data-pdf="true"] .sheet { display: none; }
+}
 html[data-pdf="true"] .sheet {
   min-height: 297mm;
-  display: block;
   overflow: hidden;
 }
 html[data-pdf="true"] .id {
@@ -656,7 +693,7 @@ html[data-pdf="true"] .id {
   grid-template-columns: minmax(54mm, 0.78fr) minmax(0, 1.22fr);
   grid-template-areas: "name intro" "contact intro";
   gap: 3mm 8mm;
-  padding: 8mm var(--pad) 5mm;
+  padding: 7mm var(--pad) 4mm;
   border-bottom: 1.5px solid var(--rule);
 }
 html[data-pdf="true"] .id__main { font-size: 29pt; }
@@ -695,7 +732,7 @@ html[data-pdf="true"] .sec {
   display: grid;
   grid-template-columns: 27mm 1fr;
   gap: 5mm;
-  padding: 2.8mm var(--pad);
+  padding: 2.4mm var(--pad);
   border-top: 1px solid var(--hair);
 }
 html[data-pdf="true"] .main > .sec:first-child { border-top: 0; }
@@ -706,7 +743,7 @@ html[data-pdf="true"] .sec__h {
   line-height: 1.3;
 }
 html[data-pdf="true"] .sec__h::after { display: none; }
-html[data-pdf="true"] .entry + .entry { margin-top: 1.6mm; padding-top: 1.6mm; }
+html[data-pdf="true"] .entry + .entry { margin-top: 1.4mm; padding-top: 1.4mm; }
 html[data-pdf="true"] .entry__head {
   grid-template-columns: minmax(0, 1fr) auto;
   column-gap: 3mm;
@@ -729,6 +766,7 @@ html[data-pdf="true"] .sec--education .entry__note {
   line-height: 1.3;
 }
 html[data-pdf="true"] .period { font-size: 7.5pt; }
+html[data-pdf="true"] .period__note { margin-top: 0.4mm; font-size: 6.2pt; }
 html[data-pdf="true"] .bullets { margin-top: 1.5mm; gap: 1mm; font-size: 8.5pt; line-height: 1.42; }
 html[data-pdf="true"] .bullets li { padding-left: 13px; }
 html[data-pdf="true"] .bullets li::before {
@@ -744,7 +782,7 @@ html[data-pdf="true"] .bullets li::before {
 html[data-pdf="true"] .rows li {
   grid-template-columns: minmax(0, 1fr) auto;
   column-gap: 3mm;
-  padding: 1.4mm 0;
+  padding: 1.1mm 0;
   font-size: 8.5pt;
 }
 html[data-pdf="true"] .rows .period { grid-column: 2; grid-row: 1; margin: 0; }
@@ -757,6 +795,15 @@ html[data-pdf="true"] .skill p { gap: 3px; }
 html[data-pdf="true"] .skill p span { padding: 2px 4px; font-size: 7.5pt; }
 html[data-pdf="true"] .more,
 html[data-pdf="true"] .marquee { display: none !important; }
+.pdf-footer {
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 3mm;
+  color: var(--muted);
+  font: 500 6.8pt/1.2 var(--mono);
+  text-align: right;
+}
 
 /* English copy runs longer; keep the same content and hierarchy on one A4 page. */
 html[data-pdf="true"][lang="en"] .id { padding-top: 6mm; padding-bottom: 4mm; }
@@ -774,6 +821,9 @@ html[data-pdf="true"][lang="en"] .row__t { font-size: 7.5pt; }
   z-index: 10;
   right: 18px;
   bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 14px;
   border: 1px solid var(--rule);
   background: var(--ink);
@@ -781,8 +831,14 @@ html[data-pdf="true"][lang="en"] .row__t { font-size: 7.5pt; }
   font: 700 13px/1 var(--sans);
   cursor: pointer;
   box-shadow: 0 8px 24px oklch(0 0 0 / 0.18);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), opacity 180ms ease;
 }
-.print-pdf:hover { transform: translateY(-2px); }
+.print-pdf svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: square; stroke-linejoin: miter; }
+.print-pdf:hover { transform: translateY(-2px); box-shadow: 0 11px 28px oklch(0 0 0 / 0.22); }
+.print-pdf:active { transform: translateY(0) scale(0.97); }
+.print-pdf:disabled { cursor: wait; opacity: 0.68; transform: none; }
+html[data-pdf="true"] .print-pdf { position: static; padding: 13px 18px; }
+.pdf-frame { position: fixed; width: 1px; height: 1px; right: 0; bottom: 0; border: 0; opacity: 0; pointer-events: none; }
 
 /* ============================================================
    Print — a clean A4 regardless of track
@@ -819,8 +875,9 @@ html[data-pdf="true"][lang="en"] .row__t { font-size: 7.5pt; }
   html[data-track="startup"] .main, html[data-track="startup"] .side { border: 0; }
   a { text-decoration: none; }
   html[data-pdf="true"] body { font-size: 10.5px; }
-  html[data-pdf="true"] .canvas { padding: 0; }
-  html[data-pdf="true"] .sheet { min-height: 0; }
+  html[data-pdf="true"] .canvas { display: block; min-height: 0; padding: 0; }
+  html[data-pdf="true"] .sheet { display: block; position: relative; height: 275mm; min-height: 0; overflow: hidden; padding-bottom: 5mm; }
+  html[data-pdf="true"] .pdf-footer { position: absolute; left: 0; right: 0; bottom: 0; }
 }
 
 /* justfont: explicit classes also let the service discover dynamic text. */
@@ -843,4 +900,10 @@ html body .jf-lanyanghei-extraheavy {
     transform: none !important;
     transition: none !important;
   }
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .more, .more svg { transition: none; }
+  .more:hover { transform: none; box-shadow: none; }
+  .more:hover svg { transform: none; }
 }

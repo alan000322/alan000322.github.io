@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中文 NLP 與影音推薦 — 何家慈 Chia Tzu Ho</title>
+  <meta name="description" content="中央社中文斷詞、關鍵字與 NER 服務，以及以 GPT-4o Vision、SSIM、embedding 和 Elasticsearch 建置的配圖與影片推薦系統。">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css"><link rel="stylesheet" href="../../assets/css/page.css">
+  <script src="../../assets/js/boot.js"></script><script type="module" src="../../assets/js/page.js"></script>
+</head>
+<body><main class="canvas"><article class="sheet page">
+  <nav class="crumb"><a class="crumb__back" href="../../"><span data-l="zh">履歷</span><span data-l="en">Resume</span></a><span class="crumb__name">Chia Tzu Ho</span></nav>
+  <header class="hero">
+    <h1><span data-l="zh">中文 NLP 與影音推薦：讓新聞素材更容易被找到</span><span data-l="en">Chinese NLP and media recommendation: making newsroom archives searchable</span></h1>
+    <p class="hero__dek"><span data-l="zh">新聞室累積了大量文章、照片與影片，但內容如果缺乏一致的標記，就很難在下一則新聞中重新使用。我建置中文斷詞、關鍵字與實體辨識服務，並把相同的結構化思路延伸到配圖與片庫推薦。</span><span data-l="en">Newsrooms accumulate vast archives of stories, photos and footage, but material without consistent metadata is hard to reuse. I built Chinese segmentation, keyword and entity services, then applied the same structured approach to photo and video recommendation.</span></p>
+  </header>
+  <div class="prose case-study">
+    <section class="case-section"><h2><span data-l="zh">中文文章預處理</span><span data-l="en">Chinese article preprocessing</span></h2><div class="case-section__body">
+      <p data-l="zh">我將中央社客製的 CNA Articut 斷詞引擎、媒體實驗室自建詞典與新聞分類規則整合為 FastAPI 服務。文章送入後，系統會處理相對時間、斷詞、關鍵字與 NER，辨識人物、事件、組織、地點及設施，再產生摘要與 embedding，最後寫入 Elasticsearch。</p>
+      <p data-l="en">I integrated CNA’s customised Articut segmenter, Media Lab dictionaries and newsroom classification rules into a FastAPI service. Each story goes through relative-time normalisation, segmentation, keyword extraction and NER for people, events, organisations, places and facilities, followed by summaries and embeddings before indexing in Elasticsearch.</p>
+      <ul class="points">
+        <li><b><span data-l="zh">新聞詞典</span><span data-l="en">Newsroom dictionaries</span></b><span data-l="zh">可持續更新人名、組織與專有名詞，並讓編輯手動補入關鍵字。</span><span data-l="en">Continuously updated names, organisations and domain terms, with support for editor-supplied keywords.</span></li>
+        <li><b><span data-l="zh">一致的 API</span><span data-l="en">Consistent APIs</span></b><span data-l="zh">將斷詞、關鍵字、NER 與完整預處理拆成可供不同產品重用的端點。</span><span data-l="en">Reusable endpoints separate segmentation, keywords, NER and the full preprocessing pipeline.</span></li>
+        <li><b><span data-l="zh">搜尋基礎</span><span data-l="en">Search foundation</span></b><span data-l="zh">結構化欄位與 embedding 一起進入 Elasticsearch，支援後續的搜尋、推薦與事件關聯。</span><span data-l="en">Structured fields and embeddings enter Elasticsearch to support retrieval, recommendation and event relationships.</span></li>
+      </ul>
+    </div></section>
+
+    <section class="case-section"><h2><span data-l="zh">配圖推薦</span><span data-l="en">Photo recommendation</span></h2><div class="case-section__body">
+      <p data-l="zh">系統先用 GPT-4o Vision 將圖庫照片轉為結構化描述，包括人物、組織、事件、照片類型、人物呈現方式與場景，再建立 embedding 並寫入 Elasticsearch。編輯輸入新聞內容後，服務同時依全文、關鍵重點、人物、場景與示意圖等角度搜尋，再依新聞情境重新排序。</p>
+      <p data-l="en">GPT-4o Vision first converts archive photos into structured descriptions—people, organisations, events, image type, subject composition and context. The service embeds and indexes that metadata in Elasticsearch. Given a story, it searches across the full text, key points, people, scenes and illustrative images, then reranks results for the editorial context.</p>
+      <p data-l="zh">搜尋 API 支援 SSE 串流，各類結果完成後即可先送到前端，編輯不必等所有檢索路徑結束才看到第一批建議。</p>
+      <p data-l="en">The search API supports SSE streaming, so each result category reaches the interface as soon as it is ready instead of making editors wait for every retrieval path.</p>
+    </div></section>
+
+    <figure class="wide"><img src="photo-search-input.png" alt="" loading="lazy" width="1868" height="864"><figcaption><span data-l="zh">配圖推薦測試介面：可直接輸入新聞文字，再選擇需要的建議數量。</span><span data-l="en">Photo recommendation test interface: editors paste a story and choose how many suggestions to retrieve.</span></figcaption></figure>
+    <figure class="narrow portrait-result"><img src="photo-search-results.png" alt="" loading="lazy" width="315" height="759"><figcaption><span data-l="zh">結果依推薦組合呈現照片與圖說，並可繼續換一組探索。</span><span data-l="en">Results present photos with captions in ranked groups, with another set available on demand.</span></figcaption></figure>
+
+    <section class="case-section"><h2><span data-l="zh">片庫影片推薦</span><span data-l="en">Video archive recommendation</span></h2><div class="case-section__body">
+      <p data-l="zh">影片無法像文章一樣直接全文檢索。我把每支影片拆成可搜尋的代表畫面：以 FFmpeg 萃取關鍵影格，用 SSIM 移除高度相似的畫面，再交由 GPT Vision 描述影格內容。描述文字經 embedding 後寫入 Elasticsearch，查詢結果再聚合回影片，讓編輯從文字需求找到片庫素材。</p>
+      <p data-l="en">Video cannot be searched like article text. I turned each clip into searchable representative frames: FFmpeg extracts keyframes, SSIM removes near-duplicates, and GPT Vision describes what remains. Those descriptions are embedded and indexed in Elasticsearch, then search results are grouped back into their source videos so editors can find footage with a text query.</p>
+      <ol class="timeline">
+        <li><time>01</time><span data-l="zh">下載片庫影片並保留影片識別資訊。</span><span data-l="en">Ingest archive footage while preserving clip identifiers.</span></li>
+        <li><time>02</time><span data-l="zh">萃取場景關鍵影格，以 SSIM 去除重複畫面。</span><span data-l="en">Extract scene keyframes and remove visual duplicates with SSIM.</span></li>
+        <li><time>03</time><span data-l="zh">以 GPT Vision 產生可搜尋的繁體中文內容描述。</span><span data-l="en">Use GPT Vision to produce searchable Traditional Chinese descriptions.</span></li>
+        <li><time>04</time><span data-l="zh">建立 embedding、寫入 Elasticsearch，並將命中影格對應回影片。</span><span data-l="en">Create embeddings, index them in Elasticsearch and map matched frames back to clips.</span></li>
+      </ol>
+    </div></section>
+
+    <section class="case-section"><h2><span data-l="zh">共通設計</span><span data-l="en">Shared design</span></h2><div class="case-section__body">
+      <p data-l="zh">三套服務的共同核心，是先將新聞語言與視覺素材轉成可檢索、可比較的結構，再用搜尋系統穩定地找回原始資料。LLM 負責理解與描述，Elasticsearch 負責索引與檢索，結果始終回到中央社的文章、照片或影片來源。</p>
+      <p data-l="en">All three services first turn newsroom language and visual material into structures that can be searched and compared, then use retrieval to return the original source reliably. LLMs handle interpretation and description; Elasticsearch handles indexing and retrieval; every result points back to a CNA story, photo or video.</p>
+    </div></section>
+  </div>
+  <nav class="next"><a href="../../"><small><span data-l="zh">返回</span><span data-l="en">Back</span></small><span><span data-l="zh">履歷</span><span data-l="en">Resume</span></span></a></nav>
+</article></main></body></html>
