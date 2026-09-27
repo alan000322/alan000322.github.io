@@ -8,6 +8,7 @@
   el.lang = lang === 'en' ? 'en' : 'zh-Hant';
   el.dataset.lang = lang;
   el.dataset.track = track;
+  el.dataset.pdf = q.get('pdf') === '1' ? 'true' : 'false';
   var fonts = {
     media: 'family=Noto+Serif+TC:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700',
     startup: 'family=Anton',

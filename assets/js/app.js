@@ -4,10 +4,11 @@ const root = document.documentElement;
 const q = new URLSearchParams(location.search);
 const lang = root.dataset.lang;
 const track = root.dataset.track;
+const pdfMode = root.dataset.pdf === 'true';
 
 // No photo by default. Chinese can opt in with ?photo=formal|talk; English never shows one.
 const photoParam = q.get('photo');
-const photoKey = lang === 'zh' && data.photos[photoParam] ? photoParam : null;
+const photoKey = !pdfMode && lang === 'zh' && data.photos[photoParam] ? photoParam : null;
 const photo = photoKey ? data.photos[photoKey] : null;
 root.dataset.layout = photo ? 'split' : 'single';
 
@@ -19,7 +20,11 @@ const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 // Localised string: plain string, or { zh, en }.
-const t = (v) => (v == null ? '' : typeof v === 'string' ? v : (v[lang] ?? v.zh ?? ''));
+const pdfValue = (v) => (pdfMode && v && typeof v === 'object' && v.pdf !== undefined ? v.pdf : v);
+const t = (v) => {
+  v = pdfValue(v);
+  return v == null ? '' : typeof v === 'string' ? v : (v[lang] ?? v.zh ?? '');
+};
 
 // Per-track value: { tech, ai, media, startup, default }.
 const tv = (v) => (v && (v[track] !== undefined || v.default !== undefined) ? v[track] ?? v.default : v);
@@ -27,12 +32,21 @@ const tv = (v) => (v && (v[track] !== undefined || v.default !== undefined) ? v[
 // Inline markup after escaping: **bold** only.
 const md = (s) => esc(t(s)).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
-const inTrack = (x) => !x.tracks || x.tracks.includes(track);
+const inTrack = (x) =>
+  (!x.tracks || x.tracks.includes(track)) &&
+  (!pdfMode || x.pdf !== false) &&
+  (!pdfMode || !x.pdfTracks || x.pdfTracks.includes(track));
 const byRank = (a, b) => (a.rank?.[track] ?? a.rank?.default ?? 50) - (b.rank?.[track] ?? b.rank?.default ?? 50);
 const list = (xs) => (xs || []).filter(inTrack).sort(byRank);
 
 const L = (key) => t(data.labels[key]);
 const period = (p) => (p ? `<span class="period">${esc(t(p))}</span>` : '');
+const contactIcon = (name) => ({
+  email: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 9.2v8.6M6.2 6.2v.1M10.2 17.8v-8.6m0 3.7c.7-2.3 6.8-3.3 6.8 1.9v3"/></svg>',
+  writing: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM7 8h4v4H7zM14 8h3M14 11h3M7 15h10"/></svg>',
+  scholar: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5zM6.5 11v5c3.7 2.7 7.3 2.7 11 0v-5M21 9v6"/></svg>',
+}[name] || '');
 // Internal pages keep the current ?lang / ?track; external ones open in a new tab.
 const extLink = (href) => {
   if (!href) return '';
@@ -49,8 +63,8 @@ const section = (key, body, cls = '') =>
 function identity() {
   const p = data.profile;
   const contact = p.contact
-    .filter((c) => !c.lang || c.lang === lang)
-    .map((c) => `<li><span class="k">${esc(t(c.label))}</span><a href="${esc(c.href)}"${c.href.startsWith('mailto') ? '' : ' target="_blank" rel="noopener"'}>${esc(t(c.text))}</a></li>`)
+    .filter((c) => (!c.lang || c.lang === lang) && (!pdfMode || c.icon === 'email'))
+    .map((c) => `<li><a href="${esc(c.href)}" aria-label="${esc(t(c.label))}: ${esc(t(c.text))}"${c.href.startsWith('mailto') ? '' : ' target="_blank" rel="noopener"'}><span class="contact__icon">${contactIcon(c.icon)}</span><span class="v">${esc(t(c.text))}</span></a></li>`)
     .join('');
   const altName = lang === 'zh' ? `<span class="id__alt">${esc(p.name.en)}</span>` : '';
   const img = photo
@@ -62,12 +76,13 @@ function identity() {
       <h1><span class="id__main">${esc(t(p.name))}</span>${altName}</h1>
       <p class="id__role">${esc(t(tv(p.role)))}</p>
     </div>
+    ${photo ? '' : `<div class="id__intro"><p class="lead">${md(tv(data.summary))}</p></div>`}
     <ul class="id__contact">${contact}</ul>
   </header>`;
 }
 
 function summary() {
-  return `<section class="sec sec--summary" data-reveal><p class="lead">${md(tv(data.summary))}</p></section>`;
+  return photo ? `<section class="sec sec--summary" data-reveal><p class="lead">${md(tv(data.summary))}</p></section>` : '';
 }
 
 function entries(items) {
@@ -92,13 +107,14 @@ function entries(items) {
 
 function compact(items) {
   const rows = list(items)
-    .map(
-      (e) => `<li>
+    .map((e) => {
+      const meta = e.meta ? t(e.meta) : '';
+      return `<li>
         <span class="row__t">${md(tv(e.title))}${extLink(e.href)}</span>
-        ${e.meta ? `<span class="row__m">${esc(t(e.meta))}</span>` : ''}
+        ${meta ? `<span class="row__m">${esc(meta)}</span>` : ''}
         ${period(e.period)}
-      </li>`
-    )
+      </li>`;
+    })
     .join('');
   return rows ? `<ul class="rows">${rows}</ul>` : '';
 }
@@ -128,18 +144,18 @@ const builders = {
 /* ---------- compose ---------- */
 
 function marquee() {
-  if (track !== 'startup') return '';
+  if (pdfMode || track !== 'startup') return '';
   const words = tv(data.marquee).map((w) => `<span>${esc(t(w))}</span>`).join('');
   return `<div class="marquee" aria-hidden="true"><div class="marquee__track">${words}${words}</div></div>`;
 }
 
 function render() {
-  const order = data.order[track];
-  const sideKeys = photo ? order.side : [];
-  const mainKeys = photo ? order.main : [...order.main, ...order.side];
+  const order = pdfMode ? data.pdfOrder[track] : data.order[track];
+  const sideKeys = pdfMode ? [] : photo ? order.side : [];
+  const mainKeys = pdfMode ? order : photo ? order.main : [...order.main, ...order.side];
   const build = (keys) => keys.map((k) => builders[k]?.() ?? '').join('');
 
-  document.title = `${t(data.profile.name)}${lang === 'zh' ? ` ${data.profile.name.en}` : ''} — ${t(tv(data.profile.role))}`;
+  document.title = `${t(data.profile.name)}${lang === 'zh' ? ` ${data.profile.name.en}` : ''} — ${t(tv(data.profile.role))}${pdfMode ? ' — A4' : ''}`;
 
   document.getElementById('sheet').innerHTML = `
     ${identity()}
@@ -149,6 +165,11 @@ function render() {
       ${build(mainKeys)}
     </div>
     ${sideKeys.length ? `<aside class="side">${build(sideKeys)}</aside>` : ''}`;
+
+  if (pdfMode) {
+    document.querySelector('.canvas').insertAdjacentHTML('afterbegin', `<button class="print-pdf" type="button">${lang === 'zh' ? '下載／列印 PDF' : 'Download / Print PDF'}</button>`);
+    document.querySelector('.print-pdf').addEventListener('click', () => print());
+  }
 }
 
 /* ---------- motion ---------- */
