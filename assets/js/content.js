@@ -90,28 +90,6 @@ export const data = {
     },
   },
 
-  stats: {
-    ai: [
-      { value: '15', label: { zh: '個 MCP 工具上線', en: 'MCP tools in production' } },
-      { value: '300', label: { zh: '次／日 全社 AI 工具使用', en: 'daily uses of newsroom AI tools' } },
-      { value: '90%', label: { zh: '同事認為 AI 提升效率', en: 'of colleagues report higher efficiency' } },
-      { value: '4', label: { zh: '大 AI 平台串接', en: 'AI platforms connected' } },
-    ],
-    media: [
-      { value: '15', label: { zh: '個新聞 MCP 工具', en: 'news MCP tools' } },
-      { value: '8', label: { zh: '項編輯室 AI 功能', en: 'newsroom AI features' } },
-      { value: '4', label: { zh: '篇資料新聞專題', en: 'data stories' } },
-      { value: { zh: '近百', en: '~100' }, label: { zh: '篇科技專欄', en: 'column articles' } },
-    ],
-    startup: [
-      { value: '0→1', label: { zh: '從原型到付費上線', en: 'prototype to paid product' } },
-      { value: '15', label: { zh: '個 MCP 工具', en: 'MCP tools shipped' } },
-      { value: '300', label: { zh: '次／日 內部使用', en: 'daily internal uses' } },
-      { value: '3', label: { zh: '個跨域背景', en: 'disciplines combined' } },
-    ],
-    default: null,
-  },
-
   marquee: {
     default: ['MCP', 'AI Agents', 'RAG', 'Newsroom AI', '0 → 1', 'Data Journalism', 'Podcast', 'Bioinformatics', 'Tech Law'],
   },
