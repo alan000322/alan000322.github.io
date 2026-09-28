@@ -573,6 +573,7 @@ html[data-track="startup"].motion .id.is-in .id__photo::before { transform: none
 @media (max-width: 760px) {
   :root { --gutter: 0px; --pad: 16px; }
   body { font-size: 15px; }
+  .print-pdf { display: none !important; }
   .sheet { border: 0; outline: 0; min-height: 100vh; }
   html[data-layout="split"] .sheet,
   html[data-layout="single"] .sheet {
